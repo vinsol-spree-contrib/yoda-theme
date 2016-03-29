@@ -1,0 +1,13 @@
+@import 'yoda/stylesheets/spree/frontend/mixin/mixins';
+@import 'yoda/stylesheets/spree/frontend/variable/variables';
+@import 'https://fonts.googleapis.com/css?family=Open+Sans:400,700,600';
+
+.open-bold {
+  font-weight: 600;
+}
+.open-2x-bold{
+  font-weight: 700;
+}
+.text-uppercase {
+  text-transform: uppercase;
+}

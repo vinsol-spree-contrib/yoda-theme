@@ -1,0 +1,8 @@
+@import 'cmn';
+
+.product-title {
+  margin: 0;
+  font-size: 18px;
+  @extend .text-uppercase;
+  @extend .open-bold;
+}
