@@ -14,7 +14,11 @@
 
     <div class="container-fluid">
       <div class="row" data-hook>
-        <%= breadcrumbs(@taxon) %>
+        <% if @taxon.present? %>
+          <%= breadcrumbs(@taxon) %>
+        <% elsif @product.present? %>
+          <%= breadcrumbs(@product.taxons.first) %>
+        <% end %>
 
         <%= render partial: 'spree/shared/sidebar' if content_for? :sidebar %>
 
