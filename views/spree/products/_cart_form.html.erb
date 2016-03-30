@@ -1,20 +1,27 @@
-<% require_relative("../../../app/helpers/product_price_helper.rb") %>
+<% content_for :header do -%>
+  <%= javascript_include_tag 'yoda/javascripts/spree/frontend/product_show' -%>
+<% end -%>
+
 <%= form_for :order, :url => populate_orders_path do |f| %>
   <div class="" id="inside-product-cart-form" data-hook="inside_product_cart_form" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
     <% if @product.variants_and_option_values(current_currency).any? %>
       <div id="product-variants" class="col-md-6">
         <h3 class="product-section-title"><%= Spree.t(:variants) %></h3>
         <ul class="list-group">
+
+          <% @product.uniq_color_options.each do |color_option| %>
+            <span style="background-color: <%= color_option[1] %>" data-color-option-id = <%= color_option[0] %> >
+              <%= color_option %>
+            </span>
+          <% end %>
+
           <% @product.variants_and_option_values(current_currency).each_with_index do |variant, index| %>
-            <li>
-              <%= radio_button_tag "variant_id", variant.id, index == 0, 'data-price' => variant.price_in(current_currency).money, 'data-cost' => ::Spree::ProductPriceHelper.cost_price(variant), 'data-percentage-profit' => ::Spree::ProductPriceHelper.percentage_profit(variant) %>
+            <li data-select-color-option-id=<%= color_option_value(variant).id %> >
+              <%= radio_button_tag "variant_id", variant.id, index == 0, 'data-price' => variant.price_in(current_currency).money, 'data-cost' => cost_price(variant), 'data-percentage-profit' => percentage_diff(variant) %>
               <%= label_tag "variant_id_#{ variant.id }" do %>
                 <span class="variant-description">
-                  <%= variant_options variant %>
+                  <%= color_variant_options variant %>
                 </span>
-                <% if variant_price variant %>
-                  <span class="price diff"><%= variant_price variant %></span>
-                <% end %>
                 <% unless variant.can_supply? %>
                   <span class="out-of-stock"><%= Spree.t(:out_of_stock) %></span>
                 <% end %>
@@ -35,10 +42,10 @@
               <%= display_price(@product) %>
             </span>
             <span class="lead price cost" itemprop="price">
-              <%= ::Spree::ProductPriceHelper.cost_price(@product) %>
+              <%= cost_price(@product) %>
             </span>
             <span class="lead price percentage" itemprop="price">
-              <%= ::Spree::ProductPriceHelper.percentage_profit(@product) %>
+              <%= percentage_diff(@product) %>
             </span>
             <span itemprop="priceCurrency" content="<%= @product.currency %>"></span>
           </div>
@@ -54,7 +61,9 @@
         <div class="add-to-cart">
           <br/>
           <div class="input-group">
+            <span data-behaviour='increment-product-quantity'>UP</span>
             <%= text_field_tag :quantity, 1, :class => 'title form-control', data: { hook: 'product-quantity' } %>
+            <span data-behaviour='decrement-product-quantity'>DOWN</span>
               <%= button_tag :class => 'btn btn-success', :id => 'add-to-cart-button', :type => :submit do %>
                 <%= Spree.t(:add_to_cart) %>
               <% end %>
