@@ -1,0 +1,27 @@
+@import 'yoda/stylesheets/spree/frontend/variable/variables';
+
+.breadcrumb {
+  background: none;
+  padding: 0;
+  font-size: 12px;
+  color: #000;
+   li {
+
+    + li {
+      &:before {
+        color: inherit;
+      }
+    }
+    &.active {
+      a {
+          color: $link-color;
+          &:before {
+
+          }
+        }
+    }
+  }
+  a {
+    color: #000;
+  }
+}

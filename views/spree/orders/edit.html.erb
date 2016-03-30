@@ -1,5 +1,5 @@
 <% @body_id = 'cart' %>
-<div data-hook="cart_container">
+<div data-hook="cart_container" class="col-md-12">
   <h1><%= Spree.t(:shopping_cart) %></h1>
 
   <% if @order.line_items.empty? %>

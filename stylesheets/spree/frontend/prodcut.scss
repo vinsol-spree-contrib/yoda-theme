@@ -1,0 +1,160 @@
+@import 'cmn';
+
+.product-price-block {
+  padding: 10px 0 15px;
+
+  .price {
+    &:empty {
+      background: green;
+      @extend .empty-hide;
+    }
+
+    font-size: 14px;
+    @extend .open-bold;
+
+    &.cost {
+      text-decoration: line-through;
+    }
+
+    &.selling {
+      color: $link-color;
+      font-size: 20px;
+    }
+
+    &.percentage {
+      color: $discount-color;
+    }
+  }
+}
+
+.option-list-group {
+  margin-top: 15px;
+
+  .option-block {
+    font-size: 12px;
+    margin-bottom: 20px;
+    @extend .open-2x-bold;
+
+    .h-box {
+      display: inline-block;
+      min-width: 65px;
+    }
+  }
+}
+
+.color-option-block {
+  .color-box {
+    cursor: pointer;
+    display: inline-block;
+    height: 20px;
+    margin-right: -5px;
+    position: relative;
+    vertical-align: middle;
+    width: 20px;
+
+  + .color-box {
+      margin-left: 8px;
+  }
+
+    @include transition(all, 0.2s);
+    @include scale(0.85);
+    &:before {
+      content: " ";
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      border: solid 1px #c8c8c8;
+      left: -2px;
+      top: -2px;
+      opacity: 0;
+      @extend .cmn-transition;
+
+    }
+    &.active {
+      @include scale(1);
+
+      &:before {
+        opacity:1;
+      }
+    }
+  }
+}
+
+.radio-options {
+  cursor: pointer;
+  label {
+    cursor: pointer;
+    position: relative;
+    &:after {
+      content: " ";
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      width: 0%;
+      height: 1px;
+      background: $link-color;
+      @include transition(all, 0.25s);
+    }
+  }
+  &.visible {
+    ~ .visible { 
+      margin-left: 30px;
+    }  
+  }
+  
+  input[type="radio"] {
+    display: none;
+
+    &:checked {
+      + label {
+        color: $link-color;
+        &:after {
+          width:100%;
+          margin-left: -50%;
+        }
+      }
+    }
+  }
+}
+
+.action-cart-btn-block {
+  padding: 35px 0 25px;
+}
+
+.cart-input-group {
+  font-size: 14px;
+  .h-qty,
+  .qty-helper-btn,
+  .form-control {
+    display: inline-block;
+    margin-right: -4px;
+    padding-left: 0;
+    padding-right: 0;
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  .qty-helper-btn {
+    color: rgba(0,0,0,0.6);
+    cursor: pointer;
+    font-size: 11px;
+    font-weight: 400;
+    height: 37px;
+    line-height: 37px;
+    width: 20px;
+    @include transition(all, 0.3s);
+    &:hover {
+      @include scale(1.2);
+    }
+  }
+  
+  .h-qty {
+    margin-right: 10px;
+  }
+
+  .form-control {
+    @include border-radius(3px);
+    height: 37px;
+    width: 40px;
+  }
+}

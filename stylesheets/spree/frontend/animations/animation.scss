@@ -1,0 +1,39 @@
+@import 'yoda/stylesheets/spree/frontend/mixin/mixins';
+@import 'yoda/stylesheets/spree/frontend/variable/variables';
+
+.border-animation {
+  position: relative;
+  display: inline-block;
+
+  &:after {
+    content: " ";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    width: 0%;
+    height: 1px;
+    background: #fff;
+    @include transition(all, 0.25s);
+  }
+
+  &:hover {
+    &:after {
+      width:100%;
+      margin-left: -50%;
+    }
+  }
+
+  &.active-link {
+    &:after{
+      height:5px;
+      margin-left: 0;
+      margin-top: -5px;
+    }
+  }
+
+  &.blue {
+    &:after {
+      background: $link-color;
+    }
+  }
+}

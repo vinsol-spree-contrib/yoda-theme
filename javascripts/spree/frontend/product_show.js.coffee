@@ -9,8 +9,10 @@ Spree.ready ($) ->
 
   Spree.showHideVariants = (_this) ->
     selectedColorOption = $(_this).data('color-option-id')
-    $("[data-select-color-option-id]").hide()
-    sizeOptions = $("[data-select-color-option-id=" + selectedColorOption + "]").show()
+    $("[data-color-option-id]").removeClass('active')
+    $(_this).addClass('active')
+    $("[data-select-color-option-id]").hide().removeClass("visible");
+    sizeOptions = $("[data-select-color-option-id=" + selectedColorOption + "]").show().addClass("visible");
     sizeOptions.first().find('input').trigger('click')
 
   Spree.productQuantityField = (_this) ->

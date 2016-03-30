@@ -1,8 +1,102 @@
-@import 'cmn';
+@import 'yoda/stylesheets/spree/frontend/prodcut';
+
 
 .product-title {
-  margin: 0;
   font-size: 18px;
+  margin: 0;
   @extend .text-uppercase;
   @extend .open-bold;
+}
+
+#inside-product-cart-form {
+  .product-price-block {
+    border-bottom: solid 1px #cccccc;
+  }
+  .price {
+    + .price {
+      margin-left: 10px;
+      vertical-align: baseline;
+    }
+  }
+}
+.product-additional-info {
+  font-size: 11px;
+
+  .tab-data {
+    padding: 10px 20px;
+  }
+}
+.product-info-link {
+  cursor: pointer;
+  margin-top: 10px;
+  padding-left: 20px;
+  position: relative;
+  text-transform: uppercase;
+  @extend .cmn-transition;
+
+  &:before,
+  &:after {
+    content: "";
+    height: 1px;
+    width: 11px;
+    background:#000;
+    position: absolute;
+    left: 0;
+    top: 2px;
+    @extend .cmn-transition;
+  }
+  &:before {
+    top: 7px;
+  }
+  &:after {
+    width: 1px;
+    height: 11px;
+    left: 5px;
+    @include scale(0);
+  }
+
+  &.collapsed {
+    &:after {
+      @include scale(1);
+    }
+  }
+}
+
+.prod-three-block {
+  padding: 70px 0 35px;
+  font-size: 12px;
+  display: table;
+  width: 100%;
+  p {
+    margin-bottom: 5px;
+  }
+  h5 {
+    font-weight: 600;
+    font-size: 14px;
+    margin: 0 0 20px;
+  }
+
+  .p-f-block {
+    display: table-cell;
+    width: 33.33%;
+    float: none;
+    padding: 30px 15px;
+    vertical-align: top;
+
+    + .p-f-block {
+        &:before,
+        &:after {
+          content: " ";
+          background: #ccc;
+          height: 100%;
+          left: 1px;
+          position: absolute;
+          top: 0;
+          width: 1px;
+        }
+        &:before {
+          left: -1px;
+        }
+    }
+  }
 }

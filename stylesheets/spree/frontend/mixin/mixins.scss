@@ -41,3 +41,11 @@
   /* Opera 11.10+ */
   background: -o-linear-gradient(left, $color1, $color2);
 }
+
+.cmn-transition{
+  @include transition(all, 0.3s);
+}
+.cmn-scale{
+  @extend .cmn-transition;
+  @include scale(1.01);
+}
