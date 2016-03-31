@@ -1,5 +1,5 @@
 @import 'yoda/stylesheets/spree/frontend/product';
-
+@import 'yoda/stylesheets/spree/frontend/product-image-view';
 
 .product-title {
   font-size: 18px;
