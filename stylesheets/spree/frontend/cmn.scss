@@ -4,6 +4,7 @@
 @import 'yoda/stylesheets/spree/frontend/font-awesome';
 @import 'https://fonts.googleapis.com/css?family=Open+Sans:400,700,600';
 @import 'yoda/stylesheets/spree/frontend/breadcrumb';
+@import 'yoda/stylesheets/spree/frontend/footer';
 
 a {
   color: $link-color;
@@ -94,6 +95,9 @@ a {
   padding-bottom: 50px;
   text-align: center;
 
+  &.narrow {
+    padding-bottom: 20px;
+  }
   .heading-slogan {
     border-bottom: solid 2px $link-color;
     display: inline-block;
@@ -121,6 +125,10 @@ a {
   border-right: none;
   height: 3px;
   margin: 50px 15%;
+
+  &.narrow {
+    margin: 20px 15%;
+  }
 }
 
 /*padding*/
