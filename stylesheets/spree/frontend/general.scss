@@ -3,6 +3,11 @@
 
 body {
   background: $body-color;
+  color: $body-text-color;
   font-family: 'Open Sans', arial, sans-serif;
+}
+
+input {
+  font-family: 'Open Sans', arial, sans-serif; 
 }
 

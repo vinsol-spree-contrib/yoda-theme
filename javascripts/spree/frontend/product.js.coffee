@@ -17,9 +17,9 @@ Spree.ready ($) ->
       $(this).parents('[data-selected-variant]').find('#main-image img').attr 'src', $(this).parents('[data-selected-variant]').find('#main-image').data('selectedThumb')
 
   Spree.showVariantImages = (variantId, _this) ->
-    ($ 'li.vtmb').hide()
-    ($ 'li.tmb-' + variantId).show()
-    currentThumb = ($ '#' + ($ '#main-image').data('selectedThumbId'))
+    $(_this).find('li.vtmb').hide()
+    $(_this).find('li.tmb-' + variantId).show()
+    currentThumb = ($ '#' + $(this).parents('[data-selected-variant]').find('#main-image').data('selectedThumbId'))
     if not currentThumb.hasClass('vtmb-' + variantId)
       thumb = $(_this).find('#product-images ul.thumbnails li:visible.vtmb').eq(0)
       thumb = $(_this).find('#product-images ul.thumbnails li:visible').eq(0) unless thumb.length > 0
@@ -30,18 +30,22 @@ Spree.ready ($) ->
       $(_this).find('#main-image').data 'selectedThumb', newImg
       $(_this).find('#main-image').data 'selectedThumbId', thumb.attr('id')
 
-  Spree.updateVariantPrice = (variant) ->
+  Spree.updateVariantPrice = (variant, _this) ->
     variantPrice = variant.data('price')
-    ($ '.price.selling').text(variantPrice) if variantPrice
+    variantCostPrice = variant.data('cost')
+    variantPercentageProfit = variant.data('percentage-profit')
+    $(_this).find('.price.selling').text(variantPrice) if variantPrice
+    $(_this).find('.price.cost').text(variantCostPrice) if variantCostPrice
+    $(_this).find('.price.percentage').text(variantPercentageProfit) if variantPercentageProfit
 
   $('[data-selected-variant]').each ->
     radios = $(this).find('#product-variants input[type="radio"]')
     radios.click (event) ->
-      Spree.showVariantImages @value
-      Spree.updateVariantPrice ($ this)
+      Spree.showVariantImages(@value, $(this).parents('[data-selected-variant]'))
+      Spree.updateVariantPrice($(this), $(this).parents('[data-selected-variant]'))
     if radios.length > 0
       selectedRadio = $(this).find('#product-variants input[type="radio"][checked="checked"]')
       Spree.showVariantImages(selectedRadio.attr('value'), this)
-      Spree.updateVariantPrice selectedRadio
+      Spree.updateVariantPrice(selectedRadio, this)
 
   Spree.addImageHandlers()

@@ -1,0 +1,9 @@
+
+
+#product-details {
+  #main-image {
+    border: none;
+
+    @include box-shadow(0,0,0,0);
+  }
+}

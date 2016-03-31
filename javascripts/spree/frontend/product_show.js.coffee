@@ -1,12 +1,4 @@
 Spree.ready ($) ->
-  Spree.updateVariantPrice = (variant) ->
-    variantPrice = variant.data('price')
-    variantCostPrice = variant.data('cost')
-    variantPercentageProfit = variant.data('percentage-profit')
-    ($ '.price.selling').text(variantPrice) if variantPrice
-    ($ '.price.cost').text(variantCostPrice) if variantCostPrice
-    ($ '.price.percentage').text(variantPercentageProfit) if variantPercentageProfit
-
   Spree.showHideVariants = (self, _this) ->
     selectedColorOption = $(_this).data('color-option-id')
     $(self).find("[data-color-option-id]").removeClass('active')
