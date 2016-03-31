@@ -7,12 +7,12 @@ Spree.ready ($) ->
     ($ '.price.cost').text(variantCostPrice) if variantCostPrice
     ($ '.price.percentage').text(variantPercentageProfit) if variantPercentageProfit
 
-  Spree.showHideVariants = (_this) ->
+  Spree.showHideVariants = (self, _this) ->
     selectedColorOption = $(_this).data('color-option-id')
-    $("[data-color-option-id]").removeClass('active')
+    $(self).find("[data-color-option-id]").removeClass('active')
     $(_this).addClass('active')
-    $("[data-select-color-option-id]").hide().removeClass("visible");
-    sizeOptions = $("[data-select-color-option-id=" + selectedColorOption + "]").show().addClass("visible");
+    $(self).find("[data-select-color-option-id]").hide().removeClass("visible");
+    sizeOptions = $(self).find("[data-select-color-option-id=" + selectedColorOption + "]").show().addClass("visible");
     sizeOptions.first().find('input').trigger('click')
 
   Spree.productQuantityField = (_this) ->
@@ -49,5 +49,6 @@ Spree.ready ($) ->
 
   colorOptions = $('[data-color-option-id]')
   colorOptions.bind 'click', (event) ->
-    Spree.showHideVariants(this)
-  Spree.showHideVariants(colorOptions[0])
+    Spree.showHideVariants($(this).parents('[data-selected-variant]'), this)
+  $('[data-selected-variant]').each ->
+    Spree.showHideVariants(this, colorOptions)

@@ -2,37 +2,15 @@
 <% content_for :header do -%>
   <%#= stylesheet_link_tag 'product-detail' -%>
 <% end -%>
+<% content_for :header do -%>
+  <%= javascript_include_tag 'yoda/javascripts/spree/frontend/product_show' -%>
+<% end -%>
 
 <% cache [I18n.locale, current_currency, @product, @product.possible_promotions] do %>
   <div data-hook="product_show" itemscope itemtype="https://schema.org/Product">
     <section class="container-fluid">
-      <article class="row">
-        <div class="col-sm-7" data-hook="product_left_part">
-          <div data-hook="product_left_part_wrap">
-            <div id="product-images" data-hook="product_images">
-              <div id="main-image" class="panel panel-default" data-hook>
-                <div class="panel-body text-center">
-                  <%= render :partial => 'image' %>
-                </div>
-              </div>
-              <div id="thumbnails" data-hook>
-                <%= render :partial => 'thumbnails' %>
-              </div>
-            </div>
-          </div>
-        </div>
 
-        <div class="col-sm-5" data-hook="product_right_part">
-          <div data-hook="product_right_part_wrap">
-            <div id="product-description" data-hook="product_description">
-              <h1 class="product-title" itemprop="name"><%= @product.name %></h1>
-              <div id="cart-form" data-hook="cart_form">
-                <%= render :partial => 'cart_form' %>
-              </div>
-            </div>
-          </div>
-        </div>
-      </article>
+      <%= render 'product_details', product: @product %>
 
       <article class="row prod-three-block">
         <div class="col-sm-4 p-f-block text-center">
@@ -66,6 +44,12 @@
       <article class="row">
         <div class="col-sm-12 p-may-like">
           <%= render :partial => 'taxons' %>
+        </div>
+      </article>
+
+      <article class="row">
+        <div class="col-sm-12 p-may-like">
+          <%= render :partial => 'related_products' %>
         </div>
       </article>
 

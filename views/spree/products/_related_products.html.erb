@@ -1,0 +1,3 @@
+<% @product.relations.each do |relation| %>
+  <%= render 'product_details', product: relation.related_to %>
+<% end %>
