@@ -1,6 +1,8 @@
 <% unless @product_properties.empty? %>  
-  <h3 class="product-section-title"><%= Spree.t('properties')%></h3>
-  <table id="product-properties" class="table table-striped" data-hook>
+  <h3 class="cmn-block-heading">
+    <span class="heading-slogan"><%= Spree.t('properties')%></span>
+  </h3>
+  <table id="product-properties" class="table table-bordered margin-bottom-none" data-hook>
     <tbody>
       <% @product_properties.each do |product_property| %>
         <% css_class = cycle('even', 'odd', :name => "properties") %>

@@ -18,7 +18,9 @@ a {
   text-transform: uppercase;
 }
 .empty-hide {
-  display: none;
+  &:empty {
+    display: none;
+  }
 }
 .pointer {
   cursor: pointer;
@@ -44,10 +46,135 @@ a {
     text-transform: uppercase;
     width: 200px;
   }
+
   &:hover,
   &:focus,
   &:active {
     opacity: 0.9;
+    text-decoration: none;
     @include box-shadow(0,5px,10px,rgba(0,0,0,0.5));
   }
+
+  &.btn-link,
+  &.btn-default {
+    @include box-shadow(0,0,0,rgba(0,0,0,0.5));
+    border: solid 1px #ededed;
+    background: #fff;
+    color: #283543;
+
+    &:hover,
+    &:focus,
+    &:active {
+      opacity: 0.9;
+      @include box-shadow(0,3px,3px,rgba(0,0,0,0.5));
+    }
+  }
+
+  &.btn-lg {
+    @extend .btn-lg-x;
+  }
+
+  + .btn {
+    margin-left: 15px;
+  }
+}
+
+.btn-lg-x {
+  padding: 10px 15px;
+  @include border-radius(3px);
+}
+
+.btn-group-lg {
+  .btn {
+    @extend .btn-lg-x;
+  }
+}
+.cmn-block-heading {
+  font-size: 16px;
+  padding-bottom: 50px;
+  text-align: center;
+
+  .heading-slogan {
+    border-bottom: solid 2px $link-color;
+    display: inline-block;
+    font-size: 30px;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    padding: 0 20px 5px;
+    text-transform: uppercase;
+  }
+  .heading-text {
+    padding: 10px 0;
+    margin: 0;
+  }
+
+  &.level-2 {
+    .heading-slogan {
+      font-size: 24px;
+    }
+  }
+}
+
+.cmn-border-box {
+  border: solid 1px #cccccc;
+  border-left: none;
+  border-right: none;
+  height: 3px;
+  margin: 50px 15%;
+}
+
+/*padding*/
+.padding-left-none {
+  padding-left:0;
+}
+.padding-right-none {
+  padding-right:0;
+}
+.padding-top-none {
+  padding-top:0;
+}
+.padding-bottom-none {
+  padding-bottom:0;
+}
+.padding-horizontal-none {
+  @extend .padding-left-none;
+  @extend .padding-right-none;
+}
+.padding-vertical-none {
+  @extend .padding-top-none;
+  @extend .padding-bottom-none;
+}
+
+.padding-none {
+  @extend .padding-horizontal-none;
+  @extend .padding-vertical-none;
+}
+
+/*margin*/
+.row-no-margin {
+  @extend .margin-horizontal-none;
+}
+.margin-left-none {
+  margin-left:0;
+}
+.margin-right-none {
+  margin-right:0;
+}
+.margin-top-none {
+  margin-top:0;
+}
+.margin-bottom-none {
+  margin-bottom:0;
+}
+.margin-horizontal-none {
+  @extend .margin-left-none;
+  @extend .margin-right-none;
+}
+.margin-vertical-none {
+  @extend .margin-top-none;
+  @extend .margin-bottom-none;
+}
+.margin-none {
+  @extend .margin-horizontal-none;
+  @extend .margin-vertical-none;
 }

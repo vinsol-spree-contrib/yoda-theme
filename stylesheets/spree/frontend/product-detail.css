@@ -1,4 +1,4 @@
-@import 'yoda/stylesheets/spree/frontend/prodcut';
+@import 'yoda/stylesheets/spree/frontend/product';
 
 
 .product-title {
@@ -9,6 +9,7 @@
 }
 
 #inside-product-cart-form {
+  min-height: 30px;
   .product-price-block {
     border-bottom: solid 1px #cccccc;
   }
@@ -63,7 +64,7 @@
 }
 
 .prod-three-block {
-  padding: 70px 0 35px;
+  padding: 70px 0 30px;
   font-size: 12px;
   display: table;
   width: 100%;
@@ -98,5 +99,38 @@
           left: -1px;
         }
     }
+  }
+}
+.fress-shipping-info {
+  background: #fafafa;
+  font-size: 20px;
+  padding: 15px;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  margin-bottom: 30px;
+}
+
+.product-detail-row {
+  padding-top: 10px;
+
+  .product-detail-section {
+    padding: 0 7.5%;
+  }
+
+  .cmn-detail-block {
+    padding-bottom: 70px;
+    @extend .empty-hide;
+    @extend .padding-horizontal-none;
+
+    &.product-social-block {
+      padding-bottom: 30px;
+    }
+  }
+}
+
+.social-btn-group {
+  .btn-link {
+    font-size: 14px;
   }
 }
