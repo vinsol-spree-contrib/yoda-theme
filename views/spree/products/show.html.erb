@@ -44,11 +44,9 @@
             <%= product_description(@product) rescue Spree.t(:product_has_no_description) %>
           </div>
 
-          <div data-hook="product_properties" class="col-sm-12 cmn-detail-block">
-            <%= render :partial => 'properties' %>
-          </div>
+          <%= render :partial => 'properties' %>
 
-          <div data-hook="promotions" class="col-sm-12 cmn-detail-block"><%= render :partial => 'promotions' %></div>
+          <%= render :partial => 'promotions' %>
 
           <div data-hook="social" class="col-sm-12 cmn-detail-block product-social-block">
             <%= render :partial => 'social' %>
@@ -56,16 +54,7 @@
         </div>
       </article>
 
-      <article class="row">
-        <div class="col-sm-12 p-may-like">
-          <h3 class="cmn-block-heading">
-            <span class="heading-slogan">YOU MIGHT ALSO LIKE</span>
-            <p class="heading-text">Lorem Ipsum is simply</p>
-          </h3>
-          <%= render 'related_products' %>
-        </div>
-      </article>
-
+      <%= render 'related_products' %>
     </section>
   </div>
 <% end %>

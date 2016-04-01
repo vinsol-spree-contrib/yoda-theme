@@ -1,0 +1,113 @@
+#spree-header {
+  background: #fff;
+  #header {
+    padding: 0 15px;
+    background: #fff;
+  }
+  #logo.navbar-brand {
+    max-width: 130px;
+    margin-bottom: 0;
+    padding: 0;
+    height: auto;
+
+    a {
+      display: table-cell;
+      height: 80px;
+      vertical-align: middle;
+      width: 100%;
+    }
+    img {
+      max-width: 100%;
+      vertical-align: middle;
+    }
+  }
+  .nav {
+    a {
+      color: $main-nav-link-color;
+    }
+  }
+}
+.site-navbar {
+  margin-left: 5px;
+  float: left;
+
+  #main-nav-bar {
+    padding: 15px 0;
+    text-align: center;
+    li {
+      float: none;
+      display: inline-block;
+      &:before {
+        content: " ";
+        background: $link-color;
+        height: 0;
+        left: 0;
+        opacity: 0;
+        position: absolute;
+        right: 0;
+        top: 50%;
+        @include transition(all,0.2s);
+      }
+      &:hover {
+        &:before {
+          top:0;
+          height: 100%;
+          opacity: 1;
+        }
+        a {
+          color: #fff;
+        }
+      }
+    }
+    a {
+      @include transition(all,0.2s);
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      &:hover {
+        background: none;
+      }
+    }
+
+  }
+  .navbar-nav {
+    width: 100%;
+  }
+}
+.top-nav-block {
+  position: absolute;
+  right: 15px;
+  top: 5px;
+}
+.header-shipping {
+  background: $main-nav-link-color;
+  color: #fff;
+  padding:10px 0 8px;
+
+  .shipping-message {
+    font-size: 12px;
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+}
+.notification-block {
+  font-size: 11px;
+  .fa {
+    font-size: 18px;
+  }
+}
+
+.top-link-bar {
+
+  li {
+    float: left;
+    + li {
+      margin-left: 10px;
+    }
+  }
+  a {
+    color: $main-nav-link-color;
+    &:hover {
+    }
+  }
+}

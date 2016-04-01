@@ -4,6 +4,7 @@
 @import 'yoda/stylesheets/spree/frontend/font-awesome';
 @import 'https://fonts.googleapis.com/css?family=Open+Sans:400,700,600';
 @import 'yoda/stylesheets/spree/frontend/breadcrumb';
+@import 'yoda/stylesheets/spree/frontend/header';
 @import 'yoda/stylesheets/spree/frontend/footer';
 
 a {
@@ -108,6 +109,7 @@ a {
     text-transform: uppercase;
   }
   .heading-text {
+    display: block;
     padding: 10px 0;
     margin: 0;
   }

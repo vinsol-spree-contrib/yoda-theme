@@ -124,7 +124,7 @@
     @extend .padding-horizontal-none;
 
     &.product-social-block {
-      padding-bottom: 30px;
+      padding-bottom: 0;
     }
   }
 }
@@ -133,4 +133,8 @@
   .btn-link {
     font-size: 14px;
   }
+}
+
+.p-may-like {
+  padding-top: 30px;
 }
