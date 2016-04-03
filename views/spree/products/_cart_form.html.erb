@@ -29,26 +29,34 @@
           <div class="color-option-block option-block">
             <span class="h-box">COLOR</span>
             <% product.uniq_color_options.each do |color_option| %>
-              <span style="background-color: <%= color_option[1] %>" data-color-option-id = <%= color_option[0] %> class="color-box"></span>
+              <span style="background-color: <%= color_option[1][:option_value_presentation] %>" data-color-option-id = <%= color_option[0] %> class="color-box"></span>
             <% end %>
           </div>
 
-          <div class="option-block size-block">
-            <span class="h-box">SIZE</span>
-            <% product.variants_and_option_values(current_currency).each_with_index do |variant, index| %>
-              <span data-select-color-option-id=<%= color_option_value(variant).id %> class="radio-options">
-                <%= radio_button_tag "variant_id", variant.id, index == 0, 'data-price' => variant.price_in(current_currency).money, 'data-cost' => show_maximum_retail_price(variant), 'data-percentage-profit' => percentage_diff(variant) %>
-                <%= label_tag "variant_id_#{ variant.id }" do %>
-                  <span class="variant-description">
-                    <%= size_variant_options variant %>
-                  </span>
-                  <% unless variant.can_supply? %>
-                    <span class="out-of-stock"><%= Spree.t(:out_of_stock) %></span>
+          <% non_color_option_types(product).each do |option_type| %>
+            <div class="option-block size-block">
+
+              <span class="h-box"><%= option_type.presentation %></span>
+
+              <% product.uniq_options(option_type.presentation).each do |option| %>
+
+                <% variant = option[1][:variant] %>
+                <span data-select-color-option-id=<%= color_option_value(variant).id %> class="radio-options">
+                  <%= radio_button_tag "variant_id", variant.id, 'data-price' => variant.price_in(current_currency).money, 'data-cost' => show_maximum_retail_price(variant), 'data-percentage-profit' => percentage_diff(variant) %>
+                  <%= label_tag "variant_id_#{ variant.id }" do %>
+                    <span class="variant-description">
+                      <%= option[1][:option_value_presentation] %>
+                    </span>
+                    <% unless variant.can_supply? %>
+                      <span class="out-of-stock"><%= Spree.t(:out_of_stock) %></span>
+                    <% end %>
                   <% end %>
-                <% end %>
-              </span>
-            <% end%>
-          </div>
+                </span>
+              <% end %>
+
+            </div>
+
+          <% end %>
         </div>
       </div>
     <% else %>
