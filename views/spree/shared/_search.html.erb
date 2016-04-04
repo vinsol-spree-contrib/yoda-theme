@@ -1,16 +1,30 @@
 <% @taxons = @taxon && @taxon.parent ? @taxon.parent.children : Spree::Taxon.roots %>
 
-<%= form_tag spree.products_path, :method => :get, class: "navbar-form" do %>
-  <div class="form-group">
-    <% cache(cache_key_for_taxons) do %>
-      <%= select_tag :taxon,
-            options_for_select([[Spree.t(:all_departments), '']] +
-                                  @taxons.map {|t| [t.name, t.id]},
-                                  @taxon ? @taxon.id : params[:taxon]), 'aria-label' => 'Taxon', class: "form-control" %>
-    <% end %>
+<article id="search-form-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+      <%= form_tag spree.products_path, :method => :get, class: " modal-content" do %>
+         <div class="modal-header padding-horizontal-none">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">SEARCH IN STORE</h4>
+        </div>
+
+        <div class="modal-body padding-horizontal-none">
+          <div class="form-group">
+            <% cache(cache_key_for_taxons) do %>
+              <%= select_tag :taxon,
+                    options_for_select([[Spree.t(:all_departments), '']] +
+                                          @taxons.map {|t| [t.name, t.id]},
+                                          @taxon ? @taxon.id : params[:taxon]), 'aria-label' => 'Taxon', class: "form-control" %>
+            <% end %>
+          </div>
+          <div class="form-group search-form-group">
+            <%= search_field_tag :keywords, params[:keywords], :placeholder => Spree.t(:search), class: "form-control" %>
+            <label class="search-label">
+              <i class="fa fa-search"></i>
+              <%= submit_tag Spree.t(:search), :name => nil, class: "hidden" %>
+            </label>
+          </div>
+        </div>
+      <% end %>
   </div>
-  <div class="form-group">
-    <%= search_field_tag :keywords, params[:keywords], :placeholder => Spree.t(:search), class: "form-control" %>
-  </div>
-  <%= submit_tag Spree.t(:search), :name => nil, class: "btn btn-success" %>
-<% end %>
+</article>
