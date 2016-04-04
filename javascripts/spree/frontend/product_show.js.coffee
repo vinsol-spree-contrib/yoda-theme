@@ -88,5 +88,7 @@ Spree.ready ($) ->
       selectedRadio = $(this).find('#product-variants input[type="radio"][checked="checked"]')
       Spree.showVariantImages(selectedRadio.attr('value'), this)
       Spree.updateVariantPrice(selectedRadio, this)
+    else
+      Spree.showVariantImages('', this)
 
   Spree.addImageHandlers()

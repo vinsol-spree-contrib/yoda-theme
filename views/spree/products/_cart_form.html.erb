@@ -42,7 +42,7 @@
 
                 <% variant = option[1][:variant] %>
                 <span data-select-color-option-id=<%= color_option_value(variant).id %> class="radio-options">
-                  <%= radio_button_tag "variant_id", variant.id, 'data-price' => variant.price_in(current_currency).money, 'data-cost' => show_maximum_retail_price(variant), 'data-percentage-profit' => percentage_diff(variant) %>
+                  <%= radio_button_tag "variant_id", variant.id, {}, 'data-price' => variant.price_in(current_currency).money, 'data-cost' => show_maximum_retail_price(variant), 'data-percentage-profit' => percentage_diff(variant) %>
                   <%= label_tag "variant_id_#{ variant.id }" do %>
                     <span class="variant-description">
                       <%= option[1][:option_value_presentation] %>
