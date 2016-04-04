@@ -51,7 +51,8 @@
         top: 50%;
         @include transition(all,0.2s);
       }
-      &:hover {
+      &:hover,
+      &.active-link {
         &:before {
           top:0;
           height: 100%;
@@ -70,6 +71,10 @@
       &:hover {
         background: none;
       }
+      &:focus {
+        background: $link-color;
+        color: #fff;
+      }
     }
 
   }
@@ -81,6 +86,57 @@
   position: absolute;
   right: 15px;
   top: 5px;
+
+  .top-link-bar {
+    > li {
+        float: left;
+      > a {
+        color: $main-nav-link-color;
+        font-size: 11px;
+        text-transform: uppercase;
+        padding: 0 5px;
+        margin-left: 10px;
+        @extend .border-animation;
+
+        &:after {
+          background: rgba(0,0,0,0.5);
+        }
+
+        &:hover {
+          text-decoration:none;
+          opacity: 0.8;
+        }
+
+        &.cart-info {
+          span {
+            font-size: 16px;
+          }
+        }
+        &.search-icon-link,
+        &.cart-info {
+          &:after {
+            display: none;
+          }
+        }
+      }
+
+      + li {
+          > a {
+
+            &:before {
+              content: "";
+              background:rgba(0,0,0,0.5);
+              height:100%;
+              left: -5px;
+              position: absolute;
+              top: 0;
+              width: 1px;
+            }
+
+          }
+        }
+    }
+  }
 }
 .header-shipping {
   background: $main-nav-link-color;
@@ -100,17 +156,59 @@
   }
 }
 
-.top-link-bar {
 
-  li {
-    float: left;
-    + li {
-      margin-left: 10px;
+#search-form-modal {
+  .modal-dialog {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+  }
+  .modal-content {
+    @include border-radius(0);
+    border: none;
+    height: inherit;
+    margin: 0;
+    padding: 15px;
+  }
+
+  .search-form-group {
+    position: relative;
+    .form-control {
+      @include border-radius(0);
+      @include box-shadow(0,0,0,0 !important);
+      border: none;
+      border-bottom: solid 1px #ccc;
+      font-size: 16px;
+      height: 40px;
+      padding-left: 50px;
+
+      &:focus {
+        border-color: $link-color;
+        color: $link-color;
+        
+        + .search-label {
+          color: $link-color;
+          padding-left: 0;
+          opacity: 1;
+        }
+      }
+
     }
   }
-  a {
-    color: $main-nav-link-color;
-    &:hover {
-    }
+
+  .search-label {
+    @extend .cmn-transition;
+    cursor: pointer;
+    font-size: 20px;
+    height: 100%;
+    left: 0;
+    padding-left: 10px;
+    line-height: 36px;
+    margin: 0;
+    position: absolute;
+    opacity: 0.5;
+    text-align: center;
+    top: 0;
+    width: 40px;
   }
 }
