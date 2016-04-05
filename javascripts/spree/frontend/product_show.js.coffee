@@ -70,7 +70,7 @@ Spree.ready ($) ->
   $('[data-selected-variant]').each ->
     Spree.showHideVariants(this, colorOptions)
 
-  mySlider = $("[data-slider='image']").bxSlider({
+  mySlider = $("[data-slider='image']").first().bxSlider({
     mode: "horizontal",
     pager: false,
     adaptiveHeight: true,

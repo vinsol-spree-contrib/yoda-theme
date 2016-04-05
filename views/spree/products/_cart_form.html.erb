@@ -27,7 +27,7 @@
         <% end %>
         <div class="option-list-group">
           <div class="color-option-block option-block">
-            <span class="h-box">COLOR</span>
+            <span class="h-box">Color</span>
             <% product.uniq_color_options.each do |color_option| %>
               <span style="background-color: <%= color_option[1][:option_value_presentation] %>" data-color-option-id = <%= color_option[0] %> class="color-box"></span>
             <% end %>
@@ -85,7 +85,7 @@
     <li>
       <div data-toggle="collapse" data-target="#p_detail" class="product-info-link collapsed">Product Detail</div>
       <div id="p_detail" class="collapse">
-        <div class="tab-data">view more..</div>
+        <a class="tab-data" href='#product-details-display'><%= short_product_descritpion(product) %></a>
       </div>
     </li>
     <li>

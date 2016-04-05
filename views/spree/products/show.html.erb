@@ -4,13 +4,15 @@
 <% end -%>
 <% content_for :header do -%>
   <%= javascript_include_tag 'yoda/javascripts/spree/frontend/product_show' -%>
+  <%= javascript_include_tag 'yoda/javascripts/spree/frontend/product' -%>
 <% end -%>
 
 <% cache [I18n.locale, current_currency, @product, @product.possible_promotions] do %>
   <div data-hook="product_show" itemscope itemtype="https://schema.org/Product">
     <section class="container-fluid">
-
-      <%= render 'product_details', product: @product %>
+      <div class='main-product'>
+        <%= render 'product_details', product: @product %>
+      </div>
 
       <article class="row prod-three-block">
         <div class="col-sm-4 p-f-block text-center">
@@ -35,7 +37,7 @@
       </article>
 
       <article class="row product-detail-row">
-        <div class="product-detail-section" itemprop="description" data-hook="description">
+        <div class="product-detail-section" itemprop="description" data-hook="description" id='product-details-display'>
           <div class="cmn-block-heading">
             <span class="heading-slogan">Product Detail</span>
             <p class="heading-text">Lorem Ipsum is simply dummy text of the printing</p>
