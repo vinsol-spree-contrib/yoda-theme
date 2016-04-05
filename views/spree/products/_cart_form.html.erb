@@ -85,7 +85,10 @@
     <li>
       <div data-toggle="collapse" data-target="#p_detail" class="product-info-link collapsed">Product Detail</div>
       <div id="p_detail" class="collapse">
-        <a class="tab-data" href='#product-details-display'><%= short_product_descritpion(product) %></a>
+        <div class="tab-data">
+          <%= short_product_descritpion(product) %>
+          <a href='#product-details-display'>more detail..</a>
+        </div>
       </div>
     </li>
     <li>

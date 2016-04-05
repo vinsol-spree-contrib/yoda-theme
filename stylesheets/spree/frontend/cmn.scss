@@ -192,3 +192,13 @@ a {
   @extend .margin-horizontal-none;
   @extend .margin-vertical-none;
 }
+
+
+.bx-wrapper {
+  .bx-prev {
+    left: 0;
+  }
+  .bx-next {
+    right: 0;
+  }
+}

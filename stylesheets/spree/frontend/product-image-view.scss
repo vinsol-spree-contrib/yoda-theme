@@ -4,10 +4,6 @@
   #main-image {
     border: none;
 
-    .bx-viewport {
-      @include box-shadow(0,0,0,0 !important);
-    }
-
     @include box-shadow(0,0,0,0);
 
     .bx-wrapper img {
@@ -19,6 +15,7 @@
 
     .show {
       min-height: 420px;
+      padding:none;
 
       a {
         display: table-cell;
