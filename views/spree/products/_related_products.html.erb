@@ -1,4 +1,4 @@
-<% unless @product.relations.empty? %>
+<% unless products.empty? %>
   <article class="row">
     <div class="col-sm-12 p-may-like">
       <h3 class="cmn-block-heading">
@@ -6,9 +6,13 @@
         <span class="heading-text">Lorem Ipsum is simply</span>
       </h3>
       <div class="row">
-        <% @product.relations.limit(3).each do |relation| %>
+        <% products.each do |_product| %>
           <div class="col-sm-4 prod-col">
-            <%= render 'related_product_details', product: relation.related_to %>
+            <% if _product.is_a? Spree::Product %>
+              <%= render 'related_product_details', product: _product %>
+            <% else %>
+              <%= render 'related_product_details', product: _product.related_to %>
+            <% end %>
           </div>
         <% end %>
       </div>

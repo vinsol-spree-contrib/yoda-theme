@@ -78,38 +78,41 @@ Spree.ready ($) ->
         slideSelector: '.show',
       });
 
-  quantityField = ($ "[data-hook='product-quantity']")
-  Spree.initializeSlider()
-  quantityField.bind 'input propertychange', (event) ->
-    Spree.productQuantityField(this)
-  quantityField.bind 'input keyup', (event) ->
-    Spree.productUpdateQuantityFieldEvent(this, event)
+  Spree.initializeProductShow = () ->
 
-  incrementQuantityField = $("[data-behaviour='increment-product-quantity']")
-  incrementQuantityField.bind 'click', (event) ->
-    Spree.productUpdateQuantity(quantityField[0], 1)
+    quantityField = ($ "[data-hook='product-quantity']")
+    Spree.initializeSlider()
+    quantityField.bind 'input propertychange', (event) ->
+      Spree.productQuantityField(this)
+    quantityField.bind 'input keyup', (event) ->
+      Spree.productUpdateQuantityFieldEvent(this, event)
 
-  decrementQuantityField = $("[data-behaviour='decrement-product-quantity']")
-  decrementQuantityField.bind 'click', (event) ->
-    Spree.productUpdateQuantity(quantityField[0], -1)
+    incrementQuantityField = $("[data-behaviour='increment-product-quantity']")
+    incrementQuantityField.bind 'click', (event) ->
+      Spree.productUpdateQuantity(quantityField[0], 1)
 
-  colorOptions = $('[data-color-option-id]')
-  colorOptions.bind 'click', (event) ->
-    Spree.showHideVariants($(this).parents('[data-selected-variant]'), this)
-  $('[data-selected-variant]').each ->
-    Spree.showHideVariants(this, colorOptions)
+    decrementQuantityField = $("[data-behaviour='decrement-product-quantity']")
+    decrementQuantityField.bind 'click', (event) ->
+      Spree.productUpdateQuantity(quantityField[0], -1)
 
-  $('[data-selected-variant]').each ->
-    radios = $(this).find('#product-variants input[type="radio"]')
-    radios.click (event) ->
-      Spree.showVariantImages(@value, $(this).parents('[data-selected-variant]'))
-      Spree.updateVariantPrice($(this), $(this).parents('[data-selected-variant]'))
+    colorOptions = $('[data-color-option-id]')
+    colorOptions.bind 'click', (event) ->
+      Spree.showHideVariants($(this).parents('[data-selected-variant]'), this)
+    $('[data-selected-variant]').each ->
+      Spree.showHideVariants(this, colorOptions)
 
-    if radios.length > 0
-      selectedRadio = $(this).find('#product-variants input[type="radio"][checked="checked"]')
-      Spree.showVariantImages(selectedRadio.attr('value'), this)
-      Spree.updateVariantPrice(selectedRadio, this)
-    else
-      Spree.showVariantImages('', this)
+    $('[data-selected-variant]').each ->
+      radios = $(this).find('#product-variants input[type="radio"]')
+      radios.click (event) ->
+        Spree.showVariantImages(@value, $(this).parents('[data-selected-variant]'))
+        Spree.updateVariantPrice($(this), $(this).parents('[data-selected-variant]'))
 
-  Spree.addImageHandlers()
+      if radios.length > 0
+        selectedRadio = $(this).find('#product-variants input[type="radio"][checked="checked"]')
+        Spree.showVariantImages(selectedRadio.attr('value'), this)
+        Spree.updateVariantPrice(selectedRadio, this)
+      else
+        Spree.showVariantImages('', this)
+
+    Spree.addImageHandlers()
+  Spree.initializeProductShow()

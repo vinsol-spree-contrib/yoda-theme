@@ -1,0 +1,3 @@
+$("[data-show-products='search']").text('')
+$("[data-show-products='search']").append("<%= escape_javascript(render 'related_products', products: @products) %>")
+Spree.initializeProductShow()
