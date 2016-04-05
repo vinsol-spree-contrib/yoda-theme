@@ -8,7 +8,6 @@ Spree.ready ($) ->
       $(this).parents('[data-selected-variant]').find('#main-image img').data 'selectedThumbId', ($ event.currentTarget).parent().attr('id')
       thumbnails.find('li').removeClass 'selected'
       ($ event.currentTarget).parent('li').addClass 'selected'
-      false
 
   Spree.showVariantImages = (variantId, _this) ->
     mainProduct = $(_this).find("[data-slider='image']")

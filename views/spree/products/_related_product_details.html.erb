@@ -14,7 +14,9 @@
   <div class="col-sm-12" data-hook="product_right_part">
     <div data-hook="product_right_part_wrap">
       <div id="product-description" data-hook="product_description">
-        <h1 class="product-title" itemprop="name"><%= product.name %></h1>
+        <%= link_to product do %>
+          <h1 class="product-title" itemprop="name"><%= product.name %></h1>
+        <% end %>
         <div id="cart-form" data-hook="cart_form">
           <%= render 'related_cart_form', product: product %>
         </div>
