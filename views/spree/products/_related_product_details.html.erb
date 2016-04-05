@@ -3,7 +3,7 @@
     <div data-hook="product_left_part_wrap">
       <div id="product-images" data-hook="product_images">
         <div id="main-image" class="panel panel-default" data-hook>
-          <div class="panel-body text-center" data-slider='image'>
+          <div class="panel-body text-center">
             <%= render 'image', product: product %>
           </div>
         </div>
@@ -16,7 +16,7 @@
       <div id="product-description" data-hook="product_description">
         <h1 class="product-title" itemprop="name"><%= product.name %></h1>
         <div id="cart-form" data-hook="cart_form">
-          <%= render 'cart_form', product: product %>
+          <%= render 'related_cart_form', product: product %>
         </div>
       </div>
     </div>

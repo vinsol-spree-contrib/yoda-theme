@@ -11,10 +11,16 @@ Spree.ready ($) ->
       false
 
   Spree.showVariantImages = (variantId, _this) ->
-    $(_this).find('li.vtmb').removeClass('show').hide()
-    $(_this).find('li.tmb-' + variantId).addClass('show')
-    $(_this).find('li.tmb-all').addClass('show')
-    mySlider.reloadSlider()
+    mainProduct = $(_this).find("[data-slider='image']")
+    if(mainProduct.size() == 1)
+      $(_this).find('li.vtmb').removeClass('show').hide()
+      $(_this).find('li.tmb-' + variantId).addClass('show')
+      $(_this).find('li.tmb-all').addClass('show')
+      Spree.productImageSlider.reloadSlider() if Spree.productImageSlider
+    else
+      $(_this).find('li.vtmb').hide()
+      $(_this).find('li.tmb-all').hide()
+      $(_this).find('li.tmb-' + variantId).first().show()
 
   Spree.updateVariantPrice = (variant, _this) ->
     variantPrice = variant.data('price')
@@ -27,7 +33,7 @@ Spree.ready ($) ->
   Spree.showHideVariants = (self, _this) ->
     selectedColorOption = $(_this).data('color-option-id')
     $(self).find("[data-color-option-id]").removeClass('active')
-    $(_this).addClass('active')
+    $(_this).first().addClass('active')
     $(self).find("[data-select-color-option-id]").hide().removeClass("visible");
     sizeOptions = $(self).find("[data-select-color-option-id=" + selectedColorOption + "]").show().addClass("visible");
     sizeOptions.first().find('input').trigger('click')
@@ -50,7 +56,27 @@ Spree.ready ($) ->
     if(event.keyCode == 40)
       Spree.productUpdateQuantity(_this, -1)
 
+  Spree.initializeSlider = () ->
+    if $(".apr-slide").size() > 1
+      $(".apr-slider").bxSlider({
+        mode: "fade",
+        auto: true,
+        pager: false,
+        adaptiveHeight: true,
+        controls: false,
+
+      });
+
+    if $("[data-slider='image']").find('img').size() > 1
+      Spree.productImageSlider = $("[data-slider='image']").find('ul').bxSlider({
+        mode: "horizontal",
+        adaptiveHeight: true,
+        controls: true,
+        slideSelector: '.show',
+      });
+
   quantityField = ($ "[data-hook='product-quantity']")
+  Spree.initializeSlider()
   quantityField.bind 'input propertychange', (event) ->
     Spree.productQuantityField(this)
   quantityField.bind 'input keyup', (event) ->
@@ -69,13 +95,6 @@ Spree.ready ($) ->
     Spree.showHideVariants($(this).parents('[data-selected-variant]'), this)
   $('[data-selected-variant]').each ->
     Spree.showHideVariants(this, colorOptions)
-
-  mySlider = $("[data-slider='image']").first().bxSlider({
-    mode: "horizontal",
-    adaptiveHeight: true,
-    controls: true,
-    slideSelector: '.show',
-  });
 
   $('[data-selected-variant]').each ->
     radios = $(this).find('#product-variants input[type="radio"]')

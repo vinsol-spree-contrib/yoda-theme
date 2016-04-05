@@ -1,12 +1,12 @@
-<% unless @product.relations.empty? %>  
+<% unless @product.relations.empty? %>
   <article class="row">
     <div class="col-sm-12 p-may-like">
       <h3 class="cmn-block-heading">
         <span class="heading-slogan">YOU MIGHT ALSO LIKE</span>
         <span class="heading-text">Lorem Ipsum is simply</span>
       </h3>
-      <% @product.relations.each do |relation| %>
-        <%= render 'product_details', product: relation.related_to %>
+      <% @product.relations.limit(3).each do |relation| %>
+        <%= render 'related_product_details', product: relation.related_to %>
       <% end %>
     </div>
   </article>

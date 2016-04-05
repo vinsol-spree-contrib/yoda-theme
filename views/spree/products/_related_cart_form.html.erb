@@ -7,7 +7,6 @@
             <div class="product-price-block">
               <span class="lead price cost" itemprop="price"><%= show_maximum_retail_price(product) %></span>
               <span class="lead price selling" itemprop="price"><%= display_price(product) %></span>
-              <span class="lead price percentage" itemprop="price"><%= percentage_diff(product) %></span>
               <span itemprop="priceCurrency" content="<%= product.currency %>"></span>
             </div>
 
@@ -42,7 +41,7 @@
 
                 <% variant = option[1][:variant] %>
                 <span data-select-color-option-id=<%= color_option_value(variant).id %> class="radio-options">
-                  <%= radio_button_tag "variant_id", variant.id, {}, 'data-price' => variant.price_in(current_currency).money, 'data-cost' => show_maximum_retail_price(variant), 'data-percentage-profit' => percentage_diff(variant) %>
+                  <%= radio_button_tag "variant_id", variant.id, {}, 'data-price' => variant.price_in(current_currency).money, 'data-cost' => show_maximum_retail_price(variant) %>
                   <%= label_tag "variant_id_#{ variant.id }" do %>
                     <span class="variant-description">
                       <%= option[1][:option_value_presentation] %>
@@ -65,14 +64,7 @@
   </div>
   <div class="add-to-cart">
     <div class="cart-input-group">
-      <span class="h-qty">QTY</span>
-      <span data-behaviour='decrement-product-quantity' class="qty-helper-btn">
-        <i class="fa fa-minus"></i>
-      </span>
-      <%= text_field_tag :quantity, 1, :class => 'title form-control', data: { hook: 'product-quantity' } %>
-      <span data-behaviour='increment-product-quantity' class="qty-helper-btn">
-        <i class="fa fa-plus"></i>
-      </span>
+      <%= hidden_field_tag :quantity, 1, :class => 'title form-control', data: { hook: 'product-quantity' } %>
     </div>
     <div class="action-cart-btn-block">
       <%= button_tag :class => 'btn btn-primary cmn-cart-btn', :id => 'add-to-cart-button', :type => :submit do %>
@@ -80,19 +72,4 @@
       <% end %>
     </div>
   </div>
-
-  <ul class="product-additional-info list-unstyled">
-    <li>
-      <div data-toggle="collapse" data-target="#p_detail" class="product-info-link collapsed">Product Detail</div>
-      <div id="p_detail" class="collapse">
-        <a class="tab-data" href='#product-details-display'><%= short_product_descritpion(product) %></a>
-      </div>
-    </li>
-    <li>
-      <div data-toggle="collapse" data-target="#d_detail" class="product-info-link collapsed">CHECK DELIVERY DETAILS</div>
-      <div id="d_detail" class="collapse">
-        <div class="tab-data">more..</div>
-      </div>
-    </li>
-  </ul>
 <% end %>
