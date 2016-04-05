@@ -4,7 +4,7 @@
     <% product.images.each do |i| %>
       <li class='tmb-all tmb-<%= i.viewable.id %>'>
         <span class="prod-img-link">
-          <%= link_to(image_tag(i.attachment.url(:product), class: "thumbnail img-responsive"), product) %>
+          <%= link_to(image_tag(i.attachment.url(:original), class: "thumbnail img-responsive"), product) %>
         </span>
       </li>
     <% end %>
@@ -14,7 +14,7 @@
         <% next if product.images.include?(i) %>
         <li class='vtmb tmb-<%= i.viewable.id %>'>
           <span class="prod-img-link">
-            <%= link_to(image_tag(i.attachment.url(:product), class: "thumbnail img-responsive"), product) %>
+            <%= link_to(image_tag(i.attachment.url(:original), class: "thumbnail img-responsive"), product) %>
           </span>
         </li>
       <% end %>
@@ -25,7 +25,7 @@
     <li>
       <span class="prod-img-link">
         <%= link_to product do %>
-          <%= product_image(product, :itemprop => "image", :class => "img-responsive") %>
+          <%= image_tag(product.master.images.first.attachment.url(:original), itemprop: 'image', class: 'img-responsive') %>
         <% end %>
       </span>
     </li>
