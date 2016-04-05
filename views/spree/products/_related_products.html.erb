@@ -7,12 +7,12 @@
       </h3>
       <div class="row">
         <% @product.relations.limit(3).each do |relation| %>
-          <div class="col-sm-4 text-center">
+          <div class="col-sm-4 text-center prod-col">
             <%= render 'related_product_details', product: relation.related_to %>
           </div>
         <% end %>
       </div>
-      <div class="cmn-border-box row"></div>
+      <div class="cmn-border-box row narrow"></div>
     </div>
   </article>
 <% end %>

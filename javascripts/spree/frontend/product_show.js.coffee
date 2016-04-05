@@ -18,8 +18,12 @@ Spree.ready ($) ->
       Spree.productImageSlider.reloadSlider() if Spree.productImageSlider
     else
       $(_this).find('li.vtmb').hide()
-      $(_this).find('li.tmb-all').hide()
-      $(_this).find('li.tmb-' + variantId).first().show()
+      if $(_this).find('li.tmb-' + variantId).size() > 0
+        $(_this).find('li.tmb-all').hide()
+        $(_this).find('li.tmb-' + variantId).first().show()
+      else
+        $(_this).find('li.tmb-all').hide()
+        $(_this).find('li.tmb-all').first().show()
 
   Spree.updateVariantPrice = (variant, _this) ->
     variantPrice = variant.data('price')
