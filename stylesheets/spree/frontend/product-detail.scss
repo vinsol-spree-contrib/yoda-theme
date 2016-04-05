@@ -149,6 +149,8 @@
 
 .p-may-like {
   padding-top: 30px;
+  text-align: center;
+  
   .panel {
     margin-bottom: 5px;
     @include border-radius(0);
@@ -223,6 +225,9 @@
   .prod-col {
     min-height: 460px;
     overflow: hidden;
+    float: none;
+    display: inline-block;
+    margin-right: -4px;
 
     .action-cart-btn-block {
       padding: 15px 0 0;
