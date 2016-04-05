@@ -1,10 +1,41 @@
-@import 'yoda/stylesheets/spree/frontend/mixin/mixins';
-
+@import 'yoda/stylesheets/spree/frontend/cmn';
 
 #product-details {
   #main-image {
     border: none;
 
+    .bx-viewport {
+      @include box-shadow(0,0,0,0 !important);
+    }
+
     @include box-shadow(0,0,0,0);
+
+    .bx-wrapper img {
+      margin: 0 auto;
+      border: 0;
+      padding: 0;
+      @include border-radius(0);
+    }
+
+    .show {
+      min-height: 420px;
+
+      a {
+        display: table-cell;
+        height: 430px;
+        width: inherit;
+        vertical-align: middle;
+      }
+    }
+
+    .bx-pager-link {
+      @include border-radius(0 !important);
+      height: 13px;
+      width: 13px;
+      background: #d5d3d3;
+      &.active {
+        background: $link-color;
+      } 
+    }
   }
 }

@@ -72,7 +72,6 @@ Spree.ready ($) ->
 
   mySlider = $("[data-slider='image']").first().bxSlider({
     mode: "horizontal",
-    pager: false,
     adaptiveHeight: true,
     controls: true,
     slideSelector: '.show',
