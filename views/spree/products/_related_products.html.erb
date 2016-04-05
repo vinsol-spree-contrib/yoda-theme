@@ -5,9 +5,14 @@
         <span class="heading-slogan">YOU MIGHT ALSO LIKE</span>
         <span class="heading-text">Lorem Ipsum is simply</span>
       </h3>
-      <% @product.relations.limit(3).each do |relation| %>
-        <%= render 'related_product_details', product: relation.related_to %>
-      <% end %>
+      <div class="row">
+        <% @product.relations.limit(3).each do |relation| %>
+          <div class="col-sm-4 text-center">
+            <%= render 'related_product_details', product: relation.related_to %>
+          </div>
+        <% end %>
+      </div>
+      <div class="cmn-border-box row"></div>
     </div>
   </article>
 <% end %>

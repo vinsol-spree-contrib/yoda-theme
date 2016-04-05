@@ -12,11 +12,20 @@
   min-height: 30px;
   .product-price-block {
     border-bottom: solid 1px #cccccc;
+    &.no-border {
+      border: none;
+    }
+  }
+  .price {
+    margin: 0;
   }
   .price {
     + .price {
       margin-left: 10px;
       vertical-align: baseline;
+    }
+    &.narrow {
+      margin: 0;
     }
   }
 }
@@ -38,12 +47,12 @@
   &:before,
   &:after {
     content: "";
-    height: 1px;
-    width: 11px;
     background:#000;
-    position: absolute;
+    height: 1px;
     left: 0;
+    position: absolute;
     top: 2px;
+    width: 11px;
     @extend .cmn-transition;
   }
   &:before {
@@ -64,9 +73,9 @@
 }
 
 .prod-three-block {
-  padding: 70px 0 30px;
-  font-size: 12px;
   display: table;
+  font-size: 12px;
+  padding: 70px 0 30px;
   width: 100%;
   p {
     margin-bottom: 5px;
@@ -79,10 +88,10 @@
 
   .p-f-block {
     display: table-cell;
-    width: 33.33%;
     float: none;
     padding: 30px 15px;
     vertical-align: top;
+    width: 33.33%;
 
     + .p-f-block {
         &:before,
@@ -104,11 +113,11 @@
 .fress-shipping-info {
   background: #fafafa;
   font-size: 20px;
-  padding: 15px;
-  text-transform: uppercase;
   font-weight: 600;
   letter-spacing: 0.09em;
   margin-bottom: 30px;
+  padding: 15px;
+  text-transform: uppercase;
 }
 
 .product-detail-row {
@@ -119,9 +128,9 @@
   }
 
   .cmn-detail-block {
-    padding-bottom: 70px;
     @extend .empty-hide;
     @extend .padding-horizontal-none;
+    padding-bottom: 70px;
 
     &.product-social-block {
       padding-bottom: 0;
@@ -140,4 +149,67 @@
 
 .p-may-like {
   padding-top: 30px;
+
+  .panel {
+    margin-bottom: 5px;
+  }
+  .prod-main-block {
+    margin-bottom: 0;
+  }
+  .product-title {
+    font-size: 14px;
+  }
+
+  .prod-main-block {
+    height: 250px;
+    li {
+      display: table;
+      height: inherit;
+      width: 100%;
+
+      img {
+        max-height: 100%;
+      }
+
+      .prod-img-link {
+        display: table-cell;
+        height: inherit;
+        vertical-align: middle;
+      }
+    }
+  }
+
+  .product-price-block {
+    padding: 5px;
+  }
+  .option-list-group {
+    margin-top: 5px;
+  }
+  .h-box.color {
+    display: none;
+  }
+  .option-block {
+    + .option-block {
+        margin-bottom: 15px;
+    }
+  }
+  .action-cart-btn-block {
+    padding: 15px 0 0;
+
+    .cmn-cart-btn {
+      max-width: 160px;
+    }
+  }
+  .price {
+    display: block;
+
+    &.selling {
+      font-size: 18px;
+      font-weight: 400;  
+    }
+
+    + .price {
+        margin: 0;
+      }
+  }
 }

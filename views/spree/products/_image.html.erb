@@ -1,9 +1,11 @@
 <%# no need for thumbnails unless there is more than one image %>
 <% if (product.images + product.variant_images).uniq.size > 1 %>
-  <ul id="product-thumbnails" class="thumbnails" data-hook>
+  <ul id="product-thumbnails" class="thumbnails list-unstyled prod-main-block" data-hook>
     <% product.images.each do |i| %>
       <li class='tmb-all tmb-<%= i.viewable.id %>'>
-        <%= link_to(image_tag(i.attachment.url(:product), class: "thumbnail"), i.attachment.url(:product)) %>
+        <span class="prod-img-link">
+          <%= link_to(image_tag(i.attachment.url(:product), class: "thumbnail img-responsive"), i.attachment.url(:product)) %>
+        </span>
       </li>
     <% end %>
 
@@ -11,11 +13,19 @@
       <% product.variant_images.each do |i| %>
         <% next if product.images.include?(i) %>
         <li class='vtmb tmb-<%= i.viewable.id %>'>
-          <%= link_to(image_tag(i.attachment.url(:product), class: "thumbnail"), i.attachment.url(:product)) %>
+          <span class="prod-img-link">
+            <%= link_to(image_tag(i.attachment.url(:product), class: "thumbnail img-responsive"), i.attachment.url(:product)) %>
+          </span>
         </li>
       <% end %>
     <% end %>
   </ul>
 <% else %>
-  <%= product_image(product, :itemprop => "image") %>
+  <ul class="prod-main-block list-unstyled">
+    <li>
+      <span class="prod-img-link">
+        <%= product_image(product, :itemprop => "image", :class => "img-responsive") %>
+      </span>
+    </li>
+  </ul>
 <% end %>

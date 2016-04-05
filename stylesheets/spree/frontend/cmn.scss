@@ -137,6 +137,14 @@ a {
   }
 }
 
+.thumbnail {
+  border: none;
+  padding: 0;
+  @include border-radius(0);
+}
+.img-responsive {
+  margin: 0 auto;
+}
 /*padding*/
 .padding-left-none {
   padding-left:0;

@@ -4,9 +4,9 @@
       <% if product.price_in(current_currency) and !product.price.nil? %>
         <div data-hook="product_price">
           <div id="product-price">
-            <div class="product-price-block">
-              <span class="lead price cost" itemprop="price"><%= show_maximum_retail_price(product) %></span>
-              <span class="lead price selling" itemprop="price"><%= display_price(product) %></span>
+            <div class="product-price-block no-border">
+              <span class="lead price cost narrow" itemprop="price"><%= show_maximum_retail_price(product) %></span>
+              <span class="lead price selling narrow" itemprop="price"><%= display_price(product) %></span>
               <span itemprop="priceCurrency" content="<%= product.currency %>"></span>
             </div>
 
@@ -20,13 +20,13 @@
         </div>
       <% else %>
         <div id="product-price">
-          <div class="product-price-block"><span class="price selling" itemprop="price"><%= Spree.t('product_not_available_in_this_currency') %></span></div>
+          <div class="product-price-block no-border"><span class="price selling" itemprop="price"><%= Spree.t('product_not_available_in_this_currency') %></span></div>
         </div>
       <% end %>
       <% if product.variants_and_option_values(current_currency).any? %>
         <div class="option-list-group">
           <div class="color-option-block option-block">
-            <span class="h-box">Color</span>
+            <span class="h-box color">Color</span>
             <% product.uniq_color_options.each do |color_option| %>
               <span style="background-color: <%= color_option[1][:option_value_presentation] %>" data-color-option-id = <%= color_option[0] %> class="color-box"></span>
             <% end %>
@@ -63,7 +63,7 @@
     </div>
   </div>
   <div class="add-to-cart">
-    <div class="cart-input-group">
+    <div class="cart-input-group hidden">
       <%= hidden_field_tag :quantity, 1, :class => 'title form-control', data: { hook: 'product-quantity' } %>
     </div>
     <div class="action-cart-btn-block">
