@@ -24,7 +24,9 @@
   <ul class="prod-main-block list-unstyled">
     <li>
       <span class="prod-img-link">
-        <%= product_image(product, :itemprop => "image", :class => "img-responsive") %>
+        <%= link_to product do %>
+          <%= product_image(product, :itemprop => "image", :class => "img-responsive") %>
+        <% end %>
       </span>
     </li>
   </ul>

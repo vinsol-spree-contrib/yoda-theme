@@ -158,10 +158,15 @@
     margin-bottom: 0;
   }
   .product-title {
+    color: $body-text-color;
     font-size: 14px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+
+    &:hover {
+      text-decoration: none;
+    }
   }
 
   .prod-main-block {
