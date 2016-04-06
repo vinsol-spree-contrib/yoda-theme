@@ -1,3 +1,11 @@
-$("[data-show-products='search']").text('')
-$("[data-show-products='search']").append("<%= escape_javascript(render 'related_products', products: @products) %>")
+$("[data-show-products='search']").append("<%= escape_javascript(render 'related_products', products: @products, search: true) %>")
+
 Spree.initializeProductShow()
+Spree.intializeInfiniteSearch()
+<% if @products.last_page? %>
+  $('.pagination').html("No More Results!");
+<% else %>
+  $('.pagination')
+    .html("<%=j link_to_next_page(@products, 'Next Page', :remote => true) %>");
+<% end %>
+

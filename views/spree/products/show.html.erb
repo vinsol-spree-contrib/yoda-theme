@@ -56,7 +56,7 @@
         </div>
       </article>
 
-      <%= render 'related_products', products: @product.relations.limit(3) %>
+      <%= render 'related_products', products: @product.relations.limit(3), search: false %>
     </section>
   </div>
 <% end %>
