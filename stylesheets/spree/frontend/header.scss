@@ -167,9 +167,9 @@
   .modal-content {
     @include border-radius(0);
     border: none;
-    height: inherit;
+    min-height: 100%;
     margin: 0;
-    padding: 15px;
+    padding: 15px 20px;
   }
 
   .search-form-group {
@@ -211,5 +211,65 @@
     text-align: center;
     top: 0;
     width: 40px;
+  }
+
+  .prod-col {
+    width: 25%;
+    min-height: 180px;
+  }
+
+  .col-for-search {
+    text-align: left;
+    &.left-search-col {
+      width: 60px;
+
+      .panel {
+        border: none;
+        @include box-shadow(0,0,0,0);
+      }
+      .prod-main-block {
+        height: auto;
+      }
+      .prod-img-link {
+        display: block;
+        a {
+          display: block;
+          height: 60px;  
+        }
+        
+      }
+    }
+
+    &.right-search-col {
+      float: none;
+      margin-left: 70px;
+
+      .product-price-block {
+        padding: 5px 0;
+      }
+      .product-title {
+        font-size: 12px;
+        font-weight: 300;
+        white-space: normal;
+      }
+      .price {
+        font-weight: 300;
+        font-size: 12px;
+        display: inline;
+
+        &.selling {
+          font-size: 14px;
+          margin-left: 10px;
+        }
+      }
+
+
+      .cmn-cart-btn {
+        height: 30px;
+        font-size: 14px;
+        max-width: 116px;
+        padding: 3px 10px;
+      }
+    }
   }
 }

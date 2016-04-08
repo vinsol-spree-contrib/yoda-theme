@@ -2,8 +2,8 @@
 
 <article id="search-form-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
-    <div class='row'>
-      <%= form_tag spree.products_path, :method => :get, class: " modal-content", data: { 'search-path': spree.products_path } do %>
+    <article class="modal-content">
+      <%= form_tag spree.products_path, :method => :get, class: "", data: { 'search-path': spree.products_path } do %>
          <div class="modal-header padding-horizontal-none">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           <h4 class="modal-title">SEARCH IN STORE</h4>
@@ -27,8 +27,8 @@
           </div>
         </div>
       <% end %>
-    </div>
-    <div class='row' data-show-products='search'>
-    </div>
+      <div class='' data-show-products='search'>
+      </div>
+    </article>
   </div>
 </article>

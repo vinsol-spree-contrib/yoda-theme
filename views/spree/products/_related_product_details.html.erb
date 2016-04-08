@@ -1,5 +1,5 @@
 <article class="" data-selected-variant=<%= "product_#{product.id}" %>>
-  <div class="col-sm-12 padding-none" data-hook="product_left_part">
+  <div class="col-sm-12 padding-none col-for-search left-search-col" data-hook="product_left_part">
     <div data-hook="product_left_part_wrap">
       <div id="product-images" data-hook="product_images">
         <div id="main-image" class="panel panel-default" data-hook>
@@ -11,7 +11,7 @@
     </div>
   </div>
 
-  <div class="col-sm-12 padding-none" data-hook="product_right_part">
+  <div class="col-sm-12 padding-none col-for-search right-search-col" data-hook="product_right_part">
     <div data-hook="product_right_part_wrap">
       <div id="product-description" data-hook="product_description">
         <%= link_to product.name, product, :class => "product-title", :itemprop => "name" %>
