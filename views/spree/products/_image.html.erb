@@ -25,7 +25,9 @@
     <li>
       <span class="prod-img-link">
         <%= link_to product do %>
-          <%= image_tag(product.master.images.first.attachment.url(:original), itemprop: 'image', class: 'img-responsive') %>
+          <% if product.master.images.first %>
+            <%= image_tag(product.master.images.first.attachment.url(:original), itemprop: 'image', class: 'img-responsive') %>
+          <% end %>
         <% end %>
       </span>
     </li>
