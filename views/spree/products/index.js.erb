@@ -3,9 +3,9 @@ $("[data-show-products='search']").append("<%= escape_javascript(render 'related
 Spree.initializeProductShow()
 Spree.intializeInfiniteSearch()
 <% if @products.last_page? %>
-  $('.pagination').html("No More Results!");
+  $('div.pagination').html("No More Results!");
 <% else %>
-  $('.pagination')
+  $('div.pagination')
     .html("<%=j link_to_next_page(@products, 'Next Page', :remote => true) %>");
 <% end %>
 
