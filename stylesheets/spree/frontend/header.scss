@@ -4,12 +4,12 @@
 
 #spree-header {
   background: #fff;
+  margin-bottom: 0;
   #header {
     padding: 0 15px;
     background: #fff;
   }
   #logo.navbar-brand {
-    max-width: 130px;
     margin-bottom: 0;
     padding: 0;
     height: auto;
@@ -18,10 +18,9 @@
       display: table-cell;
       height: 80px;
       vertical-align: middle;
-      width: 100%;
     }
     img {
-      max-width: 100%;
+      width: 130px;
       vertical-align: middle;
     }
   }
@@ -32,11 +31,11 @@
   }
 }
 .site-navbar {
-  margin-left: 5px;
+  margin: 35px 0 0 5px;
   float: left;
 
   #main-nav-bar {
-    padding: 15px 0;
+    min-height: auto;
     text-align: center;
     li {
       float: none;
@@ -69,6 +68,7 @@
       font-size: 12px;
       font-weight: 600;
       text-transform: uppercase;
+      padding: 10px 15px;
       &:hover {
         background: none;
       }

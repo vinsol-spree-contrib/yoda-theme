@@ -1,0 +1,54 @@
+@import 'yoda/stylesheets/spree/frontend/cmn';
+
+.home-slider-box {
+  margin: 0;
+
+  .bx-viewport {
+    margin-left: 5px;
+  }
+
+  .bx-wrapper {
+    border-bottom: solid 2px #0b8ce3;
+    margin-bottom: 40px;
+
+    &:before,
+    &:after {
+      content: "";
+      background: #dd438a;
+      bottom: -2px;
+      height: 2px;
+      left: 25%;
+      position: absolute;
+      width: 25%;
+      z-index: 99;
+    }
+    &:after {
+      left: 75%;
+    }
+    .bx-pager {
+      bottom: -2px;
+    }
+  }
+  .slide {
+    text-align: center;
+
+    img {
+      margin: 0 auto;
+    }
+  }
+
+  .bx-controls-direction,
+  .bx-pager {
+    opacity: 0;
+    @extend .cmn-transition;
+
+  }  
+  
+
+  &:hover {
+    .bx-controls-direction,
+    .bx-pager {
+      opacity: 1;
+    }  
+  }
+}

@@ -12,6 +12,16 @@
     <%= render partial: 'spree/shared/google_analytics.js' %>
     <%= render partial: 'spree/shared/header' %>
 
+
+    <article class="home-slider-box row">
+      <div class="home-top-slider">
+        <div class="slide"><img src="<%= asset_path('yoda/images/spree/frontend/slide1.png') %>" alt="" /></div>
+        <div class="slide"><img src="<%= asset_path('yoda/images/spree/frontend/slide2.jpg') %>" alt="" /></div>
+        <div class="slide"><img src="<%= asset_path('yoda/images/spree/frontend/slide1.png') %>" alt="" /></div>
+        <div class="slide"><img src="<%= asset_path('yoda/images/spree/frontend/slide2.jpg') %>" alt="" /></div>
+      </div>
+    </article>
+
     <div class="container-fluid">
       <div class="row" data-hook>
         <% if @taxon.present? %>
@@ -19,7 +29,6 @@
         <% elsif @product.present? %>
           <%= breadcrumbs(@product.taxons.first) %>
         <% end %>
-
         <%= render partial: 'spree/shared/sidebar' if content_for? :sidebar %>
 
         <div id="content" class="<%= !content_for?(:sidebar) ? "" : "col-sm-8 col-md-9" %>" data-hook>
