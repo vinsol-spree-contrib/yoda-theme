@@ -1,0 +1,31 @@
+<% content_for :header do -%>
+  <%= javascript_include_tag 'yoda/javascripts/spree/frontend/product_show' -%>
+  <%= javascript_include_tag 'yoda/javascripts/spree/frontend/product' -%>
+<% end -%>
+
+<div data-hook="products_search_results_heading">
+  <% if products.empty? %>
+    <div data-hook="products_search_results_heading_no_results_found">
+      <%= Spree.t(:no_products_found) %>
+    </div>
+  <% elsif params.key?(:keywords) %>
+    <div data-hook="products_search_results_heading_results_found">
+      <h6 class="search-results-title"><%= Spree.t(:search_results, keywords: h(params[:keywords])) %></h6>
+    </div>
+  <% end %>
+</div>
+
+<% if @featured_taxons.any? %>
+  <div id="products" class="row" data-hook>
+    <% @featured_taxons.each do |featured_taxon| %>
+      <div class="cmn-block-heading">
+        <span class="heading-slogan"><%= featured_taxon.name %></span>
+        <span class='text-right'><%= link_to('VIEW ALL', seo_url(featured_taxon)) %></span>
+      </div>
+      <div class='container-fluid'>
+        <%= render 'spree/products/related_products', products: featured_taxon.products.limit(3), search: true %>
+      </div>
+      <div class="cmn-border-box row"></div>
+    <% end %>
+  </div>
+<% end %>

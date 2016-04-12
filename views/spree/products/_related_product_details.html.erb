@@ -4,7 +4,7 @@
       <div id="product-images" data-hook="product_images">
         <div id="main-image" class="panel panel-default" data-hook>
           <div class="panel-body text-center padding-none">
-            <%= render 'image', product: product %>
+            <%= render 'spree/products/image', product: product %>
           </div>
         </div>
       </div>
@@ -16,7 +16,7 @@
       <div id="product-description" data-hook="product_description">
         <%= link_to product.name, product, :class => "product-title", :itemprop => "name" %>
         <div id="cart-form" data-hook="cart_form">
-          <%= render 'related_cart_form', product: product %>
+          <%= render 'spree/products/related_cart_form', product: product %>
         </div>
       </div>
     </div>

@@ -9,11 +9,11 @@
       <% end %>
       <div class="row" id='products_infinite'>
         <% products.each do |_product| %>
-          <div class="col-sm-4 prod-col">
+          <div class="col-sm-4 prod-col product-list-item" data-hook="products_list_item">
             <% if _product.is_a? Spree::Product %>
-              <%= render 'related_product_details', product: _product %>
+              <%= render 'spree/products/related_product_details', product: _product %>
             <% else %>
-              <%= render 'related_product_details', product: _product.related_to %>
+              <%= render 'spree/products/related_product_details', product: _product.related_to %>
             <% end %>
           </div>
         <% end %>
