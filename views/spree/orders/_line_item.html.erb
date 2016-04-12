@@ -1,5 +1,9 @@
 <% variant = line_item.variant %>
 
+<% content_for :header do -%>
+  <%= stylesheet_link_tag 'yoda/stylesheets/spree/frontend/checkout/cart' -%>
+<% end -%>
+
 <%= order_form.fields_for :line_items, line_item do |item_form| %>
   <tr class="line-item">
     <td class="cart-item-image" data-hook="cart_item_image">
@@ -31,7 +35,7 @@
       <%= line_item.display_amount.to_html unless line_item.quantity.nil? %>
     </td>
     <td class="cart-item-delete" data-hook="cart_item_delete">
-      <%= link_to content_tag(:span, '', class: 'glyphicon glyphicon-minus-sign'), '#', class: 'delete', id: "delete_#{dom_id(line_item)}" %>
+      <%= link_to content_tag(:span, '', class: 'fa fa-minus-square size-16'), '#', class: 'delete', id: "delete_#{dom_id(line_item)}" %>
     </td>
   </tr>
 <% end %>
