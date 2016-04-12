@@ -1,26 +1,26 @@
 <a id="dLabel" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="pointer cart-info"><%= cart_info %></a>
-<ul class="dropdown-menu right" aria-labelledby="dLabel">
+<ul class="dropdown-menu right cart-dropdown-menu" aria-labelledby="dLabel">
   <% if simple_current_order && simple_current_order.line_items.present? %>
-    <div class='row row-no-margin'>
-      <% simple_current_order.line_items.each do |line_item| %>
-        <div class='col-lg-4'>
+    <% simple_current_order.line_items.each do |line_item| %>
+      <div class="col-media-group row row-no-margin">
+        <div class='col col-media'>
           <%= image_tag line_item.variant.images.first.attachment.url(:mini) %>
         </div>
-        <div class='col-lg-6'>
-          <%= line_item.product.name %>
-        </div>
-        <div class='col-lg-2'>
+        <div class='col col-media-detail'>
+          <p class="item-name"><%= line_item.product.name %></p>
           <%= line_item.variant.price_in(current_currency).money %>
         </div>
-
-      <% end %>
-    </div>
-    <div class='col-lg-12 row'>
-      <%= link_to "View Cart", spree.cart_path, :class => "cart-info" %>
+      </div>
+    <% end %>
+    <div class='row row-no-margin'>
+      <div class="col-cart-link"><%= link_to "View Cart", spree.cart_path, :class => "cart-info" %></div>
     </div>
   <% else %>
-    <div class='col-lg-12 row'>
-      Your Cart is Empty!
+    <div class='row row-no-margin'>
+      <div class="col-sm-12 empty-cart-menu">
+        <div><i class="fa fa-frown-o fa-4x" aria-hidden="true"></i></div>
+        Your Cart is Empty!
+      </div>
     </div>
   <% end %>
 </ul>
