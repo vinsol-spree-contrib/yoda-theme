@@ -1,0 +1,20 @@
+<% if @order.errors.present? %>
+  Spree.displayErrors("<%=j @order.errors.messages.to_json.html_safe %>", "<%=j @order.state %>")
+  Spree.updateStateLockVersion("<%=j @order.state_lock_version.to_s %>")
+<% else %>
+  $("[data-checkout-progress]").addClass('hidden')
+  $("[data-behaviour='order_summary']").html("<%=j render partial: 'summary', locals: { order: @order } %>")
+  var dataStepContainer = $("[data-step=" + '"<%=j @order.state %>"' + "]")
+  if(dataStepContainer.size() != 0){
+    dataStepContainer.html("<%=j render @order.state %>")
+  } else {
+    $("[data-step]").last().after("<%=j render 'order_steps', state: @order.state, reached_final_state: true %>")
+    $("[data-step]").last().html("<%=j render @order.state %>")
+  }
+  <% if @order.state == 'address' %>
+    Spree.onAddress()
+  <% end %>
+  <% if @order.state == 'payment' %>
+    Spree.onPayment()
+  <% end %>
+<% end %>

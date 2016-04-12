@@ -1,13 +1,17 @@
-<div class="panel panel-default" id="order_details" data-hook>
-  <div class="panel-heading">
-    <h3 class="panel-title"><%= Spree.t(:confirm) %></h3>
-  </div>
-  <div class="panel-body">
-    <%= render :partial => 'spree/shared/order_details', :locals => { :order => @order } %>
-  </div>
+<div class='well' data-toggle-checkout-progress='confirm'>
+  <%= Spree.t(:confirm) %>
 </div>
+<div data-checkout-progress='confirm' class="<%= 'hidden' unless @order.state == 'confirm' %>">
+  <%= form_for @order, url: update_checkout_path(@order.state), html: { id: "checkout_form_#{@order.state}" }, remote: true do |form| %>
+    <%= form.hidden_field :state_lock_version %>
+    <div class="panel panel-default" id="order_details" data-hook>
+      <div class="panel-body">
+        <%= render :partial => 'spree/shared/order_details', :locals => { :order => @order } %>
+      </div>
+    </div>
 
-<div class="well text-right form-buttons" data-hook="buttons">
-  <%= submit_tag Spree.t(:place_order), :class => 'btn btn-lg btn-success' %>
-  <script>Spree.disableSaveOnClick();</script>
+    <div class="well text-right form-buttons" data-hook="buttons">
+      <%= submit_tag Spree.t(:place_order), :class => 'btn btn-lg btn-success' %>
+    </div>
+  <% end %>
 </div>
