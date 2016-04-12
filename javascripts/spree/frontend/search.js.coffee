@@ -2,6 +2,8 @@ Spree.ready ($) ->
 
   Spree.searchProducts = (_this) ->
     $("[data-show-products='search']").text('')
+    return if _this.value.trim().length == 0
+    $(_this).addClass('active')
     $.ajax({
       url: $("[data-search-path]").data('search-path'),
       data: { keywords: _this.value },
