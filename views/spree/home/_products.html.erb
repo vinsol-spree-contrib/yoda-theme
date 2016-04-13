@@ -4,7 +4,7 @@
 <% end -%>
 
 <div data-hook="products_search_results_heading">
-  <% if products.empty? %>
+  <% if @featured_taxons.empty? %>
     <div data-hook="products_search_results_heading_no_results_found">
       <%= Spree.t(:no_products_found) %>
     </div>
@@ -23,7 +23,7 @@
         <span class='text-right'><%= link_to('VIEW ALL', seo_url(featured_taxon)) %></span>
       </div>
       <div class='container-fluid'>
-        <%= render 'spree/products/related_products', products: featured_taxon.products.limit(3), search: true %>
+        <%= render 'spree/products/related_products', products: retrieve_searcher_products(featured_taxon), search: true %>
       </div>
       <div class="cmn-border-box row"></div>
     <% end %>
