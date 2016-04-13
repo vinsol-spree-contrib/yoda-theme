@@ -2,14 +2,14 @@
   <div class='panel-heading pointer collapsed panel-step-heading' data-toggle-checkout-progress='delivery' data-toggle="collapse" href="#step-delivery" aria-expanded="false" aria-controls="step-delivery">
     <%= Spree.t(:delivery) %>
   </div>
-  <div id="step-delivery" data-checkout-progress='delivery' class="collapse <%= '' unless @order.state == 'delivery' %>">
-    <%= form_for @order, url: update_checkout_path(@order.state), html: { id: "checkout_form_#{@order.state}" }, remote: true do |form| %>
+  <div id="step-delivery" data-checkout-progress='delivery' class="collapse <%= 'focus-and-open' if @order.state == 'delivery' %>">
+    <%= form_for @order, url: update_checkout_path(@order.state), html: { id: "checkout_form_#{state}" }, remote: true do |form| %>
       <%= form.hidden_field :state_lock_version %>
       <div class="panel-body" id='shipping_method' data-hook>
         <div class="" data-hook="shipping_method_inner">
           <div id="methods">
             <%= form.fields_for :shipments do |ship_form| %>
-              <div class="shipment">
+              <div class="shipment row">
                 <h4 class="stock-location page-heading light small" data-hook="stock-location">
                   <%= Spree.t(:package_from) %>
                   <strong class="stock-location-name" data-hook="stock-location-name"><%= ship_form.object.stock_location.name %></strong>
@@ -43,22 +43,20 @@
                 </table>
                 <hr />
 
-                <div class="col-sm-12 col-md-6">
-                  <div class="panel panel-default row">
-                    <div class="stock-shipping-method-title panel-heading">
-                      <strong><%= Spree.t(:shipping_method) %></strong></div>
-                      <ul class="list-group shipping-methods">
-                        <% ship_form.object.shipping_rates.each do |rate| %>
-                          <li class="list-group-item shipping-method">
-                            <label class="normal">
-                              <%= ship_form.radio_button :selected_shipping_rate_id, rate.id %>
-                              <span class="rate-name"><%= rate.name %></span>
-                              <span class="badge rate-cost"><%= rate.display_cost %></span>
-                            </label>
-                          </li>
-                        <% end %>
-                      </ul>
-                  </div>
+                <div class="panel panel-default">
+                  <div class="stock-shipping-method-title panel-heading">
+                    <strong><%= Spree.t(:shipping_method) %></strong></div>
+                    <ul class="list-group shipping-methods">
+                      <% ship_form.object.shipping_rates.each do |rate| %>
+                        <li class="list-group-item shipping-method">
+                          <label class="normal">
+                            <%= ship_form.radio_button :selected_shipping_rate_id, rate.id %>
+                            <span class="rate-name"><%= rate.name %></span>
+                            <span class="badge rate-cost"><%= rate.display_cost %></span>
+                          </label>
+                        </li>
+                      <% end %>
+                    </ul>
                 </div>
               </div>
             <% end %>

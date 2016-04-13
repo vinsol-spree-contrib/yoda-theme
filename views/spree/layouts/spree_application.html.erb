@@ -12,16 +12,6 @@
     <%= render partial: 'spree/shared/google_analytics.js' %>
     <%= render partial: 'spree/shared/header' %>
 
-
-    <article class="home-slider-box row hidden">
-      <div class="home-top-slider">
-        <div class="slide"><img src="<%= asset_path('yoda/images/spree/frontend/slide1.png') %>" alt="" /></div>
-        <div class="slide"><img src="<%= asset_path('yoda/images/spree/frontend/slide2.jpg') %>" alt="" /></div>
-        <div class="slide"><img src="<%= asset_path('yoda/images/spree/frontend/slide1.png') %>" alt="" /></div>
-        <div class="slide"><img src="<%= asset_path('yoda/images/spree/frontend/slide2.jpg') %>" alt="" /></div>
-      </div>
-    </article>
-
     <div class="container-fluid">
       <div class="row" data-hook>
         <% if @taxon.present? %>

@@ -1,5 +1,5 @@
 <div data-step=<%= state %>>
   <% unless reached_final_state %>
-    <%= render state %>
+    <%= render state, state: state %>
   <% end %>
 </div>

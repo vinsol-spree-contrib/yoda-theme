@@ -32,13 +32,14 @@ Spree.ready ($) ->
         )
 
   Spree.toggleCheckoutProgress = (_this) ->
+    $('.focus-and-open').collapse('toggle').focus()
     #$("[data-checkout-progress=" + $(_this).data('toggle-checkout-progress') + "]").toggleClass('hidden')
 
   $('input').on 'input', () ->
     Spree.cleanErrorField(this)
 
   #$("[data-hook='checkout_content']").on 'click', "[data-toggle-checkout-progress]", () ->
-    Spree.toggleCheckoutProgress(this)
+  Spree.toggleCheckoutProgress(this)
 
 Spree.fetch_cart = ->
   $.ajax

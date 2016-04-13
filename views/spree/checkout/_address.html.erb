@@ -4,8 +4,8 @@
   </div>
 
 
-  <div id="step-address" data-checkout-progress='address' class="collapse <%= '' unless @order.state == 'address' %>">
-    <%= form_for @order, url: update_checkout_path(@order.state), html: { id: "checkout_form_#{@order.state}" }, remote: true do |form| %>
+  <div id="step-address" data-checkout-progress='address' class="collapse <%= 'focus-and-open' if @order.state == 'address' %>">
+    <%= form_for @order, url: update_checkout_path(@order.state), html: { id: "checkout_form_#{state}" }, remote: true do |form| %>
       <div class="panel-body">
         <% if @order.state == 'address' || !@order.email? %>
           <div class="panel panel-default">

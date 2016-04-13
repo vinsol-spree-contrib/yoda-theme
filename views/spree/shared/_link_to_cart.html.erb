@@ -1,7 +1,7 @@
 <a id="dLabel" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="pointer cart-info"><%= cart_info %></a>
 <ul class="dropdown-menu right cart-dropdown-menu" aria-labelledby="dLabel">
   <% if simple_current_order && simple_current_order.line_items.present? %>
-    <% simple_current_order.line_items.each do |line_item| %>
+    <% simple_current_order.line_items.limit(5).each do |line_item| %>
       <div class="col-media-group row row-no-margin">
         <div class='col col-media'>
           <%= image_tag line_item.variant.images.first.attachment.url(:mini) %>

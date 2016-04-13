@@ -2,9 +2,18 @@
   <%= stylesheet_link_tag 'yoda/stylesheets/spree/frontend/home' -%>
 <% end -%>
 
+<article class="home-slider-box row">
+  <div class="home-top-slider">
+    <div class="slide"><img src="<%= asset_path('yoda/images/spree/frontend/slide1.png') %>" alt="" /></div>
+    <div class="slide"><img src="<%= asset_path('yoda/images/spree/frontend/slide2.jpg') %>" alt="" /></div>
+    <div class="slide"><img src="<%= asset_path('yoda/images/spree/frontend/slide1.png') %>" alt="" /></div>
+    <div class="slide"><img src="<%= asset_path('yoda/images/spree/frontend/slide2.jpg') %>" alt="" /></div>
+  </div>
+</article>
+
 <div data-hook="homepage_products">
   <% cache(cache_key_for_products) do %>
-    <%= render 'products' %>
+    <%= render partial: 'spree/shared/products', locals: { products: @products, taxons: @featured_taxons, search: true, product_limit: 3 } %>
   <% end %>
 </div>
 

@@ -82,21 +82,21 @@ Spree.ready ($) ->
 
     quantityField = ($ "[data-hook='product-quantity']")
     Spree.initializeSlider()
-    quantityField.bind 'input propertychange', (event) ->
+    quantityField.on 'input propertychange', (event) ->
       Spree.productQuantityField(this)
-    quantityField.bind 'input keyup', (event) ->
+    quantityField.on 'input keyup', (event) ->
       Spree.productUpdateQuantityFieldEvent(this, event)
 
     incrementQuantityField = $("[data-behaviour='increment-product-quantity']")
-    incrementQuantityField.bind 'click', (event) ->
+    incrementQuantityField.on 'click', (event) ->
       Spree.productUpdateQuantity(quantityField[0], 1)
 
     decrementQuantityField = $("[data-behaviour='decrement-product-quantity']")
-    decrementQuantityField.bind 'click', (event) ->
+    decrementQuantityField.on 'click', (event) ->
       Spree.productUpdateQuantity(quantityField[0], -1)
 
     colorOptions = $('[data-color-option-id]')
-    colorOptions.bind 'click', (event) ->
+    colorOptions.on 'click', (event) ->
       Spree.showHideVariants($(this).parents('[data-selected-variant]'), this)
     $('[data-selected-variant]').each ->
       Spree.showHideVariants(this, colorOptions)
