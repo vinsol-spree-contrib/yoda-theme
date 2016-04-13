@@ -137,6 +137,20 @@ a {
   }
 }
 
+.m-block {
+  + .m-block {
+    @include respond-to(mobile) { 
+      margin-top: 20px;
+    }
+  }
+}
+
+label {
+  &.normal {
+    font-weight: normal;
+  }
+}
+
 .thumbnail {
   border: none;
   padding: 0;

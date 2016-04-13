@@ -1,17 +1,20 @@
+<% content_for :header do -%>
+  <%= stylesheet_link_tag 'yoda/stylesheets/spree/frontend/checkout/checkout-steps' -%>
+<% end -%>
 <% content_for :google_analytics do %>
-  <%= render partial: 'spree/shared/google_checkout.js', locals: { order: @order, step_number: (@order.checkout_steps.index(@order.state) + 1) } %>
+  <%#= render partial: 'spree/shared/google_checkout.js', locals: { order: @order, step_number: (@order.checkout_steps.index(@order.state) + 1) } %>
 <% end %>
 
-<div id="checkout" data-hook>
+<div id="checkout" data-hook class="container-fluid">
   <%= render partial: 'spree/shared/error_messages', locals: { target: @order } %>
 
-  <div class="container-fluid" data-hook="checkout_header">
-    <div class="col-sm-3">
-      <h1 data-hook="checkout_title"><%= Spree.t(:checkout) %></h1>
+  <div class="row" data-hook="checkout_header">
+    <div class="col-sm-12">
+      <h1 data-hook="checkout_title" class="page-heading"><%= Spree.t(:checkout) %></h1>
     </div>
   </div>
 
-  <div class="container-fluid" data-hook="checkout_content">
+  <div data-hook="checkout_content" class="row checkout-step-row">
     <div class="<%= if @order.state != 'confirm' then 'col-md-9' else 'col-md-12' end %>" data-hook="checkout_form_wrapper">
       <% checkout_steps = @order.checkout_steps %>
         <% reached_final_state = false %>
