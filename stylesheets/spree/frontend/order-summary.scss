@@ -1,0 +1,20 @@
+@import 'yoda/stylesheets/spree/frontend/cmn';
+@import 'yoda/stylesheets/spree/frontend/checkout/checkout-steps';
+
+
+.order_summary_page {
+  padding: 0 15px;
+  max-width: 1000px;
+  margin: 0 auto;
+  @include respond-to(mobile) { 
+    max-width: 100%;
+  }
+}
+
+.legend {
+  background: #f7f7f7;
+  border: none;
+  font-size: 16px;
+  padding: 10px;
+  margin: 20px 0;
+}

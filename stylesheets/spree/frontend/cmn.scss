@@ -50,6 +50,7 @@ a {
   @include border-radius(3px);
   @include box-shadow(0,0,10px,rgba(0,0,0,0.5));
   @extend .cmn-transition;
+  padding: 10px 12px;
 
   &.cmn-cart-btn {
     font-size: 18px;
@@ -151,14 +152,6 @@ a {
 
   &.narrow {
     margin: 20px 15%;
-  }
-}
-
-.m-block {
-  + .m-block {
-    @include respond-to(mobile) { 
-      margin-top: 20px;
-    }
   }
 }
 
