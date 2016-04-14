@@ -97,7 +97,7 @@ a {
 }
 .cmn-block-heading {
   font-size: 16px;
-  padding-bottom: 50px;
+  padding:0 10px 50px;
   text-align: center;
 
   &.narrow {
@@ -122,6 +122,17 @@ a {
     .heading-slogan {
       font-size: 24px;
     }
+  }
+
+  .btn {
+    @include border-radius(0);
+    background: #e5e5e5;
+    border: none;
+    color: #767676;
+    float: right;
+    font-size: 14px;
+    padding: 7px 15px;
+    text-transform: uppercase;
   }
 }
 
