@@ -11,7 +11,7 @@ Spree.ready ($) ->
     });
 
   $("[data-search]").on 'input', (event) ->
-    doneTypingInterval = 3000
+    doneTypingInterval = 1000
     console.log(@typingTimer)
     clearTimeout(@typingTimer);
     @typingTimer = setTimeout (->

@@ -5,7 +5,7 @@ $('div.pagination').remove();
 
 $("[data-show-products='search']").append("<%= escape_javascript(render 'related_products', products: @products, search: true) %>")
 <% if @products.last_page? %>
-  $('div.pagination').html("No More Results!");
+  $('div.pagination').remove();
 <% else %>
   $('div.pagination')
     .html("<%=j link_to_next_page(@products, 'Next Page', :remote => true) %>");
