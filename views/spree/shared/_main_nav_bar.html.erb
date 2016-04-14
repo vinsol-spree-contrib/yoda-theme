@@ -1,14 +1,16 @@
 <div class="top-nav-block">
-  <ul class="top-link-bar list-unstyled" data-hook>
-    <%= render :partial => 'spree/shared/nav_bar' %>
-    <li id="link-to-cart" class="link-block dropdown" data-hook>
-      <noscript>
-        <%= link_to Spree.t(:cart), '/cart' %>
-      </noscript>
-      &nbsp;
-    </li>
-    <script>Spree.fetch_cart()</script>
-  </ul>
+  <% unless content_for?(:search_link) %>
+    <ul class="top-link-bar list-unstyled" data-hook>
+      <%= render :partial => 'spree/shared/nav_bar' %>
+      <li id="link-to-cart" class="link-block dropdown" data-hook>
+        <noscript>
+          <%= link_to Spree.t(:cart), '/cart' %>
+        </noscript>
+        &nbsp;
+      </li>
+      <script>Spree.fetch_cart()</script>
+    </ul>
+  <% end %>
 </div>
 
 <nav class="site-navbar">

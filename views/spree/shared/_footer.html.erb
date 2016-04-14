@@ -1,5 +1,7 @@
 <footer class="container-fluid">
-  <%= render :partial => 'spree/shared/newsletter' %>
-  <%= render :partial => 'spree/shared/appreciation' %>
+  <% unless content_for?(:show_footer) %>
+    <%= render :partial => 'spree/shared/newsletter' %>
+    <%= render :partial => 'spree/shared/appreciation' %>
+  <% end %>
   <%= render :partial => 'spree/shared/footer_links' %>
 </footer>
