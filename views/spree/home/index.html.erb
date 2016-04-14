@@ -11,7 +11,7 @@
   </div>
 </article>
 
-<div data-hook="homepage_products">
+<div data-hook="homepage_products" id="homepage_products">
   <% cache(cache_key_for_products) do %>
     <%= render partial: 'spree/shared/products', locals: { products: @products, taxons: @featured_taxons, search: true, product_limit: 3 } %>
   <% end %>

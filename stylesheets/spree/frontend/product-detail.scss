@@ -7,7 +7,15 @@
   @extend .text-uppercase;
   @extend .open-bold;
 }
+#product-description {
+  @include respond-to(mobile) { 
+    text-align: center;
 
+    .product-additional-info {
+      text-align: left;
+    }
+  }
+}
 #inside-product-cart-form {
   min-height: 30px;
   .product-price-block {
@@ -232,6 +240,11 @@
     margin-right: -4px;
     min-height: 460px;
     overflow: hidden;
+
+    @include respond-to(mobile) {
+      min-height: auto;
+      padding-bottom: 30px;
+    }
   
     .action-cart-btn-block {
       padding: 15px 0 0;

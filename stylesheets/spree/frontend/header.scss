@@ -31,7 +31,7 @@
   }
 }
 .site-navbar {
-  margin: 35px 0 0 5px;
+  margin: 20px 0 0 5px;
   float: left;
 
   #main-nav-bar {
@@ -344,4 +344,28 @@
       }
     }
   }
+}
+
+#quick-serach-link {
+  color: rgba(0,0,0,0.4);
+  font-size: 11px;
+  padding-left: 50px;
+  dd {
+    padding-bottom: 5px;
+  }
+  dt {
+    font-size: 12px;
+    font-weight: normal;
+    padding: 5px 0 5px 10px;
+  
+    a {
+      color: inherit;
+      cursor: pointer;
+
+      &:hover {
+        color: $link-color;
+      }
+    }
+  }
+
 }
