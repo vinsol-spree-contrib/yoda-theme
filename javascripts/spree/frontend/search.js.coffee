@@ -11,10 +11,21 @@ Spree.ready ($) ->
     });
 
   $("[data-search]").on 'input', (event) ->
-    Spree.searchProducts(this)
+    doneTypingInterval = 3000
+    console.log(@typingTimer)
+    clearTimeout(@typingTimer);
+    @typingTimer = setTimeout (->
+      Spree.searchProducts($("[data-search]")[0])
+    ), doneTypingInterval
 
   Spree.intializeInfiniteSearch = () ->
     $("#products_infinite").infinitePages
       debug: true
       buffer: 200
       context: '#search-form-modal'
+      loading: ->
+        $('.load-results').removeClass('hidden')
+      success: ->
+        $('.load-results').addClass('hidden')
+      error: ->
+        $('.load-results').addClass('hidden')

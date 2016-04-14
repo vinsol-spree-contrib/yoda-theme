@@ -1,16 +1,14 @@
+$('div.pagination').remove();
 <% if @products.current_page == 1 %>
   $("[data-show-products='search']").html('')
-  $('div.pagination').html('');
 <% end %>
 
 $("[data-show-products='search']").append("<%= escape_javascript(render 'related_products', products: @products, search: true) %>")
-
-Spree.initializeProductShow()
-Spree.intializeInfiniteSearch()
 <% if @products.last_page? %>
   $('div.pagination').html("No More Results!");
 <% else %>
   $('div.pagination')
     .html("<%=j link_to_next_page(@products, 'Next Page', :remote => true) %>");
 <% end %>
-
+Spree.initializeProductShow()
+Spree.intializeInfiniteSearch()
