@@ -13,7 +13,7 @@
 
   <div class="col-sm-12 padding-none col-for-search right-search-col" data-hook="product_right_part">
     <div data-hook="product_right_part_wrap">
-      <div id="product-description" data-hook="product_description">
+      <div class="product-description" data-hook="product_description">
         <%= link_to product.name, product, :class => "product-title", :itemprop => "name" %>
         <div id="cart-form" data-hook="cart_form">
           <%= render 'spree/products/related_cart_form', product: product %>

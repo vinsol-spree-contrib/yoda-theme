@@ -7,6 +7,11 @@
 @import 'yoda/stylesheets/spree/frontend/header';
 @import 'yoda/stylesheets/spree/frontend/footer';
 
+
+::selection {
+  background: #fb7c00;
+  color: #fff;
+}
 a {
   color: $link-color;
 }
@@ -97,7 +102,7 @@ a {
 }
 .cmn-block-heading {
   font-size: 16px;
-  padding:0 10px 50px;
+  padding:0 15px 50px;
   text-align: center;
 
   &.narrow {
@@ -133,6 +138,7 @@ a {
     font-size: 14px;
     padding: 7px 15px;
     text-transform: uppercase;
+    width: 90px;
   }
 }
 
