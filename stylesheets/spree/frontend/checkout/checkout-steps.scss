@@ -3,6 +3,7 @@
 .page-heading {
   font-size: 20px;
   font-weight: 600;
+  margin-bottom: 10px;
 
   &.light {
     font-weight: 300;
@@ -11,6 +12,9 @@
   &.small {
     font-size: 16px;
   }
+}
+.m-block {
+  margin-top: 20px;
 }
 .checkout-step-row {
   .panel {
@@ -31,7 +35,8 @@
 }
 
 #step-confirm,
-.stock-contents {
+.stock-contents,
+#line-items {
   tbody {
     border: none;
   }
