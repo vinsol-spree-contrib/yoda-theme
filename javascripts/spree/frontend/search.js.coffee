@@ -10,9 +10,14 @@ Spree.ready ($) ->
       dataType: 'SCRIPT',
     });
 
+  $("[data-search]").on 'focusin', (event) ->
+    $("[data-search-links='quick']").addClass('quick-hide')
+
+  $("[data-search]").on 'focusout', (event) ->
+    $("[data-search-links='quick']").removeClass('quick-hide') if this.value.trim().length == 0
+
   $("[data-search]").on 'input', (event) ->
     doneTypingInterval = 1000
-    console.log(@typingTimer)
     clearTimeout(@typingTimer);
     @typingTimer = setTimeout (->
       Spree.searchProducts($("[data-search]")[0])
