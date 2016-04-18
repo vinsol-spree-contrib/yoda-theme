@@ -7,7 +7,7 @@
       <% labels = filter[:labels] || filter[:conds].map {|m,c| [m,m]} %>
       <% next if labels.empty? %>
       <div class="navigation" data-hook="navigation">
-        <h4 class="filter-title"> <%= filter[:name] %> </h4>
+        <h4 class="filter-title taxonomy-root"> <%= filter[:name] %> </h4>
         <ul class="list-group">
           <% labels.each do |nm,val| %>
             <% label = "#{filter[:name]}_#{nm}".gsub(/\s+/,'_') %>

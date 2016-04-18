@@ -6,7 +6,8 @@
 
 #sidebar {
   @include respond-to(minTablet) { 
-    
+    min-width: 250px;
+    max-width: 250px;
   }
 
   .taxonomy-root {
@@ -78,7 +79,9 @@
 
 .sidebar-avail {
   @include respond-to(minTablet) { 
-    
+    width: auto;
+    float: none;
+    margin-left: 250px;
   }
   .p-may-like {
     padding-top: 0;
