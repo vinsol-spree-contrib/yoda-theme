@@ -1,6 +1,10 @@
+$('.load-results-keypress').addClass('hidden')
 $('div.pagination').remove();
 <% if @products.current_page == 1 %>
   $("[data-show-products='search']").html('')
+  <% if @products.count == 0 %>
+    $('.no-results-found').removeClass('hidden').html('No results found for ' + "<%=j params[:keywords] %>")
+  <% end %>
 <% end %>
 
 $("[data-show-products='search']").append("<%= escape_javascript(render 'related_products', products: @products, search: true) %>")

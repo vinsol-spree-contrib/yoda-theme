@@ -1,6 +1,6 @@
 Spree.ready ($) ->
 
   $("[data-show-taxon]").hover ( ->
-    $(this).dropdown('toggle')
+    $($(this).find('a')[0]).dropdown('toggle')
   ), ->
-    $(this).dropdown('toggle')
+    $($(this).find('a')[0]).dropdown('toggle')
