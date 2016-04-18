@@ -6,9 +6,26 @@ Spree.ready ($) ->
     $(_this).addClass('active')
     $.ajax({
       url: $("[data-search-path]").data('search-path'),
-      data: { keywords: _this.value },
+      data: { keywords: _this.value, taxon: $("[name='taxon']").val() },
       dataType: 'SCRIPT',
     });
+
+  Spree.intializeInfiniteSearch = () ->
+    $("#products_infinite").infinitePages
+      debug: true
+      buffer: 200
+      context: '#search-form-modal'
+      loading: ->
+        $('.load-results').removeClass('hidden')
+      success: ->
+        $('.load-results').addClass('hidden')
+      error: ->
+        $('.load-results').addClass('hidden')
+
+  Spree.selectTaxonFromSelect = (_this) ->
+    $("[data-taxon-id]").removeClass('active')
+    $(_this).addClass('active')
+    $("[name='taxon']").find("[value='" + $(_this).data('taxon-id') + "']")[0].selected = true
 
   $("[data-search]").on 'focusin', (event) ->
     $("[data-search-links='quick']").addClass('quick-hide')
@@ -23,14 +40,5 @@ Spree.ready ($) ->
       Spree.searchProducts($("[data-search]")[0])
     ), doneTypingInterval
 
-  Spree.intializeInfiniteSearch = () ->
-    $("#products_infinite").infinitePages
-      debug: true
-      buffer: 200
-      context: '#search-form-modal'
-      loading: ->
-        $('.load-results').removeClass('hidden')
-      success: ->
-        $('.load-results').addClass('hidden')
-      error: ->
-        $('.load-results').addClass('hidden')
+  $("[data-taxon-id]").on 'click', (event) ->
+    Spree.selectTaxonFromSelect(this)

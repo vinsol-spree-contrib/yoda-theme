@@ -1,4 +1,4 @@
-<% @taxons = @taxon && @taxon.parent ? @taxon.parent.children : Spree::Taxon.roots %>
+<% @taxons = Spree::Taxon.non_roots %>
 
 <article id="search-form-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
@@ -12,10 +12,16 @@
         <div class="modal-body padding-horizontal-none">
           <div class="form-group">
             <% cache(cache_key_for_taxons) do %>
+              <ul class='list-inline'>
+                <li data-taxon-id=''><%= Spree.t(:all_departments) %></li>
+                <% @taxons.map do |taxon| %>
+                  <li data-taxon-id=<%= taxon.id %>><%= taxon.name %></li>
+                <% end %>
+              </ul>
               <%= select_tag :taxon,
                     options_for_select([[Spree.t(:all_departments), '']] +
                                           @taxons.map {|t| [t.name, t.id]},
-                                          @taxon ? @taxon.id : params[:taxon]), 'aria-label' => 'Taxon', class: "form-control" %>
+                                          @taxon ? @taxon.id : params[:taxon]), 'aria-label' => 'Taxon', class: "form-control hidden" %>
             <% end %>
           </div>
           <div class="form-group search-form-group">
@@ -28,10 +34,9 @@
           <dl id="quick-serach-link" data-search-links='quick'>
             <dd>Quick Links</dd>
             <dt><a>New Collection</a></dt>
-            <dt><a>Lorem Lipsum upto 50% Off </a></dt>
-            <dt><a>Lorem Lipsum</a></dt>
-            <dt><a>Lorem Lipsum</a></dt>
-            <dt><a>Lorem Lipsum</a></dt>
+            <dt><a>Sale upto 30% </a></dt>
+            <dt><a>Shoes of the week</a></dt>
+            <dt><a>Shoes for Couple</a></dt>
           </dl>
         </div>
       <% end %>
