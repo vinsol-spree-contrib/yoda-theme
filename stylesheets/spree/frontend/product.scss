@@ -1,5 +1,21 @@
 @import 'cmn';
 
+.sale-banner {
+  background: $sale-banner-bg;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
+  left: 0;
+  padding: 5px;
+  position: absolute;
+  top: 0;
+  text-transform: uppercase;
+  z-index: 99;
+
+  &:empty {
+    display: none;
+  }
+}
 .product-price-block {
   padding: 10px 0 15px;
 

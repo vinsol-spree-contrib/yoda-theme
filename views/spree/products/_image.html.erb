@@ -1,7 +1,7 @@
 <%# no need for thumbnails unless there is more than one image %>
+<span class="sale-banner"><%= product.badge.try(:name) %></span>
 <% if (product.images + product.variant_images).uniq.size > 1 %>
   <ul id="product-thumbnails" class="thumbnails list-unstyled prod-main-block" data-hook>
-    <span><%= product.badge.try(:name) %></span>
     <% product.images.each do |i| %>
       <li class='tmb-all tmb-<%= i.viewable.id %>'>
         <span class="prod-img-link">
@@ -23,7 +23,6 @@
   </ul>
 <% else %>
   <ul class="prod-main-block list-unstyled">
-    <span><%= product.badge.try(:name) %></span>
     <li>
       <span class="prod-img-link">
         <%= link_to product do %>
