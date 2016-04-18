@@ -177,6 +177,7 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     text-transform: none;
+    display:block;
 
     &:hover {
       text-decoration: none;

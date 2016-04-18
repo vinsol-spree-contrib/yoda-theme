@@ -62,6 +62,12 @@ $large-view: 1080px;
   @if $media == mobile {
     @media (max-width: $mobile-view) { @content; }
   }
+
+  @else if $media == minTablet {
+    @media (min-width: $mobile-view + 1) { @content; }
+  }
+
+
   @else if $media == tablet {
     @media (min-width: $mobile-view + 1) and (max-width: $desktop-view - 1) { @content; }
   }

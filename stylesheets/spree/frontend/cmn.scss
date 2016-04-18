@@ -226,6 +226,60 @@ label {
 }
 
 
+.yoda-cehckbox {
+
+  .helper {
+    cursor: pointer;
+    display: block;
+    padding-left: 30px;
+    position: relative;
+
+    &.inline-elem {
+      display: inline-block;
+    }
+
+    &:before {
+      @extend .cmn-transition;
+      @include border-radius(3px);
+      content: "";
+      position: absolute;
+      height: 18px;
+      width: 18px;
+      left: 0;
+      border: solid 1px rgba(0,0,0,0.3);
+    }
+    &:after {
+      content: "\f00c";
+      font: normal normal normal 14px/1 FontAwesome;
+      font-size: inherit;
+      text-rendering: auto;
+      -webkit-font-smoothing: antialiased;
+      position: absolute;
+      left: 2px;
+      top: 2px;
+      @include transition(all, 0.3s);
+      @include scale(0);
+    }
+  }
+
+  input {
+    display: none;
+
+    &:checked {
+
+      + .helper {
+          color: $link-color;
+          &:before {
+            border-color: $link-color;
+          }  
+          &:after {
+            @include scale(1.1);
+          }   
+      }
+    }
+  }
+}
+
 .bx-wrapper {
   .bx-prev {
     left: 0;

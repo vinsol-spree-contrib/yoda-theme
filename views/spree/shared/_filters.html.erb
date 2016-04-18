@@ -11,13 +11,13 @@
         <ul class="list-group">
           <% labels.each do |nm,val| %>
             <% label = "#{filter[:name]}_#{nm}".gsub(/\s+/,'_') %>
-            <li class="list-group-item">
+            <li class="list-group-item yoda-cehckbox">
               <input type="checkbox"
                      id="<%= label %>"
                      name="search[<%= filter[:scope].to_s %>][]"
                      value="<%= val %>"
                      <%= params[:search] && params[:search][filter[:scope]] && params[:search][filter[:scope]].include?(val.to_s) ? "checked" : "" %> />
-              <label class="nowrap" for="<%= label %>"> <%= nm %> </label>
+              <label class="nowrap helper" for="<%= label %>"> <%= nm %> </label>
             </li>
           <% end %>
         </ul>
