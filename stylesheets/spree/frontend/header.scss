@@ -280,6 +280,59 @@
   }
 }
 
+.filter-search-listing {
+  font-size: 13px;
+  color: rgba(0,0,0,0.5);
+  
+  .filter-link {
+    cursor: pointer;
+    margin-left: 20px;
+    text-transform: uppercase;
+
+    .circle {
+      @extend .cmn-transition;
+      @include border-radius(50%);
+      border: solid 2px rgba(0,0,0,0.5);
+      display: inline-block;
+      height: 16px;
+      margin-right: 2px;
+      position: relative;
+      top: -1px;
+      vertical-align: text-bottom;
+      width: 16px;
+
+      &:before {
+        content:"";
+        @extend .cmn-transition;
+        @include scale(0);
+        @include border-radius(50%);
+        background: rgba(0,0,0,0);
+        height: 8px;
+        left: 50%;
+        margin-left: -4px;
+        margin-top: -4px;
+        position: absolute;
+        top: 50%;
+        width: 8px;
+      }
+    }
+
+    &.active {
+      cursor: default;
+      color: $link-color;
+
+      .circle {
+        border-color: $link-color;
+
+        &:before {
+          @include scale(1);
+          background: $link-color;
+        }
+      }
+    }
+  }
+}
+
 .dropdown-menu {
   &.right {
     left: auto;

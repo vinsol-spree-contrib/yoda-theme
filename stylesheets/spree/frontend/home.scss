@@ -26,30 +26,17 @@
       left: 75%;
     }
     .bx-pager {
-      bottom: -2px;
+      bottom: 6px;
+      padding-top: 0;
     }
   }
   .slide {
     text-align: center;
+    padding-bottom: 10px;
 
     img {
       margin: 0 auto;
     }
-  }
-
-  .bx-controls-direction,
-  .bx-pager {
-    opacity: 0;
-    @extend .cmn-transition;
-
-  }  
-  
-
-  &:hover {
-    .bx-controls-direction,
-    .bx-pager {
-      opacity: 1;
-    }  
   }
 }
 #homepage_products {

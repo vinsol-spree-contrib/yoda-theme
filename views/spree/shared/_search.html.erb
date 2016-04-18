@@ -12,10 +12,16 @@
         <div class="modal-body padding-horizontal-none">
           <div class="form-group">
             <% cache(cache_key_for_taxons) do %>
-              <ul class='list-inline'>
-                <li data-taxon-id=''><%= Spree.t(:all_departments) %></li>
+              <ul class='list-inline filter-search-listing'>
+                <li>FILTER</li>
+                <li data-taxon-id='' class="active filter-link">
+                  <span class="circle"></span>
+                  <%= Spree.t(:all_departments) %></li>
                 <% @taxons.map do |taxon| %>
-                  <li data-taxon-id=<%= taxon.id %>><%= taxon.name %></li>
+                  <li data-taxon-id='<%= taxon.id %>' class="filter-link">
+                    <span class="circle"></span>
+                    <%= taxon.name %>
+                  </li>
                 <% end %>
               </ul>
               <%= select_tag :taxon,

@@ -240,6 +240,8 @@
     margin-right: -4px;
     min-height: 460px;
     overflow: hidden;
+    @extend .cmn-transition;
+    @include scale(1);
 
     @include respond-to(mobile) {
       min-height: auto;
@@ -269,6 +271,7 @@
     }
 
     &:hover {
+      @include scale(1.05);
       .action-cart-btn-block,
       .option-list-group {
         visibility: visible;
