@@ -7,13 +7,13 @@
 <% content_for :home_slider do -%>
   <article class="home-slider-box row">
     <div class="home-top-slider">
-      <div class="slide"><img src="<%= asset_path('yoda/images/spree/frontend/slide1.png') %>" alt="" /></div>
-      <div class="slide"><img src="<%= asset_path('yoda/images/spree/frontend/slide2.jpg') %>" alt="" /></div>
-      <div class="slide"><img src="<%= asset_path('yoda/images/spree/frontend/slide1.png') %>" alt="" /></div>
-      <div class="slide"><img src="<%= asset_path('yoda/images/spree/frontend/slide2.jpg') %>" alt="" /></div>
-    </div>
+    <div class="slide"><img src="<%= asset_path('yoda/images/spree/frontend/slide1.png') %>" alt="" /></div>
+    <div class="slide"><img src="<%= asset_path('yoda/images/spree/frontend/slide2.jpg') %>" alt="" /></div>
+    <div class="slide"><img src="<%= asset_path('yoda/images/spree/frontend/slide3.jpg') %>" alt="" /></div>
+  </div>
   </article>
 <% end -%>
+
 
 <div data-hook="homepage_products" id="homepage_products">
   <% cache(cache_key_for_products) do %>
