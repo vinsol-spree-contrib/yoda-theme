@@ -78,10 +78,8 @@ Spree.ready ($) ->
         slideSelector: '.show',
       });
 
-  Spree.initializeProductShow = () ->
-
+  Spree.handleQuantityField = () ->
     quantityField = ($ "[data-hook='product-quantity']")
-    Spree.initializeSlider()
     quantityField.on 'input propertychange', (event) ->
       Spree.productQuantityField(this)
     quantityField.on 'input keyup', (event) ->
@@ -94,6 +92,10 @@ Spree.ready ($) ->
     decrementQuantityField = $("[data-behaviour='decrement-product-quantity']")
     decrementQuantityField.on 'click', (event) ->
       Spree.productUpdateQuantity(quantityField[0], -1)
+
+  Spree.initializeProductShow = () ->
+
+    Spree.handleQuantityField()
 
     colorOptions = $('[data-color-option-id]')
     colorOptions.on 'click', (event) ->
@@ -115,4 +117,6 @@ Spree.ready ($) ->
         Spree.showVariantImages('', this)
 
     Spree.addImageHandlers()
+
+  Spree.initializeSlider()
   Spree.initializeProductShow()

@@ -1,6 +1,6 @@
+Spree.updateStateLockVersion("<%=j @order.state_lock_version.to_s %>")
 <% if @order.errors.present? %>
   Spree.displayErrors("<%=j @order.errors.messages.to_json.html_safe %>", "<%=j @order.state %>")
-  Spree.updateStateLockVersion("<%=j @order.state_lock_version.to_s %>")
 <% else %>
   Spree.toggleCheckoutProgress()
   $("[data-checkout-progress]").removeClass('focus-and-open')

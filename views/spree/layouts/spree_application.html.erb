@@ -19,6 +19,9 @@
           <%= breadcrumbs(@taxon) %>
         <% elsif @product.present? %>
           <%= breadcrumbs(@product.taxons.first) %>
+        <% else %>
+          <div class='blank-space'>
+          </div>
         <% end %>
         <div class="yoda-container">
           <%= render partial: 'spree/shared/sidebar' if content_for? :sidebar %>

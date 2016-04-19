@@ -3,7 +3,6 @@
   <%= javascript_include_tag 'yoda/javascripts/spree/frontend/product_show' -%>
   <%= javascript_include_tag 'yoda/javascripts/spree/frontend/product' -%>
 <% end -%>
-
 <% if "spree/products" == params[:controller] && @taxon || !@taxonomies.empty? %>
   <% content_for :sidebar do %>
     <div data-hook="homepage_sidebar_navigation">
