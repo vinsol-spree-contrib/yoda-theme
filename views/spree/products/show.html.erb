@@ -4,7 +4,7 @@
   <%= javascript_include_tag 'yoda/javascripts/spree/frontend/product' -%>
 <% end -%>
 
-<% cache [I18n.locale, current_currency, @product, @product.possible_promotions, Spree::Taxon.pluck(&:is_featured)] do %>
+<% cache [I18n.locale, current_currency, @product, @product.possible_promotions, Spree::Taxon.pluck(:is_featured).to_sentence] do %>
   <div data-hook="product_show" itemscope itemtype="https://schema.org/Product">
     <section class="container-fluid">
       <div class='main-product'>

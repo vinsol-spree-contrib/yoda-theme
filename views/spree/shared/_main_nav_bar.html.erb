@@ -19,10 +19,9 @@
       <li id="home-link" data-hook><%= link_to Spree.t(:home), spree.root_path %></li>
       <% taxon = Spree::Taxon.first %>
       <% first_level_taxons(taxon.root).each do |_taxon| %>
-        <li class='primary-link-block'>
-          <% if _taxon.products.count > 0 %>
-            <%= link_to _taxon.name, seo_url(_taxon), class: 'primary-link' %>
-          <% end %>
+        <% css_class = (@taxon && @taxon.self_and_ancestors.include?(_taxon)) ? 'primary-link-block active' : 'primary-link-block' %>
+        <li class="<%= css_class %>">
+          <%= link_to _taxon.name, seo_url(_taxon), class: 'primary-link' %>
           <% leave_taxons = _taxon.children %>
           <% if leave_taxons.size > 0 %>
             <ul class='dropdown-menu'>
