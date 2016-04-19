@@ -11,7 +11,35 @@
     font-size: 14px;
     font-weight: 600;
     padding: 15px;
+    position: relative;
     @extend .cmn-transition;
+
+    &:before,
+    &:after {
+      content: "";
+      background:#000;
+      height: 2px;
+      right: 10px;
+      position: absolute;
+      top: 18px;
+      width: 12px;
+      @extend .cmn-transition;
+    }
+    &:before {
+      top: 23px;
+    }
+    &:after {
+      width: 2px;
+      height: 12px;
+      right: 15px;
+      @include scale(0);
+    }
+
+    &.collapsed {
+      &:after {
+        @include scale(1);
+      }
+    }
   }
   .form-control {
     height: 40px;
