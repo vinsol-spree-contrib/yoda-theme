@@ -1,4 +1,4 @@
-<h1><%= accurate_title %></h1>
+<h1 class="page-heading"><%= accurate_title %></h1>
 
 <div data-hook="account_summary" class="account-summary well">
   <dl id="user-info">
@@ -9,7 +9,7 @@
 
 <div data-hook="account_my_orders" class="account-my-orders">
 
-  <h3><%= Spree.t(:my_orders) %></h3>
+  <h3 class="page-heading small"><%= Spree.t(:my_orders) %></h3>
   <% if @orders.present? %>
     <table class="table table-striped order-summary">
       <thead class="active">

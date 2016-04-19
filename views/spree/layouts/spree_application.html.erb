@@ -19,13 +19,13 @@
         <% elsif @product.present? %>
           <%= breadcrumbs(@product.taxons.first) %>
         <% end %>
-        <%= render partial: 'spree/shared/sidebar' if content_for? :sidebar %>
-
-        <div id="content" class="yoda-container <%= !content_for?(:sidebar) ? "" : "col-sm-8 col-md-9 sidebar-avail" %>" data-hook>
-          <%= flash_messages %>
-          <%= yield %>
+        <div class="yoda-container">
+          <%= render partial: 'spree/shared/sidebar' if content_for? :sidebar %>
+          <div id="content" class="<%= !content_for?(:sidebar) ? "" : "col-sm-8 col-md-9 sidebar-avail" %>" data-hook>
+            <%= flash_messages %>
+            <%= yield %>
+          </div>
         </div>
-
         <%= yield :templates %>
       </div>
     </div>

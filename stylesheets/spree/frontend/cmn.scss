@@ -185,6 +185,10 @@ label {
 .img-responsive {
   margin: 0 auto;
 }
+
+.form-control {
+  height: 40px;
+}
 /*padding*/
 .padding-left-none {
   padding-left:0;
@@ -307,4 +311,5 @@ label {
 
 .blank-space {
   height: 30px;
+  margin: 0;
 }
