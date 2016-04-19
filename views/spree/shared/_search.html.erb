@@ -18,10 +18,12 @@
                   <span class="circle"></span>
                   <%= Spree.t(:all_departments) %></li>
                 <% @taxons.map do |taxon| %>
-                  <li data-taxon-id='<%= taxon.id %>' class="filter-link">
-                    <span class="circle"></span>
-                    <%= taxon.name %>
-                  </li>
+                  <% if taxon.products.count > 0 %>
+                    <li data-taxon-id='<%= taxon.id %>' class="filter-link">
+                      <span class="circle"></span>
+                      <%= taxon.name %>
+                    </li>
+                  <% end %>
                 <% end %>
               </ul>
               <%= select_tag :taxon,

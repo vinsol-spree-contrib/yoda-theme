@@ -20,14 +20,18 @@
       <% taxon = Spree::Taxon.first %>
       <% first_level_taxons(taxon.root).each do |_taxon| %>
         <li class='primary-link-block'>
-          <%= link_to _taxon.name, seo_url(_taxon), class: 'primary-link' %>
+          <% if _taxon.products.count > 0 %>
+            <%= link_to _taxon.name, seo_url(_taxon), class: 'primary-link' %>
+          <% end %>
           <% leave_taxons = _taxon.children %>
           <% if leave_taxons.size > 0 %>
             <ul class='dropdown-menu'>
               <% _taxon.children.each do |child_taxon| %>
-                <li class='secondary-link-block'>
-                  <%= link_to child_taxon.name, seo_url(child_taxon), class: 'secondary-link' %>
-                </li>
+                <% if child_taxon.products.count > 0 %>
+                  <li class='secondary-link-block'>
+                    <%= link_to child_taxon.name, seo_url(child_taxon), class: 'secondary-link' %>
+                  </li>
+                <% end %>
               <% end %>
             </ul>
           <% end %>
