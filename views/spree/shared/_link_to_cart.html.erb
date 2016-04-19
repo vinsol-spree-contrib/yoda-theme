@@ -4,7 +4,9 @@
     <% simple_current_order.line_items.limit(5).each do |line_item| %>
       <div class="col-media-group row row-no-margin">
         <div class='col col-media'>
-          <%= image_tag line_item.variant.images.first.attachment.url(:mini) %>
+          <% if line_item.variant.images.first %>
+            <%= image_tag line_item.variant.images.first.attachment.url(:mini) %>
+          <% end %>
         </div>
         <div class='col col-media-detail'>
           <p class="item-name"><%= line_item.product.name %></p>

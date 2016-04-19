@@ -15,9 +15,13 @@
   <%= render partial: 'spree/shared/products', locals: { products: @products, taxons: [@taxon], search: true } %>
 </div>
 
+<div class="pagination">
+  <%= paginate @products if @products.first.is_a? Spree::Product %>
+</div>
+
 <% unless params[:keywords].present? %>
   <div data-hook="taxon_children">
-    <% cache [I18n.locale, @taxon, Spree::Config[:theme_name]] do %>
+    <% cache [I18n.locale, @taxon, Spree::Config[:theme_name], Spree::Taxon.pluck(&:is_featured)] do %>
       <%= render partial: 'taxon', collection: @taxon.children %>
     <% end %>
   </div>
