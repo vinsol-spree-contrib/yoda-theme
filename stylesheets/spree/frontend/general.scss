@@ -15,4 +15,12 @@ input {
 .yoda-container {
   max-width: 1400px;
   margin: 0 auto;
+  clear: both;
+  &:after,
+  &:before {
+    content: "";
+    display: block;
+    clear: both;
+    width: 100%;
+  }
 }

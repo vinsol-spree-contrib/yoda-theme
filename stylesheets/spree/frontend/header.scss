@@ -40,27 +40,31 @@
     li {
       float: none;
       display: inline-block;
+      border-bottom: solid 2px rgba(0,0,0,0.10);
+      margin-right: 0;
       &:before {
         content: " ";
         background: $link-color;
         height: 0;
         left: 0;
-        opacity: 0;
         position: absolute;
-        right: 0;
-        top: 50%;
+        bottom: -2px;
+        width: 100%;
         @include transition(all,0.2s);
       }
       &:hover,
       &.active-link {
         &:before {
-          top:0;
-          height: 100%;
-          opacity: 1;
+          height: 4px;
         }
+      }
+      &.active-link {
         a {
-          color: #fff;
+          color: $link-color;
         }
+      }
+      +  li {
+        margin-left: 5px;
       }
     }
     a {
@@ -68,13 +72,13 @@
       font-size: 12px;
       font-weight: 600;
       text-transform: uppercase;
-      padding: 10px 15px;
+      padding: 5px 15px;
       &:hover {
         background: none;
       }
       &:focus {
-        background: $link-color;
-        color: #fff;
+        background: transparent;
+        opacity: 0.8;
       }
     }
 
@@ -172,6 +176,10 @@
     padding: 15px 20px;
   }
 
+  .modal-body {
+    padding: 15px 0 0;
+  }
+
   .p-may-like {
     padding-top: 0;
     text-align: left;
@@ -221,6 +229,7 @@
   .prod-col {
     width: 25%;
     min-height: 180px;
+    padding-top: 30px;
   }
 
   .col-for-search {
@@ -276,6 +285,18 @@
         max-width: 116px;
         padding: 3px 10px;
       }
+    }
+  }
+  .sale-banner {
+    white-space: nowrap;
+    top: auto;
+    bottom: 100%;
+  }
+
+  .load-results-keypress {
+    img {
+      @include border-radius(50%);
+      height: 50px;
     }
   }
 }

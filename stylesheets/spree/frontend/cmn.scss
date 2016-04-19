@@ -12,7 +12,8 @@
   background: #fb7c00;
   color: #fff;
 }
-a {
+a,
+.text-primary {
   color: $link-color;
 }
 .open-bold {
@@ -35,7 +36,22 @@ a {
 .size-16 {
   font-size: 16px;
 }
+.lead {
+  font-size:18px;
+}
+.page-heading {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 10px;
 
+  &.light {
+    font-weight: 300;
+  }
+
+  &.small {
+    font-size: 16px;
+  }
+}
 .btn-primary {
   background: $primary-color;
   border-color: $primary-color;

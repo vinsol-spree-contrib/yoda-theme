@@ -4,11 +4,6 @@
 
 .order_summary_page {
   padding: 0 15px;
-  max-width: 1000px;
-  margin: 0 auto;
-  @include respond-to(mobile) { 
-    max-width: 100%;
-  }
 }
 
 .legend {
