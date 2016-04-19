@@ -1,4 +1,4 @@
-<% if @product_properties.present? %>
+<% if @product_properties.present? && empty_product_properties_count(@product_properties) > 0 %>
   <div data-hook="product_properties" class="col-sm-12 cmn-detail-block">
     <h3 class="cmn-block-heading">
       <span class="heading-slogan"><%= Spree.t('properties')%></span>
