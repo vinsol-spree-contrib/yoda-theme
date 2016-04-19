@@ -1,4 +1,5 @@
 <% content_for :header do -%>
+  <%= stylesheet_link_tag 'yoda/stylesheets/spree/frontend/product-listing' -%>
   <%= javascript_include_tag 'yoda/javascripts/spree/frontend/product_show' -%>
   <%= javascript_include_tag 'yoda/javascripts/spree/frontend/product' -%>
 <% end -%>
@@ -38,3 +39,7 @@
     <% end %>
   </div>
 <% end %>
+
+<div class="pagination">
+  <%= paginate @products if @products.first.is_a? Spree::Product %>
+</div>

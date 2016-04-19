@@ -1,5 +1,5 @@
 $('.load-results-keypress').addClass('hidden')
-$('div.pagination').remove();
+$('#search-form-modal').find('div.pagination').remove();
 <% if @products.current_page == 1 %>
   $("[data-show-products='search']").html('')
   <% if @products.count == 0 %>
@@ -9,10 +9,10 @@ $('div.pagination').remove();
 
 $("[data-show-products='search']").append("<%= escape_javascript(render 'related_products', products: @products, search: true) %>")
 <% if @products.last_page? %>
-  $('div.pagination').remove();
+  $('#search-form-modal').find('div.pagination').remove();
 <% else %>
-  $('div.pagination')
-    .html("<%=j link_to_next_page(@products, 'Next Page', :remote => true) %>");
+  $('#search-form-modal').find('div.pagination')
+    .html("<%=j link_to_next_page(@products, 'Next Page', :remote => true) %>").addClass('hidden');
 <% end %>
 Spree.initializeProductShow()
 Spree.intializeInfiniteSearch()
