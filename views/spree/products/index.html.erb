@@ -40,6 +40,4 @@
   </div>
 <% end %>
 
-<div class="pagination">
-  <%= paginate @products if @products.first.is_a? Spree::Product %>
-</div>
+<div class="pagination row pagination-row"><%= paginate @products if @products.first.is_a? Spree::Product %></div>

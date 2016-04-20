@@ -1,10 +1,11 @@
 <% content_for :header do -%>
+  <%= stylesheet_link_tag 'yoda/stylesheets/spree/frontend/user-auth' -%>
   <%= javascript_include_tag 'yoda/javascripts/spree/frontend/user_auth' -%>
 <% end -%>
 <div class='blank-space row'>
 </div>
 <%= render :partial => 'spree/shared/error_messages', :locals => { :target => @user } %>
-<div class="col-md-6 col-md-offset-3" data-display-section='true'>
+<div class="user-account-block" data-display-section='true'>
   <div class="panel panel-default">
       <div class="panel-heading">
         <h3 class="panel-title"><%= Spree.t(:new_customer) %></h3>
@@ -14,13 +15,17 @@
           <%= form_for resource, :as => :spree_user, :url => spree.registration_path do |f| %>
             <div data-hook="signup_inside_form">
               <%= render :partial => 'spree/shared/user_form', :locals => { :f => f } %>
-              <p><%= f.submit Spree.t(:create), :class => 'btn btn-lg btn-success btn-block' %></p>
+              <div class="form-group text-center action">
+                <%= f.submit Spree.t(:create), :class => 'btn btn-primary' %>
+              </div>
             </div>
           <% end %>
         </div>
         <div class="text-center">
-          <%= Spree.t(:or) %>
-          <span data-auth-action=<%= spree.login_path %>>
+          <span data-auth-action=<%= spree.recover_password_path %> class="pointer border-animation cmn-text-link">
+            <%= Spree.t(:forgot_password) %> 
+          </span>
+          <span data-auth-action=<%= spree.login_path %> class="pointer border-animation cmn-text-link">
             <%= Spree.t(:login_as_existing) %>
           </span>
         </div>
@@ -29,7 +34,7 @@
   </div>
 </div>
 
-<div class="col-md-6 col-md-offset-3">
+<div class="user-account-block">
   <div class="panel panel-default" data-display-section='true'>
       <div class="panel-heading">
         <h3 class="panel-title"><%= Spree.t(:login_as_existing) %></h3>
@@ -47,26 +52,23 @@
                 <div class="form-group">
                   <%= f.password_field :password, :class => 'form-control', :tabindex => 2, :placeholder => Spree.t(:password) %>
                 </div>
-                <div class="checkbox">
-                  <label>
+                <div class="checkbox yoda-checkbox">
                     <%= f.check_box :remember_me %>
-                    <%= f.label :remember_me, Spree.t(:remember_me) %>
-                  </label>
+                    <%= f.label :remember_me, Spree.t(:remember_me), :class => 'helper' %>
                 </div>
-                <div class="form-group">
-                  <%= f.submit Spree.t(:login), :class => 'btn btn-lg btn-success btn-block', :tabindex => 3 %>
+                <div class="form-group text-center">
+                  <%= f.submit Spree.t(:login), :class => 'btn btn-primary', :tabindex => 3 %>
                 </div>
               </fieldset>
             <% end %>
           </div>
+          <hr />
           <div class="text-center">
-            <%= Spree.t(:or) %> 
-              <span data-auth-action=<%= spree.signup_path %>>
-                <%= Spree.t(:create_a_new_account) %>
+              <span data-auth-action=<%= spree.recover_password_path %> class="pointer border-animation cmn-text-link">
+                <%= Spree.t(:forgot_password) %> 
               </span>
-
-              <span data-auth-action=<%= spree.recover_password_path %>>
-                <%= Spree.t(:forgot_password) %>
+              <span data-auth-action=<%= spree.signup_path %> class="pointer border-animation cmn-text-link">
+                <%= Spree.t(:create_a_new_account) %>
               </span>
           </div>
           <div data-hook="login_extras"></div>
@@ -74,7 +76,7 @@
   </div>
 </div>
 
-<div class="col-md-6 col-md-offset-3" id="forgot-password" data-display-section='true'>
+<div class="user-account-block" id="forgot-password" data-display-section='true'>
   <div class="panel panel-default">
     <div class="panel-heading">
       <h3 class="panel-title"><%= Spree.t(:forgot_password) %></h3>
@@ -83,13 +85,21 @@
       <p><%= Spree.t(:instructions_to_reset_password) %></p>
       <div data-display-url='/password/recover' data-page-title=<%= Spree.t(:forgot_password) %>>
         <%= form_for Spree::User.new, :as => :spree_user, :url => spree.reset_password_path do |f| %>
-          <p>
-            <%= f.label :email, Spree.t(:email) %><br />
-            <%= f.email_field :email, :class => "form-control" %>
-          </p>
-          <p>
-            <%= f.submit Spree.t(:reset_password), :class => 'btn btn-lg btn-success btn-block' %>
-          </p>
+          <div class="form-group">
+            <%= f.email_field :email, :class => "form-control", :placeholder => Spree.t(:email) %>
+          </div>
+          <div class="form-group text-center action">
+            <%= f.submit Spree.t(:reset_password), :class => 'btn btn-primary' %>
+          </div>
+          <hr />
+          <div class="text-center">
+              <span data-auth-action=<%= spree.login_path %> class="pointer border-animation cmn-text-link">
+                <%= Spree.t(:login_as_existing) %>
+              </span>
+              <span data-auth-action=<%= spree.signup_path %> class="pointer border-animation cmn-text-link">
+                <%= Spree.t(:create_a_new_account) %>
+              </span>
+          </div>
         <% end %>
       </div>
     </div>

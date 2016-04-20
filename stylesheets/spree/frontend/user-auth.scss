@@ -1,0 +1,46 @@
+@import 'yoda/stylesheets/spree/frontend/cmn';
+
+.user-account-block {
+  max-width: 500px;
+  margin: 0 auto;
+  .panel-heading {
+    padding: 20px 15px;
+    text-transform: uppercase;
+  }
+
+  .panel-body {
+    padding: 20px;
+  }
+  .btn {
+    letter-spacing: 0.2em;
+    min-width: 150px;
+    text-transform: uppercase;
+  }
+  .cmn-text-link {
+    font-size: 12px;
+    padding: 0 10px;
+    position: relative;
+
+    + .cmn-text-link {
+      margin-left: 10px;
+
+      &:before {
+        background: #000;
+        bottom: 0;
+        content: "";
+        left: -5px;
+        position: absolute;
+        top: 0;
+        width: 1px;
+      }
+    }
+
+    &:hover {
+      color: $link-color;
+    }
+
+    &:after {
+      background: $link-color;
+    }
+  }
+}

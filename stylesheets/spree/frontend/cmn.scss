@@ -13,7 +13,8 @@
   color: #fff;
 }
 a,
-.text-primary {
+.text-primary,
+.text-link {
   color: $link-color;
 }
 .open-bold {
@@ -195,6 +196,33 @@ label {
 .form-control {
   height: 40px;
 }
+
+.form-group {
+  &.action {
+    padding: 15px 0;
+    margin: 0;
+  }
+}
+
+.pagination {
+  &.pagination-row {
+    display: block;
+    margin-bottom: 0;
+    margin-top: 0;
+    text-align: center;
+    border-top: solid 1px #f2f2f2;
+    border-bottom: solid 1px #f2f2f2;
+
+    &:empty {
+      display: none;
+    }
+  }
+
+  .pagination {
+    margin: 0 auto;
+  }
+}
+
 /*padding*/
 .padding-left-none {
   padding-left:0;
@@ -252,7 +280,7 @@ label {
 }
 
 
-.yoda-cehckbox {
+.yoda-checkbox {
 
   .helper {
     cursor: pointer;
@@ -297,9 +325,11 @@ label {
           color: $link-color;
           &:before {
             border-color: $link-color;
+            background:$link-color;
           }  
           &:after {
             @include scale(1.1);
+            color: #fff;
           }   
       }
     }

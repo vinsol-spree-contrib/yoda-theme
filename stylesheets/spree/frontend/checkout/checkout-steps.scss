@@ -48,6 +48,12 @@
   label {
     font-weight: 600;
   }
+
+  .error {
+    font-weight: 300;
+    font-size: 11px;
+    color: $error-color-text;
+  }
 }
 
 #step-confirm,
