@@ -29,7 +29,7 @@
               <ul class='dropdown-menu'>
                 <% _taxon.children.each do |child_taxon| %>
                   <% if child_taxon.products.count > 0 %>
-                    <li class='secondary-link-block'>
+                    <li class='secondary-link-block border-animation'>
                       <%= link_to child_taxon.name, seo_url(child_taxon), class: 'secondary-link' %>
                     </li>
                   <% end %>

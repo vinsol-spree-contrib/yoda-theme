@@ -37,11 +37,12 @@
   #main-nav-bar {
     min-height: auto;
     text-align: center;
-    li {
+    .primary-link-block {
       float: none;
       display: inline-block;
       border-bottom: solid 2px $link-border;
       margin-right: 0;
+      
       &:before {
         content: " ";
         background: $link-color;
@@ -52,24 +53,43 @@
         width: 100%;
         @include transition(all,0.2s);
       }
+      
       &:hover,
       &.active-link {
         &:before {
           height: 100%;
         }
-        a {
+        .primary-link {
           color: $link-hover-color;
         }
       }
+      
       &.active-link {
         border-color: $active-link-border;
-        a {
+        .primary-link {
           color: $link-active-color;
         }
       }
+
       +  li {
         margin-left: 5px;
       }
+
+      &:hover {
+        .dropdown-menu {
+          @include transition(max-height,1s);
+          max-height: 300px;
+          visibility: visible;
+        }
+      }
+    }
+    .dropdown-menu {
+      @include border-radius(0);
+      display: block;
+      max-height: 0;
+      overflow: hidden;
+      padding: 0;
+      visibility: hidden;
     }
     a {
       @include transition(all,0.2s);
@@ -83,6 +103,26 @@
       &:focus {
         background: transparent;
         opacity: 0.8;
+      }
+    }
+
+    .dropdown-menu {
+      a {
+        padding: 10px 15px;
+      }
+
+      li {
+        display: block;
+        border-bottom: solid 1px $link-border;
+        &:hover {
+          a {
+            color: $link-color
+          }
+        }
+
+        &:after {
+          background: $link-color;
+        }
       }
     }
 
