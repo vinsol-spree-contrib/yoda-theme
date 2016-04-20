@@ -95,8 +95,10 @@
       @include transition(all,0.2s);
       font-size: 12px;
       font-weight: 600;
-      text-transform: uppercase;
+      letter-spacing: 0.10em;
       padding: 5px 15px;
+      text-transform: uppercase;
+
       &:hover {
         background: none;
       }
