@@ -12,28 +12,33 @@
     </ul>
   <% end %>
 </div>
-
-<nav class="site-navbar">
-  <div id="main-nav-bar" class="navbar">
-    <ul class="nav navbar-nav" data-hook>
-      <li id="home-link" data-hook class="<%= 'active-link' unless @taxon %>"><%= link_to Spree.t(:home), spree.root_path %></li>
-      <% taxon = Spree::Taxon.first %>
-      <% first_level_taxons(taxon.root).each do |_taxon| %>
-        <% css_class = (@taxon && @taxon.self_and_ancestors.include?(_taxon)) ? 'primary-link-block active-link' : 'primary-link-block' %>
-        <li class="<%= css_class %>">
-          <%= link_to _taxon.name, seo_url(_taxon), class: 'primary-link' %>
-          <% leave_taxons = _taxon.children %>
-          <% if leave_taxons.size > 0 %>
-            <ul class='dropdown-menu'>
-              <% _taxon.children.each do |child_taxon| %>
-                <li class='secondary-link-block'>
-                  <%= link_to child_taxon.name, seo_url(child_taxon), class: 'secondary-link' %>
-                </li>
-              <% end %>
-            </ul>
-          <% end %>
-        </li>
-      <% end %>
-    </ul>
-  </div>
-</nav>
+<% unless content_for?(:show_header_links) %>
+  <nav class="site-navbar">
+    <div id="main-nav-bar" class="navbar">
+      <ul class="nav navbar-nav" data-hook>
+        <li id="home-link" data-hook class="<%= 'active-link' unless @taxon %>"><%= link_to Spree.t(:home), spree.root_path %></li>
+        <% taxonomy = Spree::Taxon.find_by(name: 'Categories') %>
+        <% first_level_taxons(taxonomy).each do |_taxon| %>
+          <% css_class = (@taxon && @taxon.self_and_ancestors.include?(_taxon)) ? 'primary-link-block active-link' : 'primary-link-block' %>
+          <li class="<%= css_class %>">
+            <% if fetch_products_with_product(_taxon) > 0 %>
+              <%= link_to _taxon.name, seo_url(_taxon), class: 'primary-link' %>
+            <% end %>
+            <% leave_taxons = _taxon.children %>
+            <% if leave_taxons.size > 0 %>
+              <ul class='dropdown-menu'>
+                <% _taxon.children.each do |child_taxon| %>
+                  <% if child_taxon.products.count > 0 %>
+                    <li class='secondary-link-block'>
+                      <%= link_to child_taxon.name, seo_url(child_taxon), class: 'secondary-link' %>
+                    </li>
+                  <% end %>
+                <% end %>
+              </ul>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </nav>
+<% end %>

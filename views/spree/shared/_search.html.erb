@@ -17,11 +17,12 @@
                 <li data-taxon-id='' class="active filter-link">
                   <span class="circle"></span>
                   <%= Spree.t(:all_departments) %></li>
-                <% @taxons.map do |taxon| %>
-                  <% if taxon.products.count > 0 %>
-                    <li data-taxon-id='<%= taxon.id %>' class="filter-link">
+                  <% taxon = Spree::Taxon.find_by(name: 'Categories') %>
+                <% taxon.children.map do |_taxon| %>
+                  <% if fetch_products_with_product(_taxon) > 0 %>
+                    <li data-taxon-id='<%= _taxon.id %>' class="filter-link">
                       <span class="circle"></span>
-                      <%= taxon.name %>
+                      <%= _taxon.name %>
                     </li>
                   <% end %>
                 <% end %>

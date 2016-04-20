@@ -2,7 +2,7 @@
   <%= stylesheet_link_tag 'yoda/stylesheets/spree/frontend/order-summary' -%>
 <% end -%>
 <% content_for :search_link do -%>.<% end %>
-<% content_for :show_footer do -%>.<% end %>
+ 
 <% content_for :google_analytics do %>
   <% if order_just_completed?(@order) %>
     <%= render partial: 'spree/shared/google_purchase.js', locals: { order: @order } %>
