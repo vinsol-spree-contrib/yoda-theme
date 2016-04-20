@@ -167,17 +167,17 @@
     border: none;
     margin-bottom: 5px;
   }
-  .prod-main-block {
-    margin-bottom: 0;
-  }
+  
   .product-title {
     color: $body-text-color;
+    display:block;
     font-size: 14px;
+    font-weight: 300;
+    letter-spacing: -0.03em;
     overflow: hidden;
     text-overflow: ellipsis;
-    white-space: nowrap;
     text-transform: none;
-    display:block;
+    white-space: nowrap;
 
     &:hover {
       text-decoration: none;
@@ -186,10 +186,13 @@
 
   .prod-main-block {
     height: 250px;
+    margin-bottom: 0;
+
     li {
       display: table;
       height: inherit;
       width: 100%;
+      table-layout: fixed;
 
       img {
         max-height: 100%;
@@ -227,7 +230,7 @@
     display: block;
 
     &.selling {
-      font-size: 18px;
+      font-size: 16px;
       font-weight: 400;  
     }
 
