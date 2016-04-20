@@ -2,7 +2,7 @@
   <%= stylesheet_link_tag 'yoda/stylesheets/spree/frontend/checkout/checkout-steps' -%>
 <% end -%>
 <% content_for :google_analytics do %>
-  <%= render partial: 'spree/shared/google_checkout.js', locals: { order: @order, step_number: (@order.checkout_steps.index(@order.state) + 1) } %>
+  <%= render partial: 'spree/shared/google_checkout.js', locals: { order: @order, step_number: (@order.checkout_steps.index(@order.state).to_i + 1) } %>
 <% end %>
 <% content_for :search_link do -%>.<% end %>
 <% content_for :show_footer do -%>.<% end %>
@@ -15,7 +15,6 @@
     </div>
   </div>
 
-  
   <div data-hook="checkout_content" class="checkout-step-row row">
     <div class="panel-group <%= if @order.state != 'confirm' then 'col-md-9' else 'col-md-12' end %>" data-hook="checkout_form_wrapper" id="c-accordion" role="tablist" aria-multiselectable="true">
       <% checkout_steps = @order.checkout_steps %>
