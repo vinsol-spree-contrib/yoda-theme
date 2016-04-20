@@ -46,3 +46,9 @@ Spree.ready ($) ->
     $('.no-results-found').addClass('hidden')
     Spree.selectTaxonFromSelect(this)
     Spree.searchProducts($("[data-search]")[0])
+
+  $('#search-form-modal').on 'hidden.bs.modal', ->
+    $("[data-search]").val('').trigger('input')
+
+  $('#search-form-modal').on 'shown.bs.modal', ->
+    $("[data-search]").focus()
