@@ -223,6 +223,17 @@ label {
   }
 }
 
+.flash-alert-bar {
+  position: relative;
+  .close.fa {
+    float: none;
+    font-size: 20px;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+  }
+}
+
 /*padding*/
 .padding-left-none {
   padding-left:0;

@@ -7,8 +7,8 @@
           <% if line_item.variant.images.first %>
             <%= image_tag line_item.variant.images.first.attachment.url(:mini) %>
           <% else %>
-            <% if product.master.images.first %>
-              <%= image_tag(product.master.images.first.attachment.url(:original), itemprop: 'image', class: 'img-responsive') %>
+            <% if line_item.variant.product.master.images.first %>
+              <%= image_tag(line_item.variant.product.master.images.first.attachment.url(:original), itemprop: 'image', class: 'img-responsive') %>
             <% end %>
           <% end %>
         </div>
