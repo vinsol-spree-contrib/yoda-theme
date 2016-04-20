@@ -15,8 +15,9 @@
     </div>
   </div>
 
-  <div data-hook="checkout_content" class="row checkout-step-row">
-    <div class="<%= if @order.state != 'confirm' then 'col-md-9' else 'col-md-12' end %>" data-hook="checkout_form_wrapper">
+  
+  <div data-hook="checkout_content" class="checkout-step-row row">
+    <div class="panel-group <%= if @order.state != 'confirm' then 'col-md-9' else 'col-md-12' end %>" data-hook="checkout_form_wrapper" id="c-accordion" role="tablist" aria-multiselectable="true">
       <% checkout_steps = @order.checkout_steps %>
         <% reached_final_state = false %>
         <% checkout_steps[0...checkout_steps.length-1].each do |state| %>
