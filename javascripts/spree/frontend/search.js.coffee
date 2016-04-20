@@ -52,3 +52,5 @@ Spree.ready ($) ->
 
   $('#search-form-modal').on 'shown.bs.modal', ->
     $("[data-search]").focus()
+
+  $("[name='taxon']").find('option').attr('selected', false)
