@@ -13,25 +13,23 @@
     <%= render partial: 'spree/shared/header' %>
 
     <div class="container-fluid">
-      <div class="row" data-hook>
-        <%= yield :home_slider %>
-        <% if @taxon.present? %>
-          <%= breadcrumbs(@taxon) %>
-        <% elsif @product.present? %>
-          <%= breadcrumbs(@product.taxons.first) %>
-        <% else %>
-          <div class='blank-space'>
-          </div>
-        <% end %>
-        <div class="yoda-container">
-          <%= render partial: 'spree/shared/sidebar' if content_for? :sidebar %>
-          <div id="content" class="<%= !content_for?(:sidebar) ? "" : "col-sm-8 col-md-9 sidebar-avail" %>" data-hook>
-            <%= flash_messages %>
-            <%= yield %>
-          </div>
+      <%= yield :home_slider %>
+      <% if @taxon.present? %>
+        <%= breadcrumbs(@taxon) %>
+      <% elsif @product.present? %>
+        <%= breadcrumbs(@product.taxons.first) %>
+      <% else %>
+        <div class='blank-space'>
         </div>
-        <%= yield :templates %>
+      <% end %>
+      <div class="yoda-container">
+        <%= render partial: 'spree/shared/sidebar' if content_for? :sidebar %>
+        <div id="content" class="<%= !content_for?(:sidebar) ? "" : "col-sm-8 col-md-9 sidebar-avail" %>" data-hook>
+          <%= flash_messages %>
+          <%= yield %>
+        </div>
       </div>
+      <%= yield :templates %>
     </div>
     <%= render partial: 'spree/shared/footer' %>
   </body>

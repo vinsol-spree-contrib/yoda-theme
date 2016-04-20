@@ -11,7 +11,7 @@
         <ul class="list-group">
           <% labels.each do |nm,val| %>
             <% label = "#{filter[:name]}_#{nm}".gsub(/\s+/,'_') %>
-            <li class="list-group-item yoda-cehckbox">
+            <li class="list-group-item yoda-checkbox">
               <input type="checkbox"
                      id="<%= label %>"
                      name="search[<%= filter[:scope].to_s %>][]"
