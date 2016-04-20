@@ -2,8 +2,7 @@ Spree.updateStateLockVersion("<%=j @order.state_lock_version.to_s %>")
 <% if @order.errors.present? %>
   Spree.displayErrors("<%=j @order.errors.messages.to_json.html_safe %>", "<%=j @order.state %>")
 <% else %>
-  Spree.toggleCheckoutProgress()
-  $("[data-checkout-progress]").removeClass('focus-and-open')
+  Spree.hideCheckoutProgress()
   $("[data-behaviour='order_summary']").html("<%=j render partial: 'summary', locals: { order: @order } %>")
   var dataStepContainer = $("[data-step=" + '"<%=j @order.state %>"' + "]")
   if(dataStepContainer.size() != 0){
@@ -19,4 +18,4 @@ Spree.updateStateLockVersion("<%=j @order.state_lock_version.to_s %>")
     Spree.onPayment()
   <% end %>
 <% end %>
-Spree.toggleCheckoutProgress()
+Spree.showCheckoutProgress("<%= @order.state %>")

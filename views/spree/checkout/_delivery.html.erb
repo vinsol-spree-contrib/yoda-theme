@@ -1,8 +1,8 @@
 <div class='panel-heading pointer collapsed panel-step-heading' data-toggle-checkout-progress='delivery' data-toggle="collapse" href="#step-delivery" aria-expanded="false" aria-controls="step-delivery" data-parent="#c-accordion">
   <%= Spree.t(:delivery) %>
 </div>
-<div id="step-delivery" data-checkout-progress='delivery' class="collapse <%= 'focus-and-open' if @order.state == 'delivery' %>" role="tabpanel">
-  <%= form_for @order, url: update_checkout_path(@order.state), html: { id: "checkout_form_#{state}" }, remote: true do |form| %>
+<div id="step-delivery" data-checkout-progress='delivery' class="collapse <%= 'in' if @order.state == 'delivery' %>" role="tabpanel">
+  <%= form_for @order, url: update_checkout_path(state), html: { id: "checkout_form_#{state}" }, remote: true do |form| %>
     <%= form.hidden_field :state_lock_version %>
     <div class="panel-body" id='shipping_method' data-hook>
       <div class="" data-hook="shipping_method_inner">

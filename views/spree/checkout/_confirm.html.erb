@@ -1,8 +1,8 @@
 <div class='panel-heading pointer collapsed panel-step-heading' data-toggle-checkout-progress='confirm' data-toggle="collapse" href="#step-confirm" aria-expanded="false" aria-controls="step-confirm" data-parent="#c-accordion">
   <%= Spree.t(:confirm) %>
 </div>
-<div id="step-confirm" data-checkout-progress='confirm' class="collapse <%= 'focus-and-open' if @order.state == 'confirm' %>" role="tabpanel">
-  <%= form_for @order, url: update_checkout_path(@order.state), html: { id: "checkout_form_#{state}" }, remote: true do |form| %>
+<div id="step-confirm" data-checkout-progress='confirm' class="collapse <%= 'in' if @order.state == 'confirm' %>" role="tabpanel">
+  <%= form_for @order, url: update_checkout_path(state), html: { id: "checkout_form_#{state}" }, remote: true do |form| %>
     <%= form.hidden_field :state_lock_version %>
     <div class="panel-body" id="order_details" data-hook>
       <%= render :partial => 'spree/shared/order_details', :locals => { :order => @order } %>
