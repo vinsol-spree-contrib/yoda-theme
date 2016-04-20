@@ -11,9 +11,11 @@
   <body class="<%= body_class %>" id="<%= @body_id || 'default' %>" data-hook="body">
     <%= render partial: 'spree/shared/google_analytics.js' %>
     <%= render partial: 'spree/shared/header' %>
-    <div data-flash-container=true class="flash-alert-bar">
-      <%= show_flash_messages %>
-    </div>
+    <% if flash.present? %>
+      <div data-flash-container=true class="flash-alert-bar">
+        <%= show_flash_messages %>
+      </div>
+    <% end %>
     <div class="container-fluid">
       <%= yield :home_slider %>
       <% if @taxon.present? %>

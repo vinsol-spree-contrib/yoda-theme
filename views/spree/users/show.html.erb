@@ -41,6 +41,7 @@
       <% end %>
       </tbody>
     </table>
+    <div class="pagination row pagination-row"><%= paginate @orders %></div>
   <% else %>
     <div class="alert alert-info"><%= Spree.t(:you_have_no_orders_yet) %></div>
   <% end %>

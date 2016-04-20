@@ -34,10 +34,10 @@
             <% end %>
           </div>
           <div class="form-group search-form-group">
-            <%= search_field_tag :keywords, params[:keywords], :placeholder => Spree.t(:search), class: "form-control", data: { search: true } %>
+            <%= search_field_tag :keywords, params[:keywords], :placeholder => 'START TYPING TO SEARCH', class: "form-control", data: { search: true } %>
             <label class="search-label">
               <i class="fa fa-search"></i>
-              <%= submit_tag Spree.t(:search), :name => nil, class: "hidden" %>
+              <%= submit_tag 'START TYPING TO SEARCH', :name => nil, class: "hidden" %>
             </label>
           </div>
           <dl id="quick-serach-link" data-search-links='quick'>

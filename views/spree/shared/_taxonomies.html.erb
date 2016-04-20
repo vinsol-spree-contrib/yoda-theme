@@ -4,6 +4,6 @@
   <% taxonomy = Spree::Taxon.find_by(name: 'Categories') %>
   <% cache [I18n.locale, taxonomy, max_level, @taxon, Spree::Config[:theme_name], Spree::Taxon.pluck(:is_featured).to_sentence] do %>
     <h4 class='taxonomy-root'><%= Spree.t(:shop_by_taxonomy, :taxonomy => taxonomy.name) %></h4>
-    <%= product_taxons_tree(taxonomy.root, @taxon, max_level) %>
+    <%= product_taxons_tree(taxonomy.root, @taxon, 3) %>
   <% end %>
 </nav>
