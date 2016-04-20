@@ -4,4 +4,4 @@ Spree.ready ($) ->
 
   setTimeout (->
     $('[data-flash-container]').slideUp()
-  ), 100000
+  ), 5000

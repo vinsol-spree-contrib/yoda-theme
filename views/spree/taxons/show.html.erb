@@ -1,3 +1,4 @@
+<% content_for :show_footer do -%>.<% end %>
 <% content_for :header do -%>
   <%= stylesheet_link_tag 'yoda/stylesheets/spree/frontend/product-listing' -%>
   <%= javascript_include_tag 'yoda/javascripts/spree/frontend/product_show' -%>
@@ -16,11 +17,3 @@
 </div>
 
 <div class="pagination row pagination-row"><%= paginate @products if @products.first.is_a? Spree::Product %></div>
-
-<% unless params[:keywords].present? %>
-  <div data-hook="taxon_children">
-    <% cache [I18n.locale, @taxon, Spree::Config[:theme_name], Spree::Taxon.pluck(:is_featured).to_sentence] do %>
-      <%= render partial: 'taxon', collection: @taxon.children %>
-    <% end %>
-  </div>
-<% end %>
