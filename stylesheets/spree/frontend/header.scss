@@ -40,7 +40,7 @@
     li {
       float: none;
       display: inline-block;
-      border-bottom: solid 2px rgba(0,0,0,0.10);
+      border-bottom: solid 2px $link-border;
       margin-right: 0;
       &:before {
         content: " ";
@@ -48,19 +48,23 @@
         height: 0;
         left: 0;
         position: absolute;
-        bottom: -2px;
+        bottom: 0px;
         width: 100%;
         @include transition(all,0.2s);
       }
       &:hover,
       &.active-link {
         &:before {
-          height: 4px;
+          height: 100%;
+        }
+        a {
+          color: $link-hover-color;
         }
       }
       &.active-link {
+        border-color: $active-link-border;
         a {
-          color: $link-color;
+          color: $link-active-color;
         }
       }
       +  li {
