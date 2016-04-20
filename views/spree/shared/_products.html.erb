@@ -16,7 +16,7 @@
       <div class="cmn-block-heading">
         <%= link_to('VIEW ALL', seo_url(taxon), :class => 'btn btn-link') %>
         <span class="heading-slogan"><%= taxon.name %></span>
-        <span class="heading-text">Lorem Ipsum is simply dummy text of the printing</span>
+        <span class="heading-text"><%= taxon.description %></span>
       </div>
       <div class='container-fluid'>
         <% if defined? product_limit %>

@@ -6,6 +6,10 @@
 .checkout-step-row {
   .panel {
     margin-bottom: 15px;
+
+    &:empty {
+      display:none;
+    }
   }
   .panel-step-heading {
     font-size: 14px;
