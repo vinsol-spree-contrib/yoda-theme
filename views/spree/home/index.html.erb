@@ -4,17 +4,19 @@
   <%= javascript_include_tag 'yoda/javascripts/spree/frontend/product_show' -%>
   <%= javascript_include_tag 'yoda/javascripts/spree/frontend/product' -%>
 <% end -%>
-<div class="row">
-  <% content_for :home_slider do -%>
-    <article class="home-slider-box row">
+
+<% content_for :home_slider do -%>
+  <div class="row">
+    <article class="home-slider-box">
       <div class="home-top-slider">
       <div class="slide"><img src="<%= asset_path('yoda/images/spree/frontend/slide1.png') %>" alt="" /></div>
       <div class="slide"><img src="<%= asset_path('yoda/images/spree/frontend/slide2.jpg') %>" alt="" /></div>
       <div class="slide"><img src="<%= asset_path('yoda/images/spree/frontend/slide3.jpg') %>" alt="" /></div>
     </div>
     </article>
-  <% end -%>
-</div>
+  </div>
+<% end -%>
+
 
 
 <div data-hook="homepage_products" id="homepage_products">

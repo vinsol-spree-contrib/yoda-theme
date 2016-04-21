@@ -54,17 +54,16 @@
     font-size: 11px;
     color: $error-color-text;
   }
+}
+.address.vcard {
+  .fn {
+    font-weight: 600;
+    padding-bottom: 5px;
+  }
 
-  .address.vcard {
-    .fn {
-      font-weight: 600;
-      padding-bottom: 5px;
-    }
-
-    .country-name,
-    .street-address{
-      padding: 5px 0;
-    }
+  .country-name,
+  .street-address{
+    padding: 5px 0;
   }
 }
 
