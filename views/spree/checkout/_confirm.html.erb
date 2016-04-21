@@ -1,4 +1,4 @@
-<div class='panel-heading pointer collapsed panel-step-heading' data-toggle-checkout-progress='confirm' data-toggle="collapse" href="#step-confirm" aria-expanded="false" aria-controls="step-confirm" data-parent="#c-accordion">
+<div class='panel-heading pointer <%= 'collapsed' if @order.state != 'confirm' %> panel-step-heading' data-toggle-checkout-progress='confirm' data-toggle="collapse" href="#step-confirm" aria-expanded="false" aria-controls="step-confirm" data-parent="#c-accordion">
   <%= Spree.t(:confirm) %>
 </div>
 <div id="step-confirm" data-checkout-progress='confirm' class="collapse <%= 'in' if @order.state == 'confirm' %>" role="tabpanel">

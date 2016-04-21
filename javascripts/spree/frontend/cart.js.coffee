@@ -33,9 +33,11 @@ Spree.ready ($) ->
 
   Spree.hideCheckoutProgress = (_this) ->
     $('.collapse').removeClass('in')
+    $("[data-toggle-checkout-progress]").addClass('collapsed')
 
   Spree.showCheckoutProgress = (order_state) ->
     $('.collapse').addClass("[data-checkout-progress=" + order_state + "]")
+    $("[data-toggle-checkout-progress='" + order_state + "']").removeClass('collapsed')
 
   $('input').on 'input', () ->
     Spree.cleanErrorField(this)

@@ -1,5 +1,5 @@
 
-<div class='panel-heading pointer collapsed panel-step-heading' data-toggle-checkout-progress='address' data-toggle="collapse" href="#step-address" aria-expanded="false" aria-controls="step-address" data-parent="#c-accordion">
+<div class='panel-heading pointer panel-step-heading <%= 'collapsed' if @order.state != 'address' %>' data-toggle-checkout-progress='address' data-toggle="collapse" href="#step-address" aria-expanded="false" aria-controls="step-address" data-parent="#c-accordion">
   ADDRESS
 </div>
 

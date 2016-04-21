@@ -1,4 +1,4 @@
-<div class='panel-heading pointer collapsed panel-step-heading' data-toggle-checkout-progress='payment' data-toggle="collapse" href="#step-payment" aria-expanded="false" aria-controls="step-payment" data-parent="#c-accordion">
+<div class='panel-heading pointer <%= 'collapsed' if @order.state != 'payment' %> panel-step-heading' data-toggle-checkout-progress='payment' data-toggle="collapse" href="#step-payment" aria-expanded="false" aria-controls="step-payment" data-parent="#c-accordion">
   <%= Spree.t(:payment_information) %>
 </div>
 <div id="step-payment" data-checkout-progress='payment' class="collapse <%= 'in' if @order.state == 'payment' %>" role="tabpanel">

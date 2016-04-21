@@ -1,4 +1,4 @@
-<div class='panel-heading pointer collapsed panel-step-heading' data-toggle-checkout-progress='delivery' data-toggle="collapse" href="#step-delivery" aria-expanded="false" aria-controls="step-delivery" data-parent="#c-accordion">
+<div class='panel-heading pointer <%= 'collapsed' if @order.state != 'delivery' %> panel-step-heading' data-toggle-checkout-progress='delivery' data-toggle="collapse" href="#step-delivery" aria-expanded="false" aria-controls="step-delivery" data-parent="#c-accordion">
   <%= Spree.t(:delivery) %>
 </div>
 <div id="step-delivery" data-checkout-progress='delivery' class="collapse <%= 'in' if @order.state == 'delivery' %>" role="tabpanel">
