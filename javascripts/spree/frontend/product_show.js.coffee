@@ -34,9 +34,9 @@ Spree.ready ($) ->
     $(_this).find('.price.percentage').text(variantPercentageProfit) if variantPercentageProfit
 
   Spree.showHideVariants = (self, _this) ->
-    selectedColorOption = $(_this).data('color-option-id')
+    selectedColorOption = $(self).find(_this).data('color-option-id')
     $(self).find("[data-color-option-id]").removeClass('active')
-    $(_this).first().addClass('active')
+    $(self).find(_this).first().addClass('active')
     $(self).find("[data-select-color-option-id]").hide().removeClass("visible");
     sizeOptions = $(self).find("[data-select-color-option-id=" + selectedColorOption + "]").show().addClass("visible");
     sizeOptions.first().find('input').trigger('click')
