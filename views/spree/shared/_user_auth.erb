@@ -12,7 +12,7 @@
     </div>
       <div id="new-customer" class="panel-body" data-hook="login">
         <div data-display-url='/signup' data-page-title=<%= Spree.t(:new_customer) %>>
-          <%= form_for resource, :as => :spree_user, :url => spree.registration_path do |f| %>
+          <%= form_for resource || Spree::User.new, :as => :spree_user, :url => spree.registration_path do |f| %>
             <div data-hook="signup_inside_form">
               <%= render :partial => 'spree/shared/user_form', :locals => { :f => f } %>
               <div class="form-group text-center action">
