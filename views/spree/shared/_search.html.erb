@@ -19,7 +19,7 @@
                   <%= Spree.t(:all_departments) %></li>
                   <% taxon = Spree::Taxon.find_by(name: 'Categories') %>
                 <% taxon.children.map do |_taxon| %>
-                  <% if fetch_products_with_product(_taxon) > 0 %>
+                  <% if fetch_products_count_by_taxon(_taxon) > 0 %>
                     <li data-taxon-id='<%= _taxon.id %>' class="filter-link">
                       <span class="circle"></span>
                       <%= _taxon.name %>

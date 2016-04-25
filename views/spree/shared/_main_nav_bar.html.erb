@@ -21,7 +21,7 @@
         <% first_level_taxons(taxonomy).each do |_taxon| %>
           <% css_class = (@taxon && @taxon.self_and_ancestors.include?(_taxon)) ? 'primary-link-block active-link' : 'primary-link-block' %>
           <li class="<%= css_class %>">
-            <% if fetch_products_with_product(_taxon) > 0 %>
+            <% if fetch_products_count_by_taxon(_taxon) > 0 %>
               <%= link_to _taxon.name, seo_url(_taxon), class: 'primary-link' %>
             <% end %>
             <% leave_taxons = _taxon.children %>

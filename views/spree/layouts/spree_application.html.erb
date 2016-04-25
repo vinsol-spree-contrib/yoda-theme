@@ -13,7 +13,8 @@
     <%= render partial: 'spree/shared/header' %>
     <% if flash.present? %>
       <div data-flash-container=true class="flash-alert-bar">
-        <%= show_flash_messages %>
+        <div class='close fa fa-times-circle' data-flash-message=true></div>
+        <%= flash_messages %>
       </div>
     <% end %>
     <div class="container-fluid">
