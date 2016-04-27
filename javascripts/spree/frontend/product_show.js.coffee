@@ -1,11 +1,11 @@
 Spree.ready ($) ->
-  Spree.addImageHandlers = ->
+  Spree.addImageHandlers = (productParent) ->
     thumbnails = ($ '#product-images ul.thumbnails')
-    $(this).parents('[data-selected-variant]').find('#main-image img').data 'selectedThumb', ($ '#main-image img').attr('src')
+    $(this).parents(productParent).find('#main-image img').data 'selectedThumb', ($ '#main-image img').attr('src')
     thumbnails.find('li').eq(0).addClass 'selected'
     thumbnails.find('a').on 'click', (event) ->
-      $(this).parents('[data-selected-variant]').find('#main-image img').data 'selectedThumb', ($ event.currentTarget).attr('href')
-      $(this).parents('[data-selected-variant]').find('#main-image img').data 'selectedThumbId', ($ event.currentTarget).parent().attr('id')
+      $(this).parents(productParent).find('#main-image img').data 'selectedThumb', ($ event.currentTarget).attr('href')
+      $(this).parents(productParent).find('#main-image img').data 'selectedThumbId', ($ event.currentTarget).parent().attr('id')
       thumbnails.find('li').removeClass 'selected'
       ($ event.currentTarget).parent('li').addClass 'selected'
 
@@ -59,7 +59,7 @@ Spree.ready ($) ->
     if(event.keyCode == 40)
       Spree.productUpdateQuantity(_this, -1)
 
-  Spree.initializeSlider = () ->
+  Spree.initializeSlider = (productParent) ->
     if $(".apr-slide").size() > 1
       $(".apr-slider").bxSlider({
         mode: "fade",
@@ -70,8 +70,8 @@ Spree.ready ($) ->
 
       });
 
-    if $("[data-slider='image']").find('img').size() > 1
-      Spree.productImageSlider = $("[data-slider='image']").find('ul').bxSlider({
+    if $(productParent).find("[data-slider='image']").find('img').size() > 1
+      Spree.productImageSlider = $(productParent).find("[data-slider='image']").find('ul').bxSlider({
         mode: "horizontal",
         adaptiveHeight: true,
         controls: true,
@@ -93,21 +93,34 @@ Spree.ready ($) ->
     decrementQuantityField.on 'click', (event) ->
       Spree.productUpdateQuantity(quantityField[0], -1)
 
-  Spree.initializeProductShow = () ->
+  Spree.showContent = (_event, self) ->
+    selectedModal = $($(self).data('target'))
+    selectedModalId = selectedModal.attr('id')
+    selectedModal.modal('show')
+    $($($(self).data('target'))).on 'shown.bs.modal', ->
+      selectedModal.find('.details').html($("[data-product-details='" + selectedModalId + "']").html())
+      selectedModal.find('.images').html($("[data-product-images='" + selectedModalId + "']").html())
+      Spree.initializeSlider("[data-selected-variant-modal='" + selectedModalId + "']")
+      Spree.initializeProductShow("[data-selected-variant-modal='" + selectedModalId + "']")
+
+  Spree.initializeProductShow = (productParent) ->
 
     Spree.handleQuantityField()
 
+    $('.variant-description').click ->
+      $(this).prev().click()
+
     colorOptions = $('[data-color-option-id]')
     colorOptions.on 'click', (event) ->
-      Spree.showHideVariants($(this).parents('[data-selected-variant]'), this)
-    $('[data-selected-variant]').each ->
+      Spree.showHideVariants($(this).parents(productParent), this)
+    $(productParent).each ->
       Spree.showHideVariants(this, colorOptions)
 
-    $('[data-selected-variant]').each ->
-      radios = $(this).find('#product-variants input[type="radio"]')
+    $(productParent).each ->
+      radios = $(this).find('input[type="radio"]')
       radios.click (event) ->
-        Spree.showVariantImages(@value, $(this).parents('[data-selected-variant]'))
-        Spree.updateVariantPrice($(this), $(this).parents('[data-selected-variant]'))
+        Spree.showVariantImages(this.value, $(this).parents(productParent))
+        Spree.updateVariantPrice($(this), $(this).parents(productParent))
 
       if radios.length > 0
         selectedRadio = $(this).find('#product-variants input[type="radio"][checked="checked"]')
@@ -116,7 +129,10 @@ Spree.ready ($) ->
       else
         Spree.showVariantImages('', this)
 
-    Spree.addImageHandlers()
+    Spree.addImageHandlers(productParent)
 
-  Spree.initializeSlider()
-  Spree.initializeProductShow()
+  Spree.initializeSlider('[data-selected-variant]')
+  Spree.initializeProductShow('[data-selected-variant]')
+
+  $('.quick-view').on 'click', (event) ->
+    Spree.showContent(event, this)

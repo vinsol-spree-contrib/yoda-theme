@@ -42,13 +42,11 @@
                 <% variant = option[1][:variant] %>
                 <span data-select-color-option-id=<%= color_option_value(variant).id %> class="radio-options">
                   <%= radio_button_tag "variant_id", variant.id, {}, 'data-price' => variant.price_in(current_currency).money, 'data-cost' => show_maximum_retail_price(variant) %>
-                  <%= label_tag "variant_id_#{ variant.id }" do %>
-                    <span class="variant-description">
-                      <%= option[1][:option_value_presentation] %>
-                    </span>
-                    <% unless variant.can_supply? %>
-                      <span class="out-of-stock"><%= Spree.t(:out_of_stock) %></span>
-                    <% end %>
+                  <span class="variant-description">
+                    <%= option[1][:option_value_presentation] %>
+                  </span>
+                  <% unless variant.can_supply? %>
+                    <span class="out-of-stock"><%= Spree.t(:out_of_stock) %></span>
                   <% end %>
                 </span>
               <% end %>
@@ -70,6 +68,7 @@
       <%= button_tag :class => 'btn btn-primary cmn-cart-btn', :id => 'add-to-cart-button', :type => :submit do %>
         <%= Spree.t(:add_to_cart) %>
       <% end %>
+      <span class='quick-view' data-target=<%= "#product_#{product.id}" %>>Quick View</span>
     </div>
   </div>
 <% end %>

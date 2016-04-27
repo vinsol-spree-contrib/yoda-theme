@@ -9,12 +9,27 @@
       <% end %>
       <div class="" id='products_infinite'>
         <% products.each do |_product| %>
-          <div class="col-sm-4 prod-col product-list-item" data-hook="products_list_item">
+          <div class="col-sm-4 prod-col product-list-item" data-hook="products_list_item" data-selected-variant=<%= "product_#{_product.id}" %>>
             <% if _product.is_a? Spree::Product %>
+              <% product_id = _product.id %>
               <%= render 'spree/products/related_product_details', product: _product %>
             <% else %>
+              <% product_id = _product.related_to.id %>
               <%= render 'spree/products/related_product_details', product: _product.related_to %>
             <% end %>
+          </div>
+          <div class="modal fade" id="<%= "product_#{product_id}" %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-selected-variant-modal=<%= "product_#{product_id}" %>>
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                  <div class='images' data-slider='image'></div>
+                  <div class='details'></div>
+                </div>
+              </div>
+            </div>
           </div>
         <% end %>
         <div class="pagination row pagination-row"></div>

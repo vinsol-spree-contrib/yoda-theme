@@ -14,5 +14,5 @@ $("[data-show-products='search']").append("<%= escape_javascript(render 'related
   $('#search-form-modal').find('div.pagination')
     .html("<%=j link_to_next_page(@products, 'Next Page', :remote => true) %>").addClass('hidden');
 <% end %>
-Spree.initializeProductShow()
+Spree.initializeProductShow('[data-selected-variant]')
 Spree.intializeInfiniteSearch()

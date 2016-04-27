@@ -1,10 +1,12 @@
-<article class="" data-selected-variant=<%= "product_#{product.id}" %>>
+<article class="">
   <div class="col-sm-12 padding-none col-for-search left-search-col" data-hook="product_left_part">
     <div data-hook="product_left_part_wrap">
       <div id="product-images" data-hook="product_images">
         <div id="main-image" class="panel panel-default" data-hook>
           <div class="panel-body text-center padding-none">
-            <%= render 'spree/products/image', product: product %>
+            <span data-product-images=<%= "product_#{product.id}" %>>
+              <%= render 'spree/products/image', product: product %>
+            </span>
           </div>
         </div>
       </div>
@@ -13,12 +15,14 @@
 
   <div class="col-sm-12 padding-none col-for-search right-search-col" data-hook="product_right_part">
     <div data-hook="product_right_part_wrap">
-      <div class="product-description" data-hook="product_description">
-        <%= link_to product.name, product, :class => "product-title", :itemprop => "name" %>
-        <div id="cart-form" data-hook="cart_form">
-          <%= render 'spree/products/related_cart_form', product: product %>
+      <span data-product-details=<%= "product_#{product.id}" %>>
+        <div class="product-description" data-hook="product_description">
+          <%= link_to product.name, product, :class => "product-title", :itemprop => "name" %>
+          <div id="cart-form" data-hook="cart_form">
+            <%= render 'spree/products/related_cart_form', product: product %>
+          </div>
         </div>
-      </div>
+      </span>
     </div>
   </div>
 </article>
