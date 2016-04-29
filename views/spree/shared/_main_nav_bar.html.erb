@@ -16,7 +16,7 @@
   <nav class="site-navbar">
     <div id="main-nav-bar" class="navbar">
       <ul class="nav navbar-nav" data-hook>
-        <li id="home-link" data-hook class="primary-link-block <%= 'active-link' unless @taxon %>"><%= link_to Spree.t(:home), spree.root_path, :class => 'primary-link' %></li>
+        <li id="home-link" data-hook class="primary-link-block <%= 'active-link' if controller_name == 'home' %>"><%= link_to Spree.t(:home), spree.root_path, :class => 'primary-link' %></li>
         <% taxonomy = Spree::Taxon.find_by(name: 'Categories') %>
         <% first_level_taxons(taxonomy).each do |_taxon| %>
           <% css_class = (@taxon && @taxon.self_and_ancestors.include?(_taxon)) ? 'primary-link-block active-link' : 'primary-link-block' %>
