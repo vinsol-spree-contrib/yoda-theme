@@ -1,0 +1,137 @@
+.modal-open {
+  .big-image-modal {
+    width: 100VW;
+    overflow: hidden;
+  }  
+}
+.p-may-like {
+  .big-image-modal {
+    padding: 50px !important;
+
+    .modal-header {
+      text-align: left;
+    }
+
+    .modal-dialog {
+      min-width: 100%;
+      margin: 0;
+      @include border-radius(0);
+    } 
+
+    .modal-body {
+      height: calc(100VH - 130px);
+      overflow: hidden;
+      overflow-y: auto;
+    }
+
+    .quick-view,
+    .sale-banner {
+      display: none;
+    }
+
+    .images {
+      float: left;
+      width: 70%;
+      padding: 0 25px;
+
+      .bx-wrapper{
+        .bx-prev {
+          left: -30px;
+        }
+        .bx-next {
+          right: -30px;
+        }
+      }
+    }
+    .details {
+      float: left;
+      width: 30%;
+      padding: 0 0 0 25px;
+      text-align: left;
+    }
+    #product-thumbnails.prod-main-block {
+      height: 400px;
+
+      .prod-img-link {
+        display: table;
+        width: 100%;
+        table-layout: fixed;
+
+        a {
+          display: table-cell;
+          text-align: center;
+          height: 400px;
+        }
+      }
+    }
+
+    .product-title {
+      font-size: 18px;
+      margin: 0;
+      white-space: normal;
+      @extend .text-uppercase;
+      @extend .open-bold;
+    }
+    #product-description {
+      @include respond-to(mobile) { 
+        text-align: center;
+
+        .product-additional-info {
+          text-align: left;
+        }
+      }
+    }
+    #inside-product-cart-form {
+      min-height: 30px;
+      .product-price-block {
+        border-bottom: solid 1px #cccccc;
+        padding: 10px 0 15px;
+
+        .price {
+          display: inline;
+          &:empty {
+            background: green;
+            @extend .empty-hide;
+          }
+
+          font-size: 14px;
+          @extend .open-bold;
+
+          &.cost {
+            text-decoration: line-through;
+          }
+
+          &.selling {
+            color: $link-color;
+            font-size: 20px;
+          }
+
+          &.percentage {
+            color: $discount-color;
+          }
+          + .price {
+            margin-left: 10px;
+            vertical-align: baseline;
+          }
+        }
+      }
+    }
+    .option-list-group {
+      margin-top: 15px;
+
+      .option-block {
+        font-size: 12px;
+        @extend .open-2x-bold;
+
+        .h-box {
+          display: inline-block;
+          min-width: 65px;
+        }
+
+        + .option-block {
+          margin-top: 20px;
+        }
+      }
+    }
+  }
+}

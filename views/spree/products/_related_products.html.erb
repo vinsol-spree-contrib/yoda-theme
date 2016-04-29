@@ -18,10 +18,11 @@
               <%= render 'spree/products/related_product_details', product: _product.related_to %>
             <% end %>
           </div>
-          <div class="modal fade" id="<%= "product_#{product_id}" %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-selected-variant-modal=<%= "product_#{product_id}" %>>
+          <div class="modal fade big-image-modal" id="<%= "product_#{product_id}" %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-selected-variant-modal=<%= "product_#{product_id}" %>>
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
+                  <strong><%= _product.name %></strong>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 </div>
                 <div class="modal-body">
