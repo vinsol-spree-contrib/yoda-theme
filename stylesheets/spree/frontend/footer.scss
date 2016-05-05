@@ -3,8 +3,16 @@
 @import 'yoda/stylesheets/spree/frontend/bxslider';
 
 footer {
+  border-top: solid 1px #e5e5e5;
+  margin-top: 30px;
+  
+  .appreciations-section {
+    + .footer-links  {
+      margin-top: 60px;
+    }
+  }
   .footer-links {
-    margin-top: 60px;
+    margin-top: 30px;
     font-size: 11px;
     dl {
       padding: 0 50px;
