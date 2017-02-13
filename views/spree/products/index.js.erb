@@ -1,0 +1,18 @@
+$('.load-results-keypress').addClass('hidden')
+$('#search-form-modal').find('div.pagination').remove();
+<% if @products.current_page == 1 %>
+  $("[data-show-products='search']").html('')
+  <% if @products.count == 0 %>
+    $('.no-results-found').removeClass('hidden').html('No results found for "' + "<%=j params[:keywords] %>" + '"')
+  <% end %>
+<% end %>
+
+$("[data-show-products='search']").append("<%= escape_javascript(render 'related_products', products: @products, search: true) %>")
+<% if @products.last_page? %>
+  $('#search-form-modal').find('div.pagination').remove();
+<% else %>
+  $('#search-form-modal').find('div.pagination')
+    .html("<%=j link_to_next_page(@products, 'Next Page', :remote => true) %>").addClass('hidden');
+<% end %>
+Spree.initializeProductShow('[data-selected-variant]')
+Spree.intializeInfiniteSearch()

@@ -1,0 +1,55 @@
+@import 'yoda/stylesheets/spree/frontend/newsletter';
+@import 'yoda/stylesheets/spree/frontend/appriciation';
+@import 'yoda/stylesheets/spree/frontend/bxslider';
+
+footer {
+  border-top: solid 1px #e5e5e5;
+  margin-top: 30px;
+  
+  .appreciations-section {
+    + .footer-links  {
+      margin-top: 60px;
+    }
+  }
+  .footer-links {
+    margin-top: 30px;
+    font-size: 11px;
+    dl {
+      padding: 0 50px;
+      @include respond-to(mobile) { 
+        padding: 0 5px;
+      }
+    }
+    dt {
+      border-bottom: solid 1px #e5e5e5;
+      font-weight: 600;
+      font-size: 12px;
+      margin-bottom: 5px;
+      padding-bottom: 5px;
+      text-transform: uppercase;
+    }
+    dd {
+      padding: 8px 0 0;
+      line-height: 18px;
+    }
+
+    a {
+      color: $body-text-color;
+      display: inline-block;
+      padding-bottom: 3px;
+      &:hover {
+        text-decoration:none;
+      }
+      &:after {
+        background: $body-text-color;
+      }
+      &.narrow {
+        padding-bottom: 0;
+
+        &:after {
+          background: #fff;   
+        }
+      }
+    }
+  }
+}

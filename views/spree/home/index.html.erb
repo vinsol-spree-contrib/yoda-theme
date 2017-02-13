@@ -1,12 +1,37 @@
-<% content_for :sidebar do %>
-  <div data-hook="homepage_sidebar_navigation">
-    <%= render :partial => 'spree/shared/taxonomies' %>
-  </div>
-<% end %>
+<% content_for :show_footer do -%>.<% end %>
+<% content_for :header do -%>
+  <%= stylesheet_link_tag 'yoda/stylesheets/spree/frontend/home' -%>
+  <%= javascript_include_tag 'yoda/javascripts/spree/frontend/product_show' -%>
+  <%= javascript_include_tag 'yoda/javascripts/spree/frontend/product' -%>
+<% end -%>
 
-<div data-hook="homepage_products">
+<% content_for :home_slider do -%>
+  <div class="row">
+    <article class="home-slider-box">
+      <div class="home-top-slider">
+      <div class="slide"><img src="<%= asset_path('yoda/images/spree/frontend/slide1.png') %>" alt="" /></div>
+      <div class="slide"><img src="<%= asset_path('yoda/images/spree/frontend/slide2.jpg') %>" alt="" /></div>
+      <div class="slide"><img src="<%= asset_path('yoda/images/spree/frontend/slide3.jpg') %>" alt="" /></div>
+    </div>
+    </article>
+  </div>
+<% end -%>
+
+
+
+<div data-hook="homepage_products" id="homepage_products">
   <% cache(cache_key_for_products) do %>
-    <%= render :partial => 'spree/shared/products', :locals => { :products => @products } %>
+    <%= render partial: 'spree/shared/products', locals: { products: @products, taxons: @featured_taxons, search: true, product_limit: 3 } %>
   <% end %>
 </div>
 
+
+<script type="text/javascript">
+  $(function(){
+    $(".home-top-slider").bxSlider({
+      mode: "fade",
+      speed: 1000,
+      auto: true
+    })
+  })
+</script>

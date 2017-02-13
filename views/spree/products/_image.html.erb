@@ -1,5 +1,36 @@
-<% if defined?(image) && image %>
-  <%= image_tag image.attachment.url(:product), :itemprop => "image" %>
+<%# no need for thumbnails unless there is more than one image %>
+<span class="sale-banner"><%= product.badge.try(:name) %></span>
+<% if (product.images + product.variant_images).uniq.size > 1 %>
+  <ul id="product-thumbnails" class="thumbnails list-unstyled prod-main-block" data-hook>
+    <% product.images.each do |i| %>
+      <li class='tmb-all tmb-<%= i.viewable.id %>'>
+        <span class="prod-img-link">
+          <%= link_to(image_tag(i.attachment.url(:original), class: "thumbnail img-responsive"), product) %>
+        </span>
+      </li>
+    <% end %>
+
+    <% if product.has_variants? %>
+      <% product.variant_images.each do |i| %>
+        <% next if product.images.include?(i) %>
+        <li class='vtmb tmb-<%= i.viewable.id %>'>
+          <span class="prod-img-link">
+            <%= link_to(image_tag(i.attachment.url(:original), class: "thumbnail img-responsive"), product) %>
+          </span>
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
 <% else %>
-  <%= product_image(@product, :itemprop => "image") %>
+  <ul class="prod-main-block list-unstyled">
+    <li>
+      <span class="prod-img-link">
+        <%= link_to product do %>
+          <% if product.master.images.first %>
+            <%= image_tag(product.master.images.first.attachment.url(:original), itemprop: 'image', class: 'img-responsive') %>
+          <% end %>
+        <% end %>
+      </span>
+    </li>
+  </ul>
 <% end %>

@@ -11,20 +11,30 @@
   <body class="<%= body_class %>" id="<%= @body_id || 'default' %>" data-hook="body">
     <%= render partial: 'spree/shared/google_analytics.js' %>
     <%= render partial: 'spree/shared/header' %>
-
+    <% if flash.present? %>
+      <div data-flash-container=true class="flash-alert-bar">
+        <div class='close fa fa-times-circle' data-flash-message=true></div>
+        <%= flash_messages %>
+      </div>
+    <% end %>
     <div class="container-fluid">
-      <div class="row" data-hook>
+      <%= yield :home_slider %>
+      <% if @taxon.present? %>
         <%= breadcrumbs(@taxon) %>
-
+      <% elsif @product.present? %>
+        <%= breadcrumbs(@product.taxons.first) %>
+      <% else %>
+        <div class='blank-space'>
+        </div>
+      <% end %>
+      <div class="yoda-container">
         <%= render partial: 'spree/shared/sidebar' if content_for? :sidebar %>
-
-        <div id="content" class="<%= !content_for?(:sidebar) ? "" : "col-sm-8 col-md-9" %>" data-hook>
-          <%= flash_messages %>
+        <div id="content" class="<%= !content_for?(:sidebar) ? "" : "col-sm-8 col-md-9 sidebar-avail" %>" data-hook>
           <%= yield %>
         </div>
-
-        <%= yield :templates %>
       </div>
+      <%= yield :templates %>
     </div>
+    <%= render partial: 'spree/shared/footer' %>
   </body>
 </html>

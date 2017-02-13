@@ -1,16 +1,64 @@
-<% @taxons = @taxon && @taxon.parent ? @taxon.parent.children : Spree::Taxon.roots %>
+<% @taxons = Spree::Taxon.non_roots %>
 
-<%= form_tag spree.products_path, :method => :get, class: "navbar-form" do %>
-  <div class="form-group">
-    <% cache(cache_key_for_taxons) do %>
-      <%= select_tag :taxon,
-            options_for_select([[Spree.t(:all_departments), '']] +
-                                  @taxons.map {|t| [t.name, t.id]},
-                                  @taxon ? @taxon.id : params[:taxon]), 'aria-label' => 'Taxon', class: "form-control" %>
-    <% end %>
+<article id="search-form-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <article class="modal-content">
+      <%= form_tag spree.products_path, :method => :get, class: "", data: { 'search-path': spree.products_path } do %>
+         <div class="modal-header padding-horizontal-none">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">SEARCH IN STORE</h4>
+        </div>
+
+        <div class="modal-body">
+          <div class="form-group">
+            <% cache(cache_key_for_taxons) do %>
+              <ul class='list-inline filter-search-listing'>
+                <li>FILTER</li>
+                <li data-taxon-id='' class="active filter-link">
+                  <span class="circle"></span>
+                  <%= Spree.t(:all_departments) %></li>
+                  <% taxon = Spree::Taxon.find_by(name: 'Categories') %>
+                <% taxon.children.map do |_taxon| %>
+                  <% if fetch_products_count_by_taxon(_taxon) > 0 %>
+                    <li data-taxon-id='<%= _taxon.id %>' class="filter-link">
+                      <span class="circle"></span>
+                      <%= _taxon.name %>
+                    </li>
+                  <% end %>
+                <% end %>
+              </ul>
+              <%= select_tag :taxon,
+                    options_for_select([[Spree.t(:all_departments), '']] +
+                                          @taxons.map {|t| [t.name, t.id]},
+                                          @taxon ? @taxon.id : params[:taxon]), 'aria-label' => 'Taxon', class: "form-control hidden" %>
+            <% end %>
+          </div>
+          <div class="form-group search-form-group">
+            <%= search_field_tag :keywords, params[:keywords], :placeholder => 'START TYPING TO SEARCH', class: "form-control", data: { search: true } %>
+            <label class="search-label">
+              <i class="fa fa-search"></i>
+              <%= submit_tag 'START TYPING TO SEARCH', :name => nil, class: "hidden" %>
+            </label>
+          </div>
+          <dl id="quick-serach-link" data-search-links='quick'>
+            <dd>Quick Links</dd>
+            <dt><a>New Collection</a></dt>
+            <dt><a>Sale upto 30% </a></dt>
+            <dt><a>Shoes of the week</a></dt>
+            <dt><a>Shoes for Couple</a></dt>
+          </dl>
+        </div>
+      <% end %>
+      <div class='' data-show-products='search'>
+      </div>
+      <div class='load-results hidden text-center'>
+        <%= image_tag 'yoda/images/spree/frontend/ajax-loader.gif' %>
+      </div>
+      <div class='load-results-keypress hidden text-center'>
+        <%= image_tag 'yoda/images/spree/frontend/starwars-loader.gif' %>
+      </div>
+      <div class='no-results-found hidden text-center'>
+      </div>
+    </article>
   </div>
-  <div class="form-group">
-    <%= search_field_tag :keywords, params[:keywords], :placeholder => Spree.t(:search), class: "form-control" %>
-  </div>
-  <%= submit_tag Spree.t(:search), :name => nil, class: "btn btn-success" %>
-<% end %>
+</article>

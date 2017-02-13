@@ -1,20 +1,18 @@
-<h1 class="taxon-title"><%= @taxon.name %></h1>
+<% content_for :show_footer do -%>.<% end %>
+<% content_for :header do -%>
+  <%= stylesheet_link_tag 'yoda/stylesheets/spree/frontend/product-listing' -%>
+  <%= javascript_include_tag 'yoda/javascripts/spree/frontend/product_show' -%>
+  <%= javascript_include_tag 'yoda/javascripts/spree/frontend/product' -%>
+<% end -%>
 
 <% content_for :sidebar do %>
   <div data-hook="taxon_sidebar_navigation">
-    <%= render partial: 'spree/shared/taxonomies' %>
-    <%= render partial: 'spree/shared/filters' if @taxon.leaf? %>
+    <%= render partial: 'spree/shared/filters' %>
   </div>
 <% end %>
 
 <div data-hook="taxon_products">
-  <%= render partial: 'spree/shared/products', locals: { products: @products, taxon: @taxon } %>
+  <%= render partial: 'spree/shared/products', locals: { products: @products, taxons: [@taxon], search: true } %>
 </div>
 
-<% unless params[:keywords].present? %>
-  <div data-hook="taxon_children">
-    <% cache [I18n.locale, @taxon] do %>
-      <%= render partial: 'taxon', collection: @taxon.children %>
-    <% end %>
-  </div>
-<% end %>
+<div class="pagination row pagination-row"><%= paginate @products if @products.first.is_a? Spree::Product %></div>

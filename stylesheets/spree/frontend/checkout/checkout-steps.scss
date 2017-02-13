@@ -1,0 +1,153 @@
+@import 'yoda/stylesheets/spree/frontend/cmn';
+
+.m-block {
+  margin-top: 20px;
+  h4 {
+    font-size: 16px;
+    font-weight: 600;
+  }
+}
+.checkout-step-row {
+  .panel {
+    margin-bottom: 15px;
+
+    &:empty {
+      display:none;
+    }
+  }
+  .panel-step-heading {
+    font-size: 14px;
+    font-weight: 600;
+    padding: 15px;
+    position: relative;
+    @extend .cmn-transition;
+
+    &:before,
+    &:after {
+      content: "";
+      background:#000;
+      height: 2px;
+      right: 10px;
+      position: absolute;
+      top: 18px;
+      width: 12px;
+      @extend .cmn-transition;
+    }
+    &:before {
+      top: 23px;
+    }
+    &:after {
+      width: 2px;
+      height: 12px;
+      right: 15px;
+      @include scale(0);
+    }
+
+    &.collapsed {
+      &:after {
+        @include scale(1);
+      }
+    }
+  }
+  label {
+    font-weight: 600;
+  }
+
+  .error {
+    font-weight: 300;
+    font-size: 11px;
+    color: $error-color-text;
+  }
+}
+.address.vcard {
+  .fn {
+    font-weight: 600;
+    padding-bottom: 5px;
+  }
+
+  .country-name,
+  .street-address{
+    padding: 5px 0;
+  }
+}
+
+#step-confirm,
+.stock-contents,
+#line-items {
+  tbody {
+    border: none;
+  }
+  th {
+    background: none;
+    border-bottom: none !important;
+    color: rgba(0,0,0,0.9);
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: 600;
+
+    &.cart-adjustment-header {
+      background: #f2f2f2;
+    }
+  }
+  td {
+    font-size: 13px;
+    color: inherit;
+    &.cart-item-image {
+      width: 100px;
+      img {
+        max-height: 70px;
+      }
+    }
+    &.cart-item-quantity {
+      .line_item_quantity {
+        width: 80px;
+      }
+    }
+
+    &.cart-item-total {
+      @extend .font-bold;
+    }
+  }
+
+  h4 {
+    font-size: inherit;
+  }
+
+  .cart-subtotal {
+   h5 {
+      @extend .font-bold;
+    }
+  }
+  .cart-total {
+    td {
+      vertical-align: middle;
+      @extend .font-bold;
+    }
+  }
+}
+.font-bold {
+  font-weight: 600;
+  font-size: 16px;
+}
+.existing-credit-card-list {
+  td:first-child {
+    padding-left: 0;
+  }
+}
+
+#methods {
+  .shipment {
+    padding: 0 15px;
+
+    ~ .shipment {
+      border-top: solid 1px rgba(0,0,0,0.15);
+      padding-top: 20px;
+      margin-top: 30px;
+    }
+  }
+}
+#order_details {
+  .steps-data {
+    margin-top: -20px;
+  }
+}

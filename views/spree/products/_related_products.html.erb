@@ -1,0 +1,45 @@
+<% unless products.empty? %>
+  <article class="row">
+    <div class="col-sm-12 p-may-like">
+      <% unless search %>
+        <h3 class="cmn-block-heading">
+          <span class="heading-slogan">YOU MIGHT ALSO LIKE</span>
+          <span class="heading-text">Lorem Ipsum is simply</span>
+        </h3>
+      <% end %>
+      <div class="" id='products_infinite'>
+        <% products.each do |_product| %>
+          <div class="col-sm-4 prod-col product-list-item" data-hook="products_list_item" data-selected-variant=<%= "product_#{_product.id}" %>>
+            <% if _product.is_a? Spree::Product %>
+              <% product_id = _product.id %>
+              <% product = _product %>
+              <%= render 'spree/products/related_product_details', product: _product %>
+            <% else %>
+              <% product_id = _product.related_to.id %>
+              <% product = _product.related_to %>
+              <%= render 'spree/products/related_product_details', product: _product.related_to %>
+            <% end %>
+          </div>
+          <div class="modal fade big-image-modal" id="<%= "product_#{product_id}" %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-selected-variant-modal=<%= "product_#{product_id}" %>>
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <strong><%= product.name %></strong>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                  <div class='images' data-slider='image'></div>
+                  <div class='details'></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+        <div class="pagination row pagination-row"></div>
+      </div>
+      <% unless search %>
+        <div class="cmn-border-box row narrow"></div>
+      <% end %>
+    </div>
+  </article>
+<% end %>

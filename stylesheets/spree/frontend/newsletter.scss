@@ -1,0 +1,92 @@
+@import 'yoda/stylesheets/spree/frontend/mixin/mixins';
+@import 'yoda/stylesheets/spree/frontend/variable/variables';
+
+.newsletter-section {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  background: #f7f7f7;
+  padding: 45px 0 45px;
+  text-align: center;
+
+  h6 {
+    margin: 0 0 35px;
+    padding: 0;
+    font-size: 24px;
+    font-weight: 400;
+    text-transform: uppercase;
+
+    .big-text {
+      display: block;
+      font-size: 30px;
+      font-weight: inherit;
+      padding: 5px 0;
+    }
+  }
+
+  .slogan {
+    padding-bottom: 40px;
+    text-transform: uppercase;
+
+    &.big-slogan {
+      font-size: 16px;
+      font-weight: 600;
+    }
+  }
+
+  .newsletter-group {
+    max-width: 570px;
+    margin: 0 auto;
+
+    .input-group {
+      width: 100%;
+    }
+
+    .form-control,
+    .input-group-addon {
+      @include border-radius(0);
+      height: 56px;
+      font-size: 16px;
+    }
+    .input-group-addon {
+      background: $link-color;
+      border-color: $link-color;
+      cursor: pointer;
+      position: relative;
+      @extend .cmn-transition;
+
+      input {
+        background: none;
+        border: none !important;
+        outline: none;
+        color: #fff;
+      }
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+}
+
+.follw-social {
+  .heading {
+    font-size: 30px;
+    font-weight: 400;
+  }
+  .fa-stack{
+    @extend .cmn-transition;
+    color: $body-text-color;
+    opacity: 0.6;
+    font-size: 20px;
+
+    &:hover{
+      margin-left: 5px;
+      @include scale(1.2);
+      opacity: 1;
+      + .fa-stack {
+        margin-left: 5px;
+      }
+
+    } 
+  }
+}

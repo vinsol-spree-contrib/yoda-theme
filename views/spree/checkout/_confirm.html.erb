@@ -1,13 +1,15 @@
-<div class="panel panel-default" id="order_details" data-hook>
-  <div class="panel-heading">
-    <h3 class="panel-title"><%= Spree.t(:confirm) %></h3>
-  </div>
-  <div class="panel-body">
-    <%= render :partial => 'spree/shared/order_details', :locals => { :order => @order } %>
-  </div>
+<div class='panel-heading pointer <%= 'collapsed' if @order.state != 'confirm' %> panel-step-heading' data-toggle-checkout-progress='confirm' data-toggle="collapse" href="#step-confirm" aria-expanded="false" aria-controls="step-confirm" data-parent="#c-accordion">
+  <%= Spree.t(:confirm) %>
 </div>
+<div id="step-confirm" data-checkout-progress='confirm' class="collapse <%= 'in' if @order.state == 'confirm' %>" role="tabpanel">
+  <%= form_for @order, url: update_checkout_path(state), html: { id: "checkout_form_#{state}" }, remote: true do |form| %>
+    <%= form.hidden_field :state_lock_version %>
+    <div class="panel-body" id="order_details" data-hook>
+      <%= render :partial => 'spree/shared/order_details', :locals => { :order => @order } %>
+    </div>
 
-<div class="well text-right form-buttons" data-hook="buttons">
-  <%= submit_tag Spree.t(:place_order), :class => 'btn btn-lg btn-success' %>
-  <script>Spree.disableSaveOnClick();</script>
+    <div class="panel-footer text-right form-buttons" data-hook="buttons">
+      <%= submit_tag Spree.t(:place_order), :class => 'btn btn-lg btn-success' %>
+    </div>
+  <% end %>
 </div>

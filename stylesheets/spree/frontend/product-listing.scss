@@ -1,0 +1,102 @@
+@import 'yoda/stylesheets/spree/frontend/mixin/mixins';
+@import 'yoda/stylesheets/spree/frontend/variable/variables';
+@import 'yoda/stylesheets/spree/frontend/animations/animation';
+
+
+
+#sidebar {
+  @include respond-to(minTablet) { 
+    min-width: 250px;
+    max-width: 250px;
+  }
+
+  .taxonomy-root {
+    border-bottom: solid 1px rgba(0,0,0,0.1);
+    font-size: 16px;
+    font-weight: 600;
+    padding-bottom: 15px;
+    position: relative;
+    text-transform: uppercase;
+
+    &:before {
+      content:"";
+      background: $body-text-color;
+      bottom: -1px;
+      height: 1px;
+      left: 0;
+      position: absolute;
+      width: 30%;
+    }
+  }
+
+  .list-group {
+    margin-bottom: 30px;
+
+    .list-group-item {
+      @include border-radius(0);
+      border: none;
+      border-bottom: solid 1px rgba(0,0,0,0.1);
+      margin: 0;
+      position: relative;
+      padding: 10px;
+
+      &:before {
+        content:"";
+        background: none;
+        bottom: -1px;
+        height: 1px;
+        left: 50%;
+        position: absolute;
+        width: 0%;
+        @extend .cmn-transition;
+      }
+
+      &.active,
+      &:hover {
+        background: none;
+        color: $link-color;
+
+        &:before {
+          width: 100%;
+          left: 0;
+          background: $link-color;
+        }
+      }
+
+      &:hover {
+        color: inherit;
+        &:before {
+          background: rgba(0,0,0,0.5);
+        }
+      }
+    }
+
+    label {
+      font-weight: 300;
+    }
+  }
+}
+
+.sidebar-avail {
+  @include respond-to(minTablet) { 
+    width: auto;
+    float: none;
+    margin-left: 250px;
+  }
+  .p-may-like {
+    padding-top: 0;
+    text-align: left;
+
+    .prod-col {
+      text-align: center;
+    }
+    .product-title {
+      white-space: normal;
+    }
+  }
+  .cmn-block-heading {
+    .btn-link {
+      display: none;
+    }
+  }
+}

@@ -1,8 +1,26 @@
+@import 'yoda/stylesheets/spree/frontend/variable/variables';
 @import 'cmn';
 @import 'yoda/stylesheets/spree/frontend/product-detail';
 
 body {
   background: $body-color;
+  color: $body-text-color;
   font-family: 'Open Sans', arial, sans-serif;
 }
 
+input {
+  font-family: 'Open Sans', arial, sans-serif; 
+}
+
+.yoda-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  clear: both;
+  &:after,
+  &:before {
+    content: "";
+    display: block;
+    clear: both;
+    width: 100%;
+  }
+}

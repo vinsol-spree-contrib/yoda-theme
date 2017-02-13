@@ -1,0 +1,10 @@
+@import 'yoda/stylesheets/spree/frontend/mixin/mixins';
+.apr-block {
+  margin: 20px 15%;
+  font-size: 18px;
+  line-height: 1.7;
+
+  .apr-slide {
+    background: #fff;
+  }
+}

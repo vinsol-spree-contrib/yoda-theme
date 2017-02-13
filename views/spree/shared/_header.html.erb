@@ -1,15 +1,15 @@
 <div id="spree-header">
-  <header id="header" data-hook>
-    <div class="container-fluid">
-      <div class="row">
-        <figure id="logo" class="col-md-4" data-hook>
-          <%= logo %>
-        </figure>
-        <%= render :partial => 'spree/shared/nav_bar' %>
-      </div>
-    </div>
+  <header id="header" data-hook class="container-fluid">
+      <figure id="logo" class="navbar-brand" data-hook>
+        <%= logo('spree_50.png') %>
+      </figure>
+      <%= render :partial => 'spree/shared/main_nav_bar' if store_menu? %>
   </header>
   <div class="container-fluid">
-    <%= render :partial => 'spree/shared/main_nav_bar' if store_menu? %>
+    <div class='dropdown container-fluid'>
+    </div>
+    <div class="header-shipping global-shipping row">
+      <div class='shipping-message col-sm-12'>Free shipping on order $90 {Enter Code in cart : ship90} more Detail</div>
+    </div>
   </div>
 </div>

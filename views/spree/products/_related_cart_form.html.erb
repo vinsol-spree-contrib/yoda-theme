@@ -1,0 +1,76 @@
+<%= form_for :order, :url => populate_orders_path do |f| %>
+  <div class="" id="inside-product-cart-form" data-hook="inside_product_cart_form" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+    <div id="product-variants" class="">
+      <% if product.price_in(current_currency) and !product.price.nil? %>
+        <div data-hook="product_price">
+          <div id="product-price">
+            <div class="product-price-block no-border">
+              <span class="lead price cost narrow" itemprop="price"><%= show_maximum_retail_price(product) %></span>
+              <span class="lead price selling narrow" itemprop="price"><%= display_price(product) %></span>
+              <span itemprop="priceCurrency" content="<%= product.currency %>"></span>
+            </div>
+
+            <% if product.master.can_supply? %>
+              <link itemprop="availability" href="https://schema.org/InStock" />
+            <% elsif product.variants.empty? %>
+              <br />
+              <span class="out-of-stock"><%= Spree.t(:out_of_stock) %></span>
+            <% end %>
+          </div>
+        </div>
+      <% else %>
+        <div id="product-price">
+          <div class="product-price-block no-border"><span class="price selling" itemprop="price"><%= Spree.t('product_not_available_in_this_currency') %></span></div>
+        </div>
+      <% end %>
+      <% if product.variants_and_option_values(current_currency).any? %>
+        <div class="option-list-group">
+          <div class="color-option-block option-block">
+            <span class="h-box color">Color</span>
+            <% product.uniq_color_options.each do |color_option| %>
+              <span style="background-color: <%= color_option[1][:option_value_presentation] %>" data-color-option-id = <%= color_option[0] %> class="color-box"></span>
+            <% end %>
+          </div>
+
+          <% non_color_option_types(product).each do |option_type| %>
+            <div class="option-block size-block">
+
+              <span class="h-box"><%= option_type.presentation %></span>
+
+              <% product.uniq_options(option_type.presentation).each do |option| %>
+
+                <% variant = option[1][:variant] %>
+                <span data-select-color-option-id=<%= color_option_value(variant).id %> class="radio-options">
+                  <%= radio_button_tag "variant_id", variant.id, {}, 'data-price' => variant.price_in(current_currency).money, 'data-cost' => show_maximum_retail_price(variant) %>
+                  <label class="variant-description">
+                    <%= option[1][:option_value_presentation] %>
+                  </label>
+                  <% unless variant.can_supply? %>
+                    <span class="out-of-stock"><%= Spree.t(:out_of_stock) %></span>
+                  <% end %>
+                </span>
+              <% end %>
+
+            </div>
+
+          <% end %>
+        </div>
+      <% else %>
+        <%= hidden_field_tag "variant_id", product.master.id %>
+      <% end %>
+    </div>
+  </div>
+  <div class="add-to-cart">
+    <div class="cart-input-group hidden">
+      <%= hidden_field_tag :quantity, 1, :class => 'title form-control', data: { hook: 'product-quantity' } %>
+    </div>
+    <div class="action-cart-btn-block">
+      <%= button_tag :class => 'btn btn-primary cmn-cart-btn', :id => 'add-to-cart-button', :type => :submit do %>
+        <%= Spree.t(:add_to_cart) %>
+      <% end %>
+      <span class='quick-view' data-target=<%= "#product_#{product.id}" %> title="Quick View">
+        <i class="fa fa-search-plus fa-2x"></i>
+      </span>
+    </div>
+  </div>
+<% end %>

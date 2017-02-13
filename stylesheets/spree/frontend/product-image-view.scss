@@ -1,0 +1,44 @@
+@import 'yoda/stylesheets/spree/frontend/cmn';
+
+#product-details {
+  #main-image {
+    border: none;
+
+    @include box-shadow(0,0,0,0);
+
+    .bx-wrapper {
+      img{
+        @include border-radius(0);
+        border: 0;
+        margin: 0 auto;
+        padding: 0;
+        max-height:500px;
+      }
+      .bx-next {
+        right: 10px;
+      }
+    }
+
+    .show {
+      min-height: 420px;
+      padding: 0;
+
+      a {
+        display: table-cell;
+        height: 430px;
+        width: inherit;
+        vertical-align: middle;
+      }
+    }
+
+    .bx-pager-link {
+      @include border-radius(0 !important);
+      height: 13px;
+      width: 13px;
+      background: #d5d3d3;
+      &.active {
+        background: $link-color;
+      } 
+    }
+  }
+}
